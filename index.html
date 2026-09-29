@@ -16,10 +16,20 @@
 
     body {
       min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 
       background:
-        radial-gradient(circle at top, #fff9f5 0%, #f7e9e3 48%, #ead6d1 100%);
+        radial-gradient(
+          circle at top,
+          #fff9f5 0%,
+          #f7e9e3 48%,
+          #ead6d1 100%
+        );
 
       color: #72565b;
     }
@@ -27,8 +37,11 @@
     .pagina {
       width: 88%;
       max-width: 430px;
+
       margin: auto;
+
       padding-top: 13vh;
+
       text-align: center;
     }
 
@@ -37,14 +50,18 @@
     .logo {
       font-size: 1.8rem;
       font-weight: 300;
+
       letter-spacing: 3px;
+
       color: #bc7e89;
     }
 
     .coracao {
       margin-top: 12px;
       margin-bottom: 50px;
+
       color: #d49ca6;
+
       font-size: 1.1rem;
     }
 
@@ -56,12 +73,15 @@
 
     .pergunta {
       margin-bottom: 27px;
+
       font-size: 0.72rem;
+
       letter-spacing: 3px;
+
       color: #9f767d;
     }
 
-    /* BOTÃO PLAY */
+    /* PLAY */
 
     .play {
       width: 82px;
@@ -71,6 +91,7 @@
       border-radius: 50%;
 
       background: #ce8c98;
+
       color: white;
 
       font-size: 1.45rem;
@@ -97,10 +118,11 @@
       color: #ae898f;
 
       font-size: 0.64rem;
+
       letter-spacing: 2px;
     }
 
-    /* CAMPO */
+    /* INPUT */
 
     .campo {
       width: 100%;
@@ -133,24 +155,27 @@
       width: 100%;
 
       margin-top: 14px;
+
       padding: 16px;
 
       border: 0;
       border-radius: 40px;
 
       background: #c68591;
+
       color: white;
 
       font-size: 0.78rem;
+
       letter-spacing: 2px;
 
       cursor: pointer;
     }
 
     .mensagem {
-      min-height: 32px;
+      min-height: 34px;
 
-      padding-top: 15px;
+      padding-top: 16px;
 
       color: #ae737e;
 
@@ -160,7 +185,7 @@
     /* CRÉDITO */
 
     .credito {
-      margin-top: 18px;
+      margin-top: 16px;
 
       font-size: 10px;
 
@@ -169,22 +194,26 @@
 
     .credito a {
       color: #a97e85;
+
       text-decoration: none;
     }
 
-    /* WIDGET REAL */
+    /* SOUNDCLOUD ESCONDIDO */
 
     .soundcloud {
-      position: absolute;
+      position: fixed;
 
       width: 1px;
       height: 1px;
+
+      left: -9999px;
+      bottom: 0;
 
       overflow: hidden;
 
       opacity: 0.01;
 
-      left: -9999px;
+      pointer-events: none;
     }
 
     /* CONTEÚDO */
@@ -196,6 +225,7 @@
     }
 
     @keyframes aparecer {
+
       from {
         opacity: 0;
         transform: translateY(10px);
@@ -205,12 +235,14 @@
         opacity: 1;
         transform: translateY(0);
       }
+
     }
 
     .liberado {
       margin-bottom: 30px;
 
       font-size: 0.7rem;
+
       letter-spacing: 2px;
 
       color: #a67c83;
@@ -235,11 +267,13 @@
 
     #busca {
       min-width: 0;
+
       flex: 1;
 
       padding: 12px 15px;
 
       border: none;
+
       outline: none;
 
       background: transparent;
@@ -261,6 +295,7 @@
       border-radius: 50%;
 
       background: #d3939e;
+
       color: white;
 
       cursor: pointer;
@@ -276,6 +311,7 @@
       color: #bea0a5;
 
       font-size: 0.6rem;
+
       letter-spacing: 2px;
     }
 
@@ -307,7 +343,7 @@
     </div>
 
 
-    <!-- ENTRADA MUSICAL -->
+    <!-- ENTRADA -->
 
     <section id="entrada">
 
@@ -334,7 +370,7 @@
         id="resposta"
         class="campo"
         type="text"
-        placeholder="quem é?"
+        placeholder="sua resposta..."
         autocomplete="off"
         autocapitalize="none"
         spellcheck="false"
@@ -356,7 +392,9 @@
 
 
       <div class="credito">
-        áudio via
+
+        música via
+
         <a
           href="https://soundcloud.com/maneskin"
           target="_blank"
@@ -364,6 +402,7 @@
         >
           SoundCloud
         </a>
+
       </div>
 
     </section>
@@ -392,6 +431,7 @@
         <button
           id="botaoBuscar"
           class="buscar"
+          aria-label="Buscar"
         >
           ♡
         </button>
@@ -411,30 +451,24 @@
   </main>
 
 
-  <!--
-      SOUNDCLOUD
-
-      Música:
-      Beggin' — Måneskin
-  -->
+  <!-- PLAYER SOUNDCLOUD -->
 
   <div class="soundcloud">
 
     <iframe
       id="sc-player"
-      width="100%"
+      width="300"
       height="166"
       scrolling="no"
       frameborder="no"
       allow="autoplay"
-      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maneskin/beggin&auto_play=false&show_artwork=false&show_user=false&show_comments=false&sharing=false&download=false"
     >
     </iframe>
 
   </div>
 
 
-  <!-- API OFICIAL SOUNDCLOUD -->
+  <!-- API SOUNDCLOUD -->
 
   <script src="https://w.soundcloud.com/player/api.js"></script>
 
@@ -442,32 +476,129 @@
   <script>
 
     /*
-      ================================
-      SOUNDCLOUD
-      ================================
+    ==========================================
+    5 MÚSICAS
+    ==========================================
+    */
+
+    const musicas = [
+
+      {
+        nome: "Beggin'",
+        url:
+          "https://soundcloud.com/maneskin/beggin"
+      },
+
+      {
+        nome: "I WANNA BE YOUR SLAVE",
+        url:
+          "https://soundcloud.com/maneskin/i-wanna-be-your-slave"
+      },
+
+      {
+        nome: "HONEY (ARE U COMING?)",
+        url:
+          "https://soundcloud.com/maneskin/honey-are-u-coming"
+      },
+
+      {
+        nome: "THE LONELIEST",
+        url:
+          "https://soundcloud.com/maneskin/the-loneliest"
+      },
+
+      {
+        nome: "SUPERMODEL",
+        url:
+          "https://soundcloud.com/maneskin/supermodel"
+      }
+
+    ];
+
+
+    /*
+    ==========================================
+    SORTEAR UMA MÚSICA
+    ==========================================
+    */
+
+    const indice =
+      Math.floor(
+        Math.random() * musicas.length
+      );
+
+
+    const musicaEscolhida =
+      musicas[indice];
+
+
+    /*
+    ==========================================
+    CRIAR PLAYER
+    ==========================================
     */
 
     const iframe =
-      document.getElementById("sc-player");
+      document.getElementById(
+        "sc-player"
+      );
+
+
+    const enderecoPlayer =
+      "https://w.soundcloud.com/player/?" +
+
+      "url=" +
+      encodeURIComponent(
+        musicaEscolhida.url
+      ) +
+
+      "&auto_play=false" +
+      "&hide_related=true" +
+      "&show_comments=false" +
+      "&show_user=false" +
+      "&show_reposts=false" +
+      "&show_teaser=false" +
+      "&visual=false";
+
+
+    iframe.src =
+      enderecoPlayer;
+
+
+    /*
+    ==========================================
+    CONECTAR WIDGET
+    ==========================================
+    */
 
     const widget =
       SC.Widget(iframe);
 
+
     const play =
-      document.getElementById("play");
+      document.getElementById(
+        "play"
+      );
+
 
     const mensagem =
-      document.getElementById("mensagem");
+      document.getElementById(
+        "mensagem"
+      );
 
+
+    let playerPronto = false;
     let tocando = false;
-    let pronto = false;
 
 
     widget.bind(
       SC.Widget.Events.READY,
+
       function () {
 
-        pronto = true;
+        playerPronto = true;
+
+        mensagem.textContent = "";
 
       }
     );
@@ -475,11 +606,13 @@
 
     widget.bind(
       SC.Widget.Events.PLAY,
+
       function () {
 
         tocando = true;
 
-        play.textContent = "❚❚";
+        play.textContent =
+          "❚❚";
 
       }
     );
@@ -487,11 +620,13 @@
 
     widget.bind(
       SC.Widget.Events.PAUSE,
+
       function () {
 
         tocando = false;
 
-        play.textContent = "▶";
+        play.textContent =
+          "▶";
 
       }
     );
@@ -499,30 +634,34 @@
 
     widget.bind(
       SC.Widget.Events.FINISH,
+
       function () {
 
         tocando = false;
 
-        play.textContent = "▶";
+        play.textContent =
+          "▶";
 
       }
     );
 
 
     /*
-      ================================
-      BOTÃO PLAY
-      ================================
+    ==========================================
+    BOTÃO PLAY
+    ==========================================
     */
 
     play.addEventListener(
       "click",
+
       function () {
 
-        mensagem.textContent = "";
+        mensagem.textContent =
+          "";
 
 
-        if (!pronto) {
+        if (!playerPronto) {
 
           mensagem.textContent =
             "carregando música... ♫";
@@ -536,7 +675,9 @@
 
           widget.pause();
 
-        } else {
+        }
+
+        else {
 
           widget.play();
 
@@ -547,9 +688,9 @@
 
 
     /*
-      ================================
-      NORMALIZAR TEXTO
-      ================================
+    ==========================================
+    NORMALIZAR TEXTO
+    ==========================================
     */
 
     function normalizar(texto) {
@@ -567,56 +708,69 @@
 
 
     /*
-      ================================
-      RESPOSTAS
-      ================================
+    ==========================================
+    RESPOSTA
+    ==========================================
     */
 
     const respostasValidas = [
+
       "maneskin",
       "måneskin"
+
     ];
 
 
-    /*
-      ================================
-      VALIDAR ENTRADA
-      ================================
-    */
-
     const resposta =
-      document.getElementById("resposta");
+      document.getElementById(
+        "resposta"
+      );
+
 
     const entrada =
-      document.getElementById("entrada");
+      document.getElementById(
+        "entrada"
+      );
+
 
     const conteudo =
-      document.getElementById("conteudo");
+      document.getElementById(
+        "conteudo"
+      );
 
 
     function validarResposta() {
 
       const tentativa =
-        normalizar(resposta.value);
+        normalizar(
+          resposta.value
+        );
 
 
       const corretas =
-        respostasValidas.map(normalizar);
+        respostasValidas.map(
+          normalizar
+        );
 
 
       if (
-        corretas.includes(tentativa)
+        corretas.includes(
+          tentativa
+        )
       ) {
 
         widget.pause();
 
         widget.seekTo(0);
 
+
         entrada.style.display =
           "none";
 
+
         conteudo.style.display =
           "block";
+
 
         return;
 
@@ -627,7 +781,9 @@
         "tente outra vez ♫";
 
 
-      resposta.value = "";
+      resposta.value =
+        "";
+
 
       resposta.focus();
 
@@ -635,7 +791,9 @@
 
 
     document
-      .getElementById("botaoEntrar")
+      .getElementById(
+        "botaoEntrar"
+      )
       .addEventListener(
         "click",
         validarResposta
@@ -644,6 +802,7 @@
 
     resposta.addEventListener(
       "keydown",
+
       function (event) {
 
         if (
@@ -659,40 +818,49 @@
 
 
     /*
-      ================================
-      FOTOS
-      ================================
+    ==========================================
+    FOTOS
 
-      Depois cadastraremos aqui:
-
-      comando
-      arquivo
-      legenda
+    Depois cadastraremos:
+    comando
+    arquivo
+    legenda
+    ==========================================
     */
 
+    const fotos = [
 
-    const fotos = [];
+    ];
 
 
     /*
-      ================================
-      BUSCAR FOTO
-      ================================
+    ==========================================
+    BUSCA
+    ==========================================
     */
 
     function buscarFoto() {
 
       const campo =
-        document.getElementById("busca");
+        document.getElementById(
+          "busca"
+        );
+
 
       const resultado =
-        document.getElementById("resultado");
+        document.getElementById(
+          "resultado"
+        );
+
 
       const comando =
-        normalizar(campo.value);
+        normalizar(
+          campo.value
+        );
 
 
-      resultado.innerHTML = "";
+      resultado.innerHTML =
+        "";
 
 
       if (!comando) {
@@ -704,23 +872,33 @@
 
       const foto =
         fotos.find(
+
           item =>
-            normalizar(item.comando)
+
+            normalizar(
+              item.comando
+            )
+
             === comando
+
         );
 
 
       if (!foto) {
 
         resultado.innerHTML = `
+
           <div
             style="
               font-size:18px;
               color:#c69ca3;
             "
           >
+
             ♡
+
           </div>
+
         `;
 
         return;
@@ -764,7 +942,9 @@
 
 
     document
-      .getElementById("botaoBuscar")
+      .getElementById(
+        "botaoBuscar"
+      )
       .addEventListener(
         "click",
         buscarFoto
@@ -772,9 +952,12 @@
 
 
     document
-      .getElementById("busca")
+      .getElementById(
+        "busca"
+      )
       .addEventListener(
         "keydown",
+
         function (event) {
 
           if (
