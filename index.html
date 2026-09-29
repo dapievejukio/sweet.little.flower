@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>sweet.little.flower</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background:
+        linear-gradient(
+          145deg,
+          #f8eee7,
+          #f3dfdc
+        );
+
+      color: #74575c;
+    }
+
+    .pagina {
+      width: 88%;
+      max-width: 520px;
+
+      margin: auto;
+      padding-top: 18vh;
+
+      text-align: center;
+    }
+
+    /* LOGO */
+
+    .logo {
+      color: #bf7c89;
+
+      font-size: 2rem;
+      font-weight: 300;
+
+      letter-spacing: 3px;
+
+      margin-bottom: 8px;
+    }
+
+    .flor {
+      color: #d2a0a8;
+
+      font-size: 1.2rem;
+
+      margin-bottom: 55px;
+    }
+
+    /* LOGIN MUSICAL */
+
+    #entrada {
+      display: block;
+    }
+
+    .pergunta {
+      color: #96747a;
+
+      font-size: 0.85rem;
+
+      letter-spacing: 1.5px;
+
+      margin-bottom: 20px;
+    }
+
+    /* PLAYER */
+
+    .play {
+      width: 74px;
+      height: 74px;
+
+      margin: 0 auto 28px;
+
+      border: none;
+      border-radius: 50%;
+
+      background: #d796a2;
+      color: white;
+
+      font-size: 1.6rem;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 24px
+        rgba(160, 105, 116, 0.22);
+    }
+
+    .play:active {
+      transform: scale(0.96);
+    }
+
+    .ouvir {
+      display: block;
+
+      margin-bottom: 32px;
+
+      color: #b18c92;
+
+      font-size: 0.72rem;
+
+      letter-spacing: 1.5px;
+    }
+
+    /* INPUT */
+
+    .campo {
+      width: 100%;
+
+      padding: 17px 20px;
+
+      border: 1px solid #e5ceca;
+      border-radius: 30px;
+
+      outline: none;
+
+      background: #fffaf7;
+
+      color: #75585d;
+
+      font-size: 16px;
+
+      text-align: center;
+
+      box-shadow:
+        0 5px 20px
+        rgba(116, 82, 89, 0.07);
+    }
+
+    .campo::placeholder {
+      color: #bea3a7;
+    }
+
+    .entrar {
+      margin-top: 15px;
+
+      width: 100%;
+
+      padding: 15px;
+
+      border: none;
+      border-radius: 30px;
+
+      background: #c98794;
+
+      color: #fffaf7;
+
+      font-size: 0.85rem;
+
+      letter-spacing: 2px;
+
+      cursor: pointer;
+    }
+
+    .mensagem {
+      height: 30px;
+
+      margin-top: 17px;
+
+      color: #b77b87;
+
+      font-size: 0.78rem;
+    }
+
+    /* ÁREA LIBERADA */
+
+    #conteudo {
+      display: none;
+    }
+
+    .bem-vinda {
+      margin-bottom: 30px;
+
+      color: #a37d83;
+
+      font-size: 0.75rem;
+
+      letter-spacing: 2px;
+    }
+
+    /* BUSCADOR */
+
+    .buscador {
+      display: flex;
+
+      padding: 6px;
+
+      background: #fffaf7;
+
+      border: 1px solid #e5ceca;
+      border-radius: 35px;
+
+      box-shadow:
+        0 7px 24px
+        rgba(116, 82, 89, 0.08);
+    }
+
+    #busca {
+      min-width: 0;
+      flex: 1;
+
+      border: none;
+      outline: none;
+
+      padding: 13px 15px;
+
+      background: transparent;
+
+      color: #75585d;
+
+      font-size: 16px;
+    }
+
+    #busca::placeholder {
+      color: #bea3a7;
+    }
+
+    .buscar {
+      border: none;
+      border-radius: 50%;
+
+      width: 46px;
+      height: 46px;
+
+      background: #d796a2;
+      color: white;
+
+      cursor: pointer;
+    }
+
+    .resultado {
+      margin-top: 35px;
+    }
+
+    .rodape {
+      margin-top: 80px;
+
+      color: #c4a4a8;
+
+      font-size: 0.65rem;
+
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 600px) {
+
+      .pagina {
+        padding-top: 14vh;
+      }
+
+      .logo {
+        font-size: 1.65rem;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <main class="pagina">
+
+    <div class="logo">
+      sweet.little.flower
+    </div>
+
+    <div class="flor">
+      ♡
+    </div>
+
+
+    <!-- ENTRADA MUSICAL -->
+
+    <section id="entrada">
+
+      <div class="pergunta">
+        quem está tocando?
+      </div>
+
+
+      <button
+        class="play"
+        id="play"
+        aria-label="Ouvir música"
+      >
+        ▶
+      </button>
+
+
+      <span class="ouvir">
+        ouvir
+      </span>
+
+
+      <input
+        class="campo"
+        id="resposta"
+        type="text"
+        placeholder="sua resposta..."
+        autocomplete="off"
+        autocapitalize="none"
+        spellcheck="false"
+      >
+
+
+      <button
+        class="entrar"
+        id="botaoEntrar"
+      >
+        entrar
+      </button>
+
+
+      <div
+        class="mensagem"
+        id="mensagem"
+      ></div>
+
+    </section>
+
+
+    <!-- CONTEÚDO LIBERADO -->
+
+    <section id="conteudo">
+
+      <div class="bem-vinda">
+        ♡ acesso liberado
+      </div>
+
+
+      <div class="buscador">
+
+        <input
+          id="busca"
+          type="text"
+          placeholder="buscar..."
+          autocomplete="off"
+        >
+
+
+        <button
+          class="buscar"
+          id="botaoBuscar"
+        >
+          ♡
+        </button>
+
+      </div>
+
+
+      <div
+        class="resultado"
+        id="resultado"
+      ></div>
+
+    </section>
+
+
+    <div class="rodape">
+      sweet.little.flower
+    </div>
+
+  </main>
+
+
+  <audio id="audio"></audio>
+
+
+  <script>
+
+    /*
+      ==========================================
+      DESAFIO MUSICAL
+      ==========================================
+
+      Na próxima etapa colocaremos aqui
+      o preview oficial da música.
+
+      Para testar a tela agora, o acesso
+      aceita:
+
+      maneskin
+      måneskin
+    */
+
+
+    const musica = {
+
+      artista: "måneskin",
+
+      respostas: [
+        "maneskin",
+        "måneskin"
+      ],
+
+      preview: ""
+
+    };
+
+
+    const audio =
+      document.getElementById("audio");
+
+    const play =
+      document.getElementById("play");
+
+    const resposta =
+      document.getElementById("resposta");
+
+    const mensagem =
+      document.getElementById("mensagem");
+
+    const entrada =
+      document.getElementById("entrada");
+
+    const conteudo =
+      document.getElementById("conteudo");
+
+
+    audio.src = musica.preview;
+
+
+    /* PLAY */
+
+    play.addEventListener(
+      "click",
+      function () {
+
+        if (!musica.preview) {
+
+          mensagem.textContent =
+            "preview musical ainda não conectado ♫";
+
+          return;
+
+        }
+
+
+        if (audio.paused) {
+
+          audio.play();
+
+          play.textContent = "❚❚";
+
+        } else {
+
+          audio.pause();
+
+          play.textContent = "▶";
+
+        }
+
+      }
+    );
+
+
+    audio.addEventListener(
+      "ended",
+      function () {
+
+        play.textContent = "▶";
+
+      }
+    );
+
+
+    /* NORMALIZA RESPOSTA */
+
+    function normalizar(texto) {
+
+      return texto
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(
+          /[\u0300-\u036f]/g,
+          ""
+        );
+
+    }
+
+
+    /* VALIDAR */
+
+    function validarResposta() {
+
+      const tentativa =
+        normalizar(resposta.value);
+
+
+      const respostasValidas =
+        musica.respostas.map(normalizar);
+
+
+      if (
+        respostasValidas.includes(tentativa)
+      ) {
+
+        audio.pause();
+
+        entrada.style.display = "none";
+
+        conteudo.style.display = "block";
+
+        return;
+
+      }
+
+
+      mensagem.textContent =
+        "não foi dessa vez ♫";
+
+      resposta.value = "";
+
+      resposta.focus();
+
+    }
+
+
+    document
+      .getElementById("botaoEntrar")
+      .addEventListener(
+        "click",
+        validarResposta
+      );
+
+
+    resposta.addEventListener(
+      "keydown",
+      function (event) {
+
+        if (event.key === "Enter") {
+
+          validarResposta();
+
+        }
+
+      }
+    );
+
+
+    /* BUSCADOR
+       As fotos entram aqui depois.
+    */
+
+    document
+      .getElementById("botaoBuscar")
+      .addEventListener(
+        "click",
+        function () {
+
+          const busca =
+            document
+              .getElementById("busca")
+              .value
+              .trim();
+
+          if (!busca) {
+            return;
+          }
+
+          document
+            .getElementById("resultado")
+            .innerHTML = "";
+
+        }
+      );
+
+  </script>
+
+</body>
+
+</html>
