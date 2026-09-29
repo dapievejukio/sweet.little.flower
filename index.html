@@ -17,7 +17,12 @@
 
 body {
   min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
   background:
     radial-gradient(
@@ -33,31 +38,51 @@ body {
 .pagina {
   width: 88%;
   max-width: 430px;
+
   margin: auto;
+
   padding-top: 11vh;
+
   text-align: center;
 }
 
+
+/* LOGO */
+
 .logo {
   font-size: 1.8rem;
+
   font-weight: 300;
+
   letter-spacing: 3px;
+
   color: #bc7e89;
 }
 
 .coracao {
   margin-top: 12px;
   margin-bottom: 50px;
+
   color: #d49ca6;
+
   font-size: 1.2rem;
 }
 
+
+/* PERGUNTA */
+
 .pergunta {
   margin-bottom: 28px;
+
   font-size: .72rem;
+
   letter-spacing: 3px;
+
   color: #9f767d;
 }
+
+
+/* PLAY */
 
 .play {
   width: 82px;
@@ -67,6 +92,7 @@ body {
   border-radius: 50%;
 
   background: #ce8c98;
+
   color: white;
 
   font-size: 1.5rem;
@@ -74,12 +100,24 @@ body {
   cursor: pointer;
 
   box-shadow:
-    0 10px 30px rgba(143,87,98,.22);
+    0 10px 30px
+    rgba(143,87,98,.22);
+
+  transition: .2s;
+}
+
+.play:active {
+  transform: scale(.94);
 }
 
 .play:disabled {
-  opacity: .55;
+  opacity: .45;
+
+  cursor: default;
 }
+
+
+/* STATUS */
 
 .ouvir {
   display: block;
@@ -88,10 +126,14 @@ body {
   margin-bottom: 32px;
 
   font-size: .65rem;
+
   letter-spacing: 2px;
 
   color: #ae898f;
 }
+
+
+/* INPUT */
 
 .campo {
   width: 100%;
@@ -116,23 +158,32 @@ body {
   color: #bea2a7;
 }
 
+
+/* ENTRAR */
+
 .entrar {
   width: 100%;
 
   margin-top: 14px;
+
   padding: 16px;
 
   border: none;
   border-radius: 40px;
 
   background: #c68591;
+
   color: white;
 
   font-size: .78rem;
+
   letter-spacing: 2px;
 
   cursor: pointer;
 }
+
+
+/* MENSAGEM */
 
 .mensagem {
   min-height: 35px;
@@ -144,18 +195,64 @@ body {
   font-size: .75rem;
 }
 
+
+/* CRÉDITO */
+
+.credito {
+  margin-top: 18px;
+
+  font-size: 10px;
+
+  color: #b99b9f;
+}
+
+.credito a {
+  color: #a97e85;
+
+  text-decoration: none;
+}
+
+
+/* CONTEÚDO */
+
 #conteudo {
   display: none;
+
+  animation:
+    aparecer .7s ease;
 }
+
+@keyframes aparecer {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
 
 .liberado {
   margin-bottom: 30px;
 
   font-size: .7rem;
+
   letter-spacing: 2px;
 
   color: #a67c83;
 }
+
+
+/* BUSCADOR */
 
 .buscador {
   display: flex;
@@ -164,17 +261,26 @@ body {
 
   background: #fffaf7;
 
-  border: 1px solid #e5ceca;
+  border:
+    1px solid #e5ceca;
+
   border-radius: 40px;
+
+  box-shadow:
+    0 8px 25px
+    rgba(110,75,82,.08);
 }
+
 
 #busca {
   min-width: 0;
+
   flex: 1;
 
   padding: 12px 15px;
 
   border: none;
+
   outline: none;
 
   background: transparent;
@@ -184,6 +290,12 @@ body {
   font-size: 16px;
 }
 
+
+#busca::placeholder {
+  color: #bea3a7;
+}
+
+
 .buscar {
   width: 46px;
   height: 46px;
@@ -192,42 +304,19 @@ body {
   border-radius: 50%;
 
   background: #d3939e;
+
   color: white;
 
   cursor: pointer;
 }
 
-.credito {
-  margin-top: 20px;
 
-  font-size: 10px;
-
-  color: #b99b9f;
-}
-
-.credito a {
-  color: #a97e85;
-  text-decoration: none;
-}
-
-.rodape {
-  margin-top: 80px;
-
-  color: #bea0a5;
-
-  font-size: .6rem;
-  letter-spacing: 2px;
+#resultado {
+  margin-top: 35px;
 }
 
 
-/*
-IMPORTANTE:
-
-O player NÃO fica display:none.
-
-Ele permanece incorporado na página,
-mas praticamente invisível visualmente.
-*/
+/* YOUTUBE */
 
 .youtube-container {
   width: 200px;
@@ -238,7 +327,7 @@ mas praticamente invisível visualmente.
   left: 0;
   bottom: 0;
 
-  opacity: 0.001;
+  opacity: .001;
 
   overflow: hidden;
 
@@ -247,9 +336,36 @@ mas praticamente invisível visualmente.
   z-index: -1;
 }
 
+
 #player {
   width: 200px;
   height: 200px;
+}
+
+
+/* RODAPÉ */
+
+.rodape {
+  margin-top: 80px;
+
+  color: #bea0a5;
+
+  font-size: .6rem;
+
+  letter-spacing: 2px;
+}
+
+
+@media (max-width: 500px) {
+
+  .pagina {
+    padding-top: 11vh;
+  }
+
+  .logo {
+    font-size: 1.55rem;
+  }
+
 }
 
 </style>
@@ -258,20 +374,25 @@ mas praticamente invisível visualmente.
 
 <body>
 
+
 <main class="pagina">
+
 
   <div class="logo">
     sweet.little.flower
   </div>
+
 
   <div class="coracao">
     ♡
   </div>
 
 
+
   <!-- ENTRADA -->
 
   <section id="entrada">
+
 
     <div class="pergunta">
       quem está tocando?
@@ -282,6 +403,7 @@ mas praticamente invisível visualmente.
       id="play"
       class="play"
       disabled
+      aria-label="Tocar música"
     >
       ▶
     </button>
@@ -325,7 +447,8 @@ mas praticamente invisível visualmente.
       música via
 
       <a
-        href="https://www.youtube.com/watch?v=HZnNt9nnEhw"
+        id="linkYoutube"
+        href="https://youtube.com"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -334,12 +457,15 @@ mas praticamente invisível visualmente.
 
     </div>
 
+
   </section>
 
 
-  <!-- CONTEÚDO -->
+
+  <!-- ÁREA LIBERADA -->
 
   <section id="conteudo">
+
 
     <div class="liberado">
       ♡ encontre sua lembrança
@@ -348,24 +474,39 @@ mas praticamente invisível visualmente.
 
     <div class="buscador">
 
+
       <input
         id="busca"
         type="text"
         placeholder="buscar..."
+        autocomplete="off"
+        autocapitalize="none"
       >
 
-      <button class="buscar">
+
+      <button
+        id="botaoBuscar"
+        class="buscar"
+        aria-label="Buscar"
+      >
         ♡
       </button>
 
+
     </div>
 
+
+    <div id="resultado"></div>
+
+
   </section>
+
 
 
   <div class="rodape">
     sweet.little.flower
   </div>
+
 
 </main>
 
@@ -381,55 +522,171 @@ mas praticamente invisível visualmente.
 
 
 
-<!-- API OFICIAL YOUTUBE -->
-
 <script src="https://www.youtube.com/iframe_api"></script>
 
 
 <script>
 
 /*
-==================================
-CONFIGURAÇÃO
-==================================
+================================================
+ARTISTAS
+================================================
 */
 
-const VIDEO_ID =
-  "HZnNt9nnEhw";
+const artistas = [
+
+  {
+
+    artista: "Måneskin",
+
+    video:
+      "HZnNt9nnEhw",
+
+    inicio: 25,
+
+    respostas: [
+      "maneskin",
+      "måneskin"
+    ]
+
+  },
+
+
+  {
+
+    artista: "Damiano David",
+
+    video:
+      "BD8jIlBA1nA",
+
+    inicio: 25,
+
+    respostas: [
+      "damiano",
+      "damiano david"
+    ]
+
+  },
+
+
+  {
+
+    artista: "ILLIT",
+
+    video:
+      "Vk5-c_v4gMU",
+
+    inicio: 28,
+
+    respostas: [
+      "illit"
+    ]
+
+  },
+
+
+  {
+
+    artista: "BLACKPINK",
+
+    video:
+      "gQlMMD8auMs",
+
+    inicio: 30,
+
+    respostas: [
+      "blackpink",
+      "black pink"
+    ]
+
+  },
+
+
+  {
+
+    artista: "Mamonas Assassinas",
+
+    video:
+      "Nz7101ulkK0",
+
+    inicio: 30,
+
+    respostas: [
+      "mamonas",
+      "mamonas assassinas"
+    ]
+
+  }
+
+];
+
 
 
 /*
-Começamos alguns segundos
-depois do início.
+================================================
+SORTEIO
+================================================
 */
 
-const INICIO =
-  25;
+let indiceAtual =
+  Math.floor(
+    Math.random() *
+    artistas.length
+  );
+
+
+let musicaAtual =
+  artistas[indiceAtual];
+
 
 
 /*
-==================================
+================================================
 ELEMENTOS
-==================================
+================================================
 */
 
 const botaoPlay =
-  document.getElementById("play");
+  document.getElementById(
+    "play"
+  );
+
 
 const status =
-  document.getElementById("status");
+  document.getElementById(
+    "status"
+  );
+
 
 const mensagem =
-  document.getElementById("mensagem");
+  document.getElementById(
+    "mensagem"
+  );
+
 
 const resposta =
-  document.getElementById("resposta");
+  document.getElementById(
+    "resposta"
+  );
+
 
 const entrada =
-  document.getElementById("entrada");
+  document.getElementById(
+    "entrada"
+  );
+
 
 const conteudo =
-  document.getElementById("conteudo");
+  document.getElementById(
+    "conteudo"
+  );
+
+
+const linkYoutube =
+  document.getElementById(
+    "linkYoutube"
+  );
+
 
 
 let player;
@@ -441,10 +698,30 @@ let tocando =
   false;
 
 
+
 /*
-==================================
-YOUTUBE
-==================================
+================================================
+ATUALIZAR LINK
+================================================
+*/
+
+function atualizarLink() {
+
+  linkYoutube.href =
+    "https://www.youtube.com/watch?v=" +
+    musicaAtual.video;
+
+}
+
+
+atualizarLink();
+
+
+
+/*
+================================================
+CRIAR PLAYER
+================================================
 */
 
 function onYouTubeIframeAPIReady() {
@@ -454,12 +731,14 @@ function onYouTubeIframeAPIReady() {
       "player",
       {
 
-        width: "200",
+        width:
+          "200",
 
-        height: "200",
+        height:
+          "200",
 
         videoId:
-          VIDEO_ID,
+          musicaAtual.video,
 
         playerVars: {
 
@@ -470,7 +749,7 @@ function onYouTubeIframeAPIReady() {
           rel: 0,
 
           start:
-            INICIO,
+            musicaAtual.inicio,
 
           origin:
             window.location.origin
@@ -496,10 +775,11 @@ function onYouTubeIframeAPIReady() {
 }
 
 
+
 /*
-==================================
+================================================
 PLAYER PRONTO
-==================================
+================================================
 */
 
 function playerPronto() {
@@ -507,19 +787,26 @@ function playerPronto() {
   pronto =
     true;
 
+
   botaoPlay.disabled =
     false;
+
 
   status.textContent =
     "toque para ouvir";
 
+
+  mensagem.textContent =
+    "";
+
 }
 
 
+
 /*
-==================================
-PLAY / PAUSE
-==================================
+================================================
+PLAY
+================================================
 */
 
 botaoPlay.addEventListener(
@@ -553,13 +840,15 @@ botaoPlay.addEventListener(
 );
 
 
+
 /*
-==================================
-ESTADO DO PLAYER
-==================================
+================================================
+ESTADO PLAYER
+================================================
 */
 
 function mudouEstado(event) {
+
 
   if (
     event.data ===
@@ -569,13 +858,16 @@ function mudouEstado(event) {
     tocando =
       true;
 
+
     botaoPlay.textContent =
       "❚❚";
+
 
     mensagem.textContent =
       "";
 
   }
+
 
 
   if (
@@ -586,10 +878,12 @@ function mudouEstado(event) {
     tocando =
       false;
 
+
     botaoPlay.textContent =
       "▶";
 
   }
+
 
 
   if (
@@ -600,11 +894,13 @@ function mudouEstado(event) {
     tocando =
       false;
 
+
     botaoPlay.textContent =
       "▶";
 
+
     player.seekTo(
-      INICIO,
+      musicaAtual.inicio,
       true
     );
 
@@ -613,34 +909,81 @@ function mudouEstado(event) {
 }
 
 
+
 /*
-==================================
-ERRO DO YOUTUBE
-==================================
+================================================
+SE ALGUM VÍDEO DER ERRO
+================================================
 */
 
-function erroPlayer(event) {
+function erroPlayer() {
+
+  mensagem.textContent =
+    "trocando música... ♫";
+
 
   pronto =
     false;
 
+
   botaoPlay.disabled =
     true;
 
-  status.textContent =
-    "música indisponível";
 
-  mensagem.textContent =
-    "erro do player: " +
-    event.data;
+  indiceAtual =
+    (indiceAtual + 1) %
+    artistas.length;
+
+
+  musicaAtual =
+    artistas[indiceAtual];
+
+
+  atualizarLink();
+
+
+  setTimeout(
+    function() {
+
+      player.loadVideoById({
+
+        videoId:
+          musicaAtual.video,
+
+        startSeconds:
+          musicaAtual.inicio
+
+      });
+
+
+      pronto =
+        true;
+
+
+      botaoPlay.disabled =
+        false;
+
+
+      status.textContent =
+        "toque para ouvir";
+
+
+      mensagem.textContent =
+        "";
+
+    },
+
+    800
+  );
 
 }
 
 
+
 /*
-==================================
+================================================
 NORMALIZAR
-==================================
+================================================
 */
 
 function normalizar(texto) {
@@ -657,32 +1000,38 @@ function normalizar(texto) {
 }
 
 
+
 /*
-==================================
-VALIDAÇÃO
-==================================
+================================================
+VALIDAR RESPOSTA
+================================================
 */
 
 function validar() {
 
-  const valor =
+
+  const tentativa =
     normalizar(
       resposta.value
     );
 
 
+  const corretas =
+    musicaAtual.respostas.map(
+      normalizar
+    );
+
+
   if (
-    valor === "maneskin"
+    corretas.includes(
+      tentativa
+    )
   ) {
+
 
     if (player) {
 
       player.pauseVideo();
-
-      player.seekTo(
-        INICIO,
-        true
-      );
 
     }
 
@@ -700,6 +1049,7 @@ function validar() {
   }
 
 
+
   mensagem.textContent =
     "tente outra vez ♫";
 
@@ -707,25 +1057,34 @@ function validar() {
   resposta.value =
     "";
 
+
   resposta.focus();
 
 }
 
 
+
 /*
+================================================
 BOTÃO ENTRAR
+================================================
 */
 
 document
-  .getElementById("entrar")
+  .getElementById(
+    "entrar"
+  )
   .addEventListener(
     "click",
     validar
   );
 
 
+
 /*
-ENTER DO TECLADO
+================================================
+ENTER
+================================================
 */
 
 resposta.addEventListener(
@@ -743,6 +1102,185 @@ resposta.addEventListener(
 
   }
 );
+
+
+
+/*
+================================================
+FOTOS
+================================================
+
+Depois cadastraremos:
+
+comando
+arquivo
+legenda
+
+================================================
+*/
+
+const fotos = [
+
+];
+
+
+
+/*
+================================================
+BUSCAR FOTO
+================================================
+*/
+
+function buscarFoto() {
+
+
+  const campo =
+    document.getElementById(
+      "busca"
+    );
+
+
+  const resultado =
+    document.getElementById(
+      "resultado"
+    );
+
+
+  const comando =
+    normalizar(
+      campo.value
+    );
+
+
+  resultado.innerHTML =
+    "";
+
+
+  if (!comando) {
+
+    return;
+
+  }
+
+
+
+  const foto =
+    fotos.find(
+
+      item =>
+
+        normalizar(
+          item.comando
+        )
+
+        === comando
+
+    );
+
+
+
+  if (!foto) {
+
+    resultado.innerHTML = `
+
+      <div
+        style="
+          font-size:18px;
+          color:#c69ca3;
+        "
+      >
+
+        ♡
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+
+  resultado.innerHTML = `
+
+    <div>
+
+      <img
+        src="${foto.arquivo}"
+        alt=""
+        style="
+          width:100%;
+          border-radius:20px;
+          box-shadow:
+            0 10px 30px
+            rgba(100,70,75,.12);
+        "
+      >
+
+      <div
+        style="
+          margin-top:14px;
+          font-size:13px;
+          color:#96747a;
+        "
+      >
+
+        ${foto.legenda}
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+
+/*
+================================================
+BOTÃO BUSCAR
+================================================
+*/
+
+document
+  .getElementById(
+    "botaoBuscar"
+  )
+  .addEventListener(
+    "click",
+    buscarFoto
+  );
+
+
+
+/*
+================================================
+ENTER BUSCA
+================================================
+*/
+
+document
+  .getElementById(
+    "busca"
+  )
+  .addEventListener(
+    "keydown",
+
+    function(event) {
+
+      if (
+        event.key === "Enter"
+      ) {
+
+        buscarFoto();
+
+      }
+
+    }
+  );
+
 
 </script>
 
