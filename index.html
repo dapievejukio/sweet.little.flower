@@ -2,977 +2,749 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>sweet.little.flower</title>
+<title>sweet.little.flower</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
 
-    body {
-      min-height: 100vh;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
+body {
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-      background:
-        radial-gradient(
-          circle at top,
-          #fff9f5 0%,
-          #f7e9e3 48%,
-          #ead6d1 100%
-        );
+  background:
+    radial-gradient(
+      circle at top,
+      #fff9f5 0%,
+      #f7e9e3 50%,
+      #ead6d1 100%
+    );
 
-      color: #72565b;
-    }
+  color: #72565b;
+}
 
-    .pagina {
-      width: 88%;
-      max-width: 430px;
+.pagina {
+  width: 88%;
+  max-width: 430px;
+  margin: auto;
+  padding-top: 11vh;
+  text-align: center;
+}
 
-      margin: auto;
+.logo {
+  font-size: 1.8rem;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: #bc7e89;
+}
 
-      padding-top: 13vh;
+.coracao {
+  margin-top: 12px;
+  margin-bottom: 50px;
+  color: #d49ca6;
+  font-size: 1.2rem;
+}
 
-      text-align: center;
-    }
+.pergunta {
+  margin-bottom: 28px;
+  font-size: .72rem;
+  letter-spacing: 3px;
+  color: #9f767d;
+}
 
-    /* LOGO */
+.play {
+  width: 82px;
+  height: 82px;
 
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 300;
+  border: none;
+  border-radius: 50%;
 
-      letter-spacing: 3px;
+  background: #ce8c98;
+  color: white;
 
-      color: #bc7e89;
-    }
+  font-size: 1.5rem;
 
-    .coracao {
-      margin-top: 12px;
-      margin-bottom: 50px;
+  cursor: pointer;
 
-      color: #d49ca6;
+  box-shadow:
+    0 10px 30px rgba(143,87,98,.22);
+}
 
-      font-size: 1.1rem;
-    }
+.play:disabled {
+  opacity: .55;
+}
 
-    /* ENTRADA */
+.ouvir {
+  display: block;
 
-    #entrada {
-      display: block;
-    }
+  margin-top: 14px;
+  margin-bottom: 32px;
 
-    .pergunta {
-      margin-bottom: 27px;
+  font-size: .65rem;
+  letter-spacing: 2px;
 
-      font-size: 0.72rem;
+  color: #ae898f;
+}
 
-      letter-spacing: 3px;
+.campo {
+  width: 100%;
 
-      color: #9f767d;
-    }
+  padding: 17px 20px;
 
-    /* PLAY */
+  border: 1px solid #e2c9c6;
+  border-radius: 40px;
 
-    .play {
-      width: 82px;
-      height: 82px;
+  outline: none;
 
-      border: 0;
-      border-radius: 50%;
+  background: #fffaf7;
 
-      background: #ce8c98;
+  color: #71555a;
 
-      color: white;
+  text-align: center;
 
-      font-size: 1.45rem;
+  font-size: 16px;
+}
 
-      cursor: pointer;
+.campo::placeholder {
+  color: #bea2a7;
+}
 
-      box-shadow:
-        0 10px 30px
-        rgba(143, 87, 98, 0.22);
+.entrar {
+  width: 100%;
 
-      transition: 0.2s;
-    }
+  margin-top: 14px;
+  padding: 16px;
 
-    .play:active {
-      transform: scale(0.94);
-    }
+  border: none;
+  border-radius: 40px;
 
-    .ouvir {
-      display: block;
+  background: #c68591;
+  color: white;
 
-      margin-top: 13px;
-      margin-bottom: 32px;
+  font-size: .78rem;
+  letter-spacing: 2px;
 
-      color: #ae898f;
+  cursor: pointer;
+}
 
-      font-size: 0.64rem;
+.mensagem {
+  min-height: 35px;
 
-      letter-spacing: 2px;
-    }
+  padding-top: 16px;
 
-    /* INPUT */
+  color: #ae737e;
 
-    .campo {
-      width: 100%;
+  font-size: .75rem;
+}
 
-      padding: 17px 20px;
+#conteudo {
+  display: none;
+}
 
-      border: 1px solid #e2c9c6;
-      border-radius: 40px;
+.liberado {
+  margin-bottom: 30px;
 
-      outline: none;
+  font-size: .7rem;
+  letter-spacing: 2px;
 
-      background: rgba(255, 250, 247, 0.95);
+  color: #a67c83;
+}
 
-      color: #71555a;
+.buscador {
+  display: flex;
 
-      text-align: center;
+  padding: 6px;
 
-      font-size: 16px;
+  background: #fffaf7;
 
-      box-shadow:
-        0 6px 20px
-        rgba(115, 78, 85, 0.07);
-    }
+  border: 1px solid #e5ceca;
+  border-radius: 40px;
+}
 
-    .campo::placeholder {
-      color: #bea2a7;
-    }
+#busca {
+  min-width: 0;
+  flex: 1;
 
-    .entrar {
-      width: 100%;
+  padding: 12px 15px;
 
-      margin-top: 14px;
+  border: none;
+  outline: none;
 
-      padding: 16px;
+  background: transparent;
 
-      border: 0;
-      border-radius: 40px;
+  color: #75585d;
 
-      background: #c68591;
+  font-size: 16px;
+}
 
-      color: white;
+.buscar {
+  width: 46px;
+  height: 46px;
 
-      font-size: 0.78rem;
+  border: none;
+  border-radius: 50%;
 
-      letter-spacing: 2px;
+  background: #d3939e;
+  color: white;
 
-      cursor: pointer;
-    }
+  cursor: pointer;
+}
 
-    .mensagem {
-      min-height: 34px;
+.credito {
+  margin-top: 20px;
 
-      padding-top: 16px;
+  font-size: 10px;
 
-      color: #ae737e;
+  color: #b99b9f;
+}
 
-      font-size: 0.75rem;
-    }
+.credito a {
+  color: #a97e85;
+  text-decoration: none;
+}
 
-    /* CRÉDITO */
+.rodape {
+  margin-top: 80px;
 
-    .credito {
-      margin-top: 16px;
+  color: #bea0a5;
 
-      font-size: 10px;
+  font-size: .6rem;
+  letter-spacing: 2px;
+}
 
-      color: #b99b9f;
-    }
 
-    .credito a {
-      color: #a97e85;
+/*
+IMPORTANTE:
 
-      text-decoration: none;
-    }
+O player NÃO fica display:none.
 
-    /* SOUNDCLOUD ESCONDIDO */
+Ele permanece incorporado na página,
+mas praticamente invisível visualmente.
+*/
 
-    .soundcloud {
-      position: fixed;
+.youtube-container {
+  width: 200px;
+  height: 200px;
 
-      width: 1px;
-      height: 1px;
+  position: fixed;
 
-      left: -9999px;
-      bottom: 0;
+  left: 0;
+  bottom: 0;
 
-      overflow: hidden;
+  opacity: 0.001;
 
-      opacity: 0.01;
+  overflow: hidden;
 
-      pointer-events: none;
-    }
+  pointer-events: none;
 
-    /* CONTEÚDO */
+  z-index: -1;
+}
 
-    #conteudo {
-      display: none;
+#player {
+  width: 200px;
+  height: 200px;
+}
 
-      animation: aparecer 0.6s ease;
-    }
-
-    @keyframes aparecer {
-
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-    }
-
-    .liberado {
-      margin-bottom: 30px;
-
-      font-size: 0.7rem;
-
-      letter-spacing: 2px;
-
-      color: #a67c83;
-    }
-
-    /* BUSCADOR */
-
-    .buscador {
-      display: flex;
-
-      padding: 6px;
-
-      background: #fffaf7;
-
-      border: 1px solid #e5ceca;
-      border-radius: 40px;
-
-      box-shadow:
-        0 8px 25px
-        rgba(110, 75, 82, 0.08);
-    }
-
-    #busca {
-      min-width: 0;
-
-      flex: 1;
-
-      padding: 12px 15px;
-
-      border: none;
-
-      outline: none;
-
-      background: transparent;
-
-      color: #75585d;
-
-      font-size: 16px;
-    }
-
-    #busca::placeholder {
-      color: #bea3a7;
-    }
-
-    .buscar {
-      width: 46px;
-      height: 46px;
-
-      border: none;
-      border-radius: 50%;
-
-      background: #d3939e;
-
-      color: white;
-
-      cursor: pointer;
-    }
-
-    #resultado {
-      margin-top: 35px;
-    }
-
-    .rodape {
-      margin-top: 80px;
-
-      color: #bea0a5;
-
-      font-size: 0.6rem;
-
-      letter-spacing: 2px;
-    }
-
-    @media (max-width: 500px) {
-
-      .pagina {
-        padding-top: 11vh;
-      }
-
-      .logo {
-        font-size: 1.55rem;
-      }
-
-    }
-  </style>
+</style>
 </head>
 
 
 <body>
 
-  <main class="pagina">
+<main class="pagina">
 
-    <div class="logo">
-      sweet.little.flower
-    </div>
+  <div class="logo">
+    sweet.little.flower
+  </div>
 
-    <div class="coracao">
-      ♡
-    </div>
-
-
-    <!-- ENTRADA -->
-
-    <section id="entrada">
-
-      <div class="pergunta">
-        quem está tocando?
-      </div>
-
-
-      <button
-        id="play"
-        class="play"
-        aria-label="Tocar música"
-      >
-        ▶
-      </button>
-
-
-      <span class="ouvir">
-        toque para ouvir
-      </span>
-
-
-      <input
-        id="resposta"
-        class="campo"
-        type="text"
-        placeholder="sua resposta..."
-        autocomplete="off"
-        autocapitalize="none"
-        spellcheck="false"
-      >
-
-
-      <button
-        id="botaoEntrar"
-        class="entrar"
-      >
-        entrar
-      </button>
-
-
-      <div
-        id="mensagem"
-        class="mensagem"
-      ></div>
-
-
-      <div class="credito">
-
-        música via
-
-        <a
-          href="https://soundcloud.com/maneskin"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          SoundCloud
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- ÁREA LIBERADA -->
-
-    <section id="conteudo">
-
-      <div class="liberado">
-        ♡ encontre sua lembrança
-      </div>
-
-
-      <div class="buscador">
-
-        <input
-          id="busca"
-          type="text"
-          placeholder="buscar..."
-          autocomplete="off"
-          autocapitalize="none"
-        >
-
-
-        <button
-          id="botaoBuscar"
-          class="buscar"
-          aria-label="Buscar"
-        >
-          ♡
-        </button>
-
-      </div>
-
-
-      <div id="resultado"></div>
-
-    </section>
-
-
-    <div class="rodape">
-      sweet.little.flower
-    </div>
-
-  </main>
-
-
-  <!-- PLAYER SOUNDCLOUD -->
-
-  <div class="soundcloud">
-
-    <iframe
-      id="sc-player"
-      width="300"
-      height="166"
-      scrolling="no"
-      frameborder="no"
-      allow="autoplay"
-    >
-    </iframe>
-
+  <div class="coracao">
+    ♡
   </div>
 
 
-  <!-- API SOUNDCLOUD -->
+  <!-- ENTRADA -->
 
-  <script src="https://w.soundcloud.com/player/api.js"></script>
+  <section id="entrada">
+
+    <div class="pergunta">
+      quem está tocando?
+    </div>
 
 
-  <script>
+    <button
+      id="play"
+      class="play"
+      disabled
+    >
+      ▶
+    </button>
 
-    /*
-    ==========================================
-    5 MÚSICAS
-    ==========================================
-    */
 
-    const musicas = [
+    <span
+      id="status"
+      class="ouvir"
+    >
+      preparando música...
+    </span>
 
+
+    <input
+      id="resposta"
+      class="campo"
+      type="text"
+      placeholder="sua resposta..."
+      autocomplete="off"
+      autocapitalize="none"
+      spellcheck="false"
+    >
+
+
+    <button
+      id="entrar"
+      class="entrar"
+    >
+      entrar
+    </button>
+
+
+    <div
+      id="mensagem"
+      class="mensagem"
+    ></div>
+
+
+    <div class="credito">
+
+      música via
+
+      <a
+        href="https://www.youtube.com/watch?v=HZnNt9nnEhw"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        YouTube
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTEÚDO -->
+
+  <section id="conteudo">
+
+    <div class="liberado">
+      ♡ encontre sua lembrança
+    </div>
+
+
+    <div class="buscador">
+
+      <input
+        id="busca"
+        type="text"
+        placeholder="buscar..."
+      >
+
+      <button class="buscar">
+        ♡
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <div class="rodape">
+    sweet.little.flower
+  </div>
+
+</main>
+
+
+
+<!-- PLAYER YOUTUBE -->
+
+<div class="youtube-container">
+
+  <div id="player"></div>
+
+</div>
+
+
+
+<!-- API OFICIAL YOUTUBE -->
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
+
+<script>
+
+/*
+==================================
+CONFIGURAÇÃO
+==================================
+*/
+
+const VIDEO_ID =
+  "HZnNt9nnEhw";
+
+
+/*
+Começamos alguns segundos
+depois do início.
+*/
+
+const INICIO =
+  25;
+
+
+/*
+==================================
+ELEMENTOS
+==================================
+*/
+
+const botaoPlay =
+  document.getElementById("play");
+
+const status =
+  document.getElementById("status");
+
+const mensagem =
+  document.getElementById("mensagem");
+
+const resposta =
+  document.getElementById("resposta");
+
+const entrada =
+  document.getElementById("entrada");
+
+const conteudo =
+  document.getElementById("conteudo");
+
+
+let player;
+
+let pronto =
+  false;
+
+let tocando =
+  false;
+
+
+/*
+==================================
+YOUTUBE
+==================================
+*/
+
+function onYouTubeIframeAPIReady() {
+
+  player =
+    new YT.Player(
+      "player",
       {
-        nome: "Beggin'",
-        url:
-          "https://soundcloud.com/maneskin/beggin"
-      },
 
-      {
-        nome: "I WANNA BE YOUR SLAVE",
-        url:
-          "https://soundcloud.com/maneskin/i-wanna-be-your-slave"
-      },
+        width: "200",
 
-      {
-        nome: "HONEY (ARE U COMING?)",
-        url:
-          "https://soundcloud.com/maneskin/honey-are-u-coming"
-      },
+        height: "200",
 
-      {
-        nome: "THE LONELIEST",
-        url:
-          "https://soundcloud.com/maneskin/the-loneliest"
-      },
+        videoId:
+          VIDEO_ID,
 
-      {
-        nome: "SUPERMODEL",
-        url:
-          "https://soundcloud.com/maneskin/supermodel"
-      }
+        playerVars: {
 
-    ];
+          playsinline: 1,
 
+          controls: 0,
 
-    /*
-    ==========================================
-    SORTEAR UMA MÚSICA
-    ==========================================
-    */
+          rel: 0,
 
-    const indice =
-      Math.floor(
-        Math.random() * musicas.length
-      );
+          start:
+            INICIO,
 
+          origin:
+            window.location.origin
 
-    const musicaEscolhida =
-      musicas[indice];
+        },
 
+        events: {
 
-    /*
-    ==========================================
-    CRIAR PLAYER
-    ==========================================
-    */
+          onReady:
+            playerPronto,
 
-    const iframe =
-      document.getElementById(
-        "sc-player"
-      );
+          onStateChange:
+            mudouEstado,
 
-
-    const enderecoPlayer =
-      "https://w.soundcloud.com/player/?" +
-
-      "url=" +
-      encodeURIComponent(
-        musicaEscolhida.url
-      ) +
-
-      "&auto_play=false" +
-      "&hide_related=true" +
-      "&show_comments=false" +
-      "&show_user=false" +
-      "&show_reposts=false" +
-      "&show_teaser=false" +
-      "&visual=false";
-
-
-    iframe.src =
-      enderecoPlayer;
-
-
-    /*
-    ==========================================
-    CONECTAR WIDGET
-    ==========================================
-    */
-
-    const widget =
-      SC.Widget(iframe);
-
-
-    const play =
-      document.getElementById(
-        "play"
-      );
-
-
-    const mensagem =
-      document.getElementById(
-        "mensagem"
-      );
-
-
-    let playerPronto = false;
-    let tocando = false;
-
-
-    widget.bind(
-      SC.Widget.Events.READY,
-
-      function () {
-
-        playerPronto = true;
-
-        mensagem.textContent = "";
-
-      }
-    );
-
-
-    widget.bind(
-      SC.Widget.Events.PLAY,
-
-      function () {
-
-        tocando = true;
-
-        play.textContent =
-          "❚❚";
-
-      }
-    );
-
-
-    widget.bind(
-      SC.Widget.Events.PAUSE,
-
-      function () {
-
-        tocando = false;
-
-        play.textContent =
-          "▶";
-
-      }
-    );
-
-
-    widget.bind(
-      SC.Widget.Events.FINISH,
-
-      function () {
-
-        tocando = false;
-
-        play.textContent =
-          "▶";
-
-      }
-    );
-
-
-    /*
-    ==========================================
-    BOTÃO PLAY
-    ==========================================
-    */
-
-    play.addEventListener(
-      "click",
-
-      function () {
-
-        mensagem.textContent =
-          "";
-
-
-        if (!playerPronto) {
-
-          mensagem.textContent =
-            "carregando música... ♫";
-
-          return;
+          onError:
+            erroPlayer
 
         }
 
-
-        if (tocando) {
-
-          widget.pause();
-
-        }
-
-        else {
-
-          widget.play();
-
-        }
-
       }
     );
 
-
-    /*
-    ==========================================
-    NORMALIZAR TEXTO
-    ==========================================
-    */
-
-    function normalizar(texto) {
-
-      return texto
-        .trim()
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(
-          /[\u0300-\u036f]/g,
-          ""
-        );
-
-    }
+}
 
 
-    /*
-    ==========================================
-    RESPOSTA
-    ==========================================
-    */
+/*
+==================================
+PLAYER PRONTO
+==================================
+*/
 
-    const respostasValidas = [
+function playerPronto() {
 
-      "maneskin",
-      "måneskin"
+  pronto =
+    true;
 
-    ];
+  botaoPlay.disabled =
+    false;
 
+  status.textContent =
+    "toque para ouvir";
 
-    const resposta =
-      document.getElementById(
-        "resposta"
-      );
-
-
-    const entrada =
-      document.getElementById(
-        "entrada"
-      );
+}
 
 
-    const conteudo =
-      document.getElementById(
-        "conteudo"
-      );
+/*
+==================================
+PLAY / PAUSE
+==================================
+*/
 
+botaoPlay.addEventListener(
+  "click",
 
-    function validarResposta() {
+  function() {
 
-      const tentativa =
-        normalizar(
-          resposta.value
-        );
-
-
-      const corretas =
-        respostasValidas.map(
-          normalizar
-        );
-
-
-      if (
-        corretas.includes(
-          tentativa
-        )
-      ) {
-
-        widget.pause();
-
-        widget.seekTo(0);
-
-
-        entrada.style.display =
-          "none";
-
-
-        conteudo.style.display =
-          "block";
-
-
-        return;
-
-      }
-
+    if (!pronto) {
 
       mensagem.textContent =
-        "tente outra vez ♫";
+        "a música ainda está carregando ♫";
 
-
-      resposta.value =
-        "";
-
-
-      resposta.focus();
+      return;
 
     }
 
 
-    document
-      .getElementById(
-        "botaoEntrar"
-      )
-      .addEventListener(
-        "click",
-        validarResposta
-      );
+    if (tocando) {
+
+      player.pauseVideo();
+
+    }
+
+    else {
+
+      player.playVideo();
+
+    }
+
+  }
+);
 
 
-    resposta.addEventListener(
-      "keydown",
+/*
+==================================
+ESTADO DO PLAYER
+==================================
+*/
 
-      function (event) {
+function mudouEstado(event) {
 
-        if (
-          event.key === "Enter"
-        ) {
+  if (
+    event.data ===
+    YT.PlayerState.PLAYING
+  ) {
 
-          validarResposta();
+    tocando =
+      true;
 
-        }
+    botaoPlay.textContent =
+      "❚❚";
 
-      }
+    mensagem.textContent =
+      "";
+
+  }
+
+
+  if (
+    event.data ===
+    YT.PlayerState.PAUSED
+  ) {
+
+    tocando =
+      false;
+
+    botaoPlay.textContent =
+      "▶";
+
+  }
+
+
+  if (
+    event.data ===
+    YT.PlayerState.ENDED
+  ) {
+
+    tocando =
+      false;
+
+    botaoPlay.textContent =
+      "▶";
+
+    player.seekTo(
+      INICIO,
+      true
+    );
+
+  }
+
+}
+
+
+/*
+==================================
+ERRO DO YOUTUBE
+==================================
+*/
+
+function erroPlayer(event) {
+
+  pronto =
+    false;
+
+  botaoPlay.disabled =
+    true;
+
+  status.textContent =
+    "música indisponível";
+
+  mensagem.textContent =
+    "erro do player: " +
+    event.data;
+
+}
+
+
+/*
+==================================
+NORMALIZAR
+==================================
+*/
+
+function normalizar(texto) {
+
+  return texto
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(
+      /[\u0300-\u036f]/g,
+      ""
+    );
+
+}
+
+
+/*
+==================================
+VALIDAÇÃO
+==================================
+*/
+
+function validar() {
+
+  const valor =
+    normalizar(
+      resposta.value
     );
 
 
-    /*
-    ==========================================
-    FOTOS
+  if (
+    valor === "maneskin"
+  ) {
 
-    Depois cadastraremos:
-    comando
-    arquivo
-    legenda
-    ==========================================
-    */
+    if (player) {
 
-    const fotos = [
+      player.pauseVideo();
 
-    ];
-
-
-    /*
-    ==========================================
-    BUSCA
-    ==========================================
-    */
-
-    function buscarFoto() {
-
-      const campo =
-        document.getElementById(
-          "busca"
-        );
-
-
-      const resultado =
-        document.getElementById(
-          "resultado"
-        );
-
-
-      const comando =
-        normalizar(
-          campo.value
-        );
-
-
-      resultado.innerHTML =
-        "";
-
-
-      if (!comando) {
-
-        return;
-
-      }
-
-
-      const foto =
-        fotos.find(
-
-          item =>
-
-            normalizar(
-              item.comando
-            )
-
-            === comando
-
-        );
-
-
-      if (!foto) {
-
-        resultado.innerHTML = `
-
-          <div
-            style="
-              font-size:18px;
-              color:#c69ca3;
-            "
-          >
-
-            ♡
-
-          </div>
-
-        `;
-
-        return;
-
-      }
-
-
-      resultado.innerHTML = `
-
-        <div>
-
-          <img
-            src="${foto.arquivo}"
-            alt=""
-            style="
-              width:100%;
-              border-radius:20px;
-              box-shadow:
-                0 10px 30px
-                rgba(100,70,75,.12);
-            "
-          >
-
-          <div
-            style="
-              margin-top:14px;
-              font-size:13px;
-              color:#96747a;
-            "
-          >
-
-            ${foto.legenda}
-
-          </div>
-
-        </div>
-
-      `;
+      player.seekTo(
+        INICIO,
+        true
+      );
 
     }
 
 
-    document
-      .getElementById(
-        "botaoBuscar"
-      )
-      .addEventListener(
-        "click",
-        buscarFoto
-      );
+    entrada.style.display =
+      "none";
 
 
-    document
-      .getElementById(
-        "busca"
-      )
-      .addEventListener(
-        "keydown",
+    conteudo.style.display =
+      "block";
 
-        function (event) {
 
-          if (
-            event.key === "Enter"
-          ) {
+    return;
 
-            buscarFoto();
+  }
 
-          }
 
-        }
-      );
+  mensagem.textContent =
+    "tente outra vez ♫";
 
-  </script>
+
+  resposta.value =
+    "";
+
+  resposta.focus();
+
+}
+
+
+/*
+BOTÃO ENTRAR
+*/
+
+document
+  .getElementById("entrar")
+  .addEventListener(
+    "click",
+    validar
+  );
+
+
+/*
+ENTER DO TECLADO
+*/
+
+resposta.addEventListener(
+  "keydown",
+
+  function(event) {
+
+    if (
+      event.key === "Enter"
+    ) {
+
+      validar();
+
+    }
+
+  }
+);
+
+</script>
 
 </body>
-
 </html>
