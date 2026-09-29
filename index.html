@@ -3,16 +3,11 @@
 
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>sweet.little.flower</title>
 
   <style>
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -21,183 +16,204 @@
 
     body {
       min-height: 100vh;
-
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
       background:
-        linear-gradient(
-          145deg,
-          #f8eee7,
-          #f3dfdc
-        );
+        radial-gradient(circle at top, #fff9f5 0%, #f7e9e3 48%, #ead6d1 100%);
 
-      color: #74575c;
+      color: #72565b;
     }
 
     .pagina {
       width: 88%;
-      max-width: 520px;
-
+      max-width: 430px;
       margin: auto;
-      padding-top: 18vh;
-
+      padding-top: 13vh;
       text-align: center;
     }
 
     /* LOGO */
 
     .logo {
-      color: #bf7c89;
-
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 300;
-
       letter-spacing: 3px;
-
-      margin-bottom: 8px;
+      color: #bc7e89;
     }
 
-    .flor {
-      color: #d2a0a8;
-
-      font-size: 1.2rem;
-
-      margin-bottom: 55px;
+    .coracao {
+      margin-top: 12px;
+      margin-bottom: 50px;
+      color: #d49ca6;
+      font-size: 1.1rem;
     }
 
-    /* LOGIN MUSICAL */
+    /* ENTRADA */
 
     #entrada {
       display: block;
     }
 
     .pergunta {
-      color: #96747a;
-
-      font-size: 0.85rem;
-
-      letter-spacing: 1.5px;
-
-      margin-bottom: 20px;
+      margin-bottom: 27px;
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      color: #9f767d;
     }
 
-    /* PLAYER */
+    /* BOTÃO PLAY */
 
     .play {
-      width: 74px;
-      height: 74px;
+      width: 82px;
+      height: 82px;
 
-      margin: 0 auto 28px;
-
-      border: none;
+      border: 0;
       border-radius: 50%;
 
-      background: #d796a2;
+      background: #ce8c98;
       color: white;
 
-      font-size: 1.6rem;
+      font-size: 1.45rem;
 
       cursor: pointer;
 
       box-shadow:
-        0 8px 24px
-        rgba(160, 105, 116, 0.22);
+        0 10px 30px
+        rgba(143, 87, 98, 0.22);
+
+      transition: 0.2s;
     }
 
     .play:active {
-      transform: scale(0.96);
+      transform: scale(0.94);
     }
 
     .ouvir {
       display: block;
 
+      margin-top: 13px;
       margin-bottom: 32px;
 
-      color: #b18c92;
+      color: #ae898f;
 
-      font-size: 0.72rem;
-
-      letter-spacing: 1.5px;
+      font-size: 0.64rem;
+      letter-spacing: 2px;
     }
 
-    /* INPUT */
+    /* CAMPO */
 
     .campo {
       width: 100%;
 
       padding: 17px 20px;
 
-      border: 1px solid #e5ceca;
-      border-radius: 30px;
+      border: 1px solid #e2c9c6;
+      border-radius: 40px;
 
       outline: none;
 
-      background: #fffaf7;
+      background: rgba(255, 250, 247, 0.95);
 
-      color: #75585d;
-
-      font-size: 16px;
+      color: #71555a;
 
       text-align: center;
 
+      font-size: 16px;
+
       box-shadow:
-        0 5px 20px
-        rgba(116, 82, 89, 0.07);
+        0 6px 20px
+        rgba(115, 78, 85, 0.07);
     }
 
     .campo::placeholder {
-      color: #bea3a7;
+      color: #bea2a7;
     }
 
     .entrar {
-      margin-top: 15px;
-
       width: 100%;
 
-      padding: 15px;
+      margin-top: 14px;
+      padding: 16px;
 
-      border: none;
-      border-radius: 30px;
+      border: 0;
+      border-radius: 40px;
 
-      background: #c98794;
+      background: #c68591;
+      color: white;
 
-      color: #fffaf7;
-
-      font-size: 0.85rem;
-
+      font-size: 0.78rem;
       letter-spacing: 2px;
 
       cursor: pointer;
     }
 
     .mensagem {
-      height: 30px;
+      min-height: 32px;
 
-      margin-top: 17px;
+      padding-top: 15px;
 
-      color: #b77b87;
+      color: #ae737e;
 
-      font-size: 0.78rem;
+      font-size: 0.75rem;
     }
 
-    /* ÁREA LIBERADA */
+    /* CRÉDITO */
+
+    .credito {
+      margin-top: 18px;
+
+      font-size: 10px;
+
+      color: #b99b9f;
+    }
+
+    .credito a {
+      color: #a97e85;
+      text-decoration: none;
+    }
+
+    /* WIDGET REAL */
+
+    .soundcloud {
+      position: absolute;
+
+      width: 1px;
+      height: 1px;
+
+      overflow: hidden;
+
+      opacity: 0.01;
+
+      left: -9999px;
+    }
+
+    /* CONTEÚDO */
 
     #conteudo {
       display: none;
+
+      animation: aparecer 0.6s ease;
     }
 
-    .bem-vinda {
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .liberado {
       margin-bottom: 30px;
 
-      color: #a37d83;
-
-      font-size: 0.75rem;
-
+      font-size: 0.7rem;
       letter-spacing: 2px;
+
+      color: #a67c83;
     }
 
     /* BUSCADOR */
@@ -210,21 +226,21 @@
       background: #fffaf7;
 
       border: 1px solid #e5ceca;
-      border-radius: 35px;
+      border-radius: 40px;
 
       box-shadow:
-        0 7px 24px
-        rgba(116, 82, 89, 0.08);
+        0 8px 25px
+        rgba(110, 75, 82, 0.08);
     }
 
     #busca {
       min-width: 0;
       flex: 1;
 
+      padding: 12px 15px;
+
       border: none;
       outline: none;
-
-      padding: 13px 15px;
 
       background: transparent;
 
@@ -238,44 +254,42 @@
     }
 
     .buscar {
-      border: none;
-      border-radius: 50%;
-
       width: 46px;
       height: 46px;
 
-      background: #d796a2;
+      border: none;
+      border-radius: 50%;
+
+      background: #d3939e;
       color: white;
 
       cursor: pointer;
     }
 
-    .resultado {
+    #resultado {
       margin-top: 35px;
     }
 
     .rodape {
       margin-top: 80px;
 
-      color: #c4a4a8;
+      color: #bea0a5;
 
-      font-size: 0.65rem;
-
+      font-size: 0.6rem;
       letter-spacing: 2px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 500px) {
 
       .pagina {
-        padding-top: 14vh;
+        padding-top: 11vh;
       }
 
       .logo {
-        font-size: 1.65rem;
+        font-size: 1.55rem;
       }
 
     }
-
   </style>
 </head>
 
@@ -288,7 +302,7 @@
       sweet.little.flower
     </div>
 
-    <div class="flor">
+    <div class="coracao">
       ♡
     </div>
 
@@ -303,24 +317,24 @@
 
 
       <button
-        class="play"
         id="play"
-        aria-label="Ouvir música"
+        class="play"
+        aria-label="Tocar música"
       >
         ▶
       </button>
 
 
       <span class="ouvir">
-        ouvir
+        toque para ouvir
       </span>
 
 
       <input
-        class="campo"
         id="resposta"
+        class="campo"
         type="text"
-        placeholder="sua resposta..."
+        placeholder="quem é?"
         autocomplete="off"
         autocapitalize="none"
         spellcheck="false"
@@ -328,27 +342,39 @@
 
 
       <button
-        class="entrar"
         id="botaoEntrar"
+        class="entrar"
       >
         entrar
       </button>
 
 
       <div
-        class="mensagem"
         id="mensagem"
+        class="mensagem"
       ></div>
+
+
+      <div class="credito">
+        áudio via
+        <a
+          href="https://soundcloud.com/maneskin"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          SoundCloud
+        </a>
+      </div>
 
     </section>
 
 
-    <!-- CONTEÚDO LIBERADO -->
+    <!-- ÁREA LIBERADA -->
 
     <section id="conteudo">
 
-      <div class="bem-vinda">
-        ♡ acesso liberado
+      <div class="liberado">
+        ♡ encontre sua lembrança
       </div>
 
 
@@ -359,12 +385,13 @@
           type="text"
           placeholder="buscar..."
           autocomplete="off"
+          autocapitalize="none"
         >
 
 
         <button
-          class="buscar"
           id="botaoBuscar"
+          class="buscar"
         >
           ♡
         </button>
@@ -372,10 +399,7 @@
       </div>
 
 
-      <div
-        class="resultado"
-        id="resultado"
-      ></div>
+      <div id="resultado"></div>
 
     </section>
 
@@ -387,100 +411,85 @@
   </main>
 
 
-  <audio id="audio"></audio>
+  <!--
+      SOUNDCLOUD
+
+      Música:
+      Beggin' — Måneskin
+  -->
+
+  <div class="soundcloud">
+
+    <iframe
+      id="sc-player"
+      width="100%"
+      height="166"
+      scrolling="no"
+      frameborder="no"
+      allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/maneskin/beggin&auto_play=false&show_artwork=false&show_user=false&show_comments=false&sharing=false&download=false"
+    >
+    </iframe>
+
+  </div>
+
+
+  <!-- API OFICIAL SOUNDCLOUD -->
+
+  <script src="https://w.soundcloud.com/player/api.js"></script>
 
 
   <script>
 
     /*
-      ==========================================
-      DESAFIO MUSICAL
-      ==========================================
-
-      Na próxima etapa colocaremos aqui
-      o preview oficial da música.
-
-      Para testar a tela agora, o acesso
-      aceita:
-
-      maneskin
-      måneskin
+      ================================
+      SOUNDCLOUD
+      ================================
     */
 
+    const iframe =
+      document.getElementById("sc-player");
 
-    const musica = {
-
-      artista: "måneskin",
-
-      respostas: [
-        "maneskin",
-        "måneskin"
-      ],
-
-      preview: ""
-
-    };
-
-
-    const audio =
-      document.getElementById("audio");
+    const widget =
+      SC.Widget(iframe);
 
     const play =
       document.getElementById("play");
 
-    const resposta =
-      document.getElementById("resposta");
-
     const mensagem =
       document.getElementById("mensagem");
 
-    const entrada =
-      document.getElementById("entrada");
-
-    const conteudo =
-      document.getElementById("conteudo");
+    let tocando = false;
+    let pronto = false;
 
 
-    audio.src = musica.preview;
-
-
-    /* PLAY */
-
-    play.addEventListener(
-      "click",
+    widget.bind(
+      SC.Widget.Events.READY,
       function () {
 
-        if (!musica.preview) {
-
-          mensagem.textContent =
-            "preview musical ainda não conectado ♫";
-
-          return;
-
-        }
-
-
-        if (audio.paused) {
-
-          audio.play();
-
-          play.textContent = "❚❚";
-
-        } else {
-
-          audio.pause();
-
-          play.textContent = "▶";
-
-        }
+        pronto = true;
 
       }
     );
 
 
-    audio.addEventListener(
-      "ended",
+    widget.bind(
+      SC.Widget.Events.PLAY,
       function () {
+
+        tocando = true;
+
+        play.textContent = "❚❚";
+
+      }
+    );
+
+
+    widget.bind(
+      SC.Widget.Events.PAUSE,
+      function () {
+
+        tocando = false;
 
         play.textContent = "▶";
 
@@ -488,7 +497,60 @@
     );
 
 
-    /* NORMALIZA RESPOSTA */
+    widget.bind(
+      SC.Widget.Events.FINISH,
+      function () {
+
+        tocando = false;
+
+        play.textContent = "▶";
+
+      }
+    );
+
+
+    /*
+      ================================
+      BOTÃO PLAY
+      ================================
+    */
+
+    play.addEventListener(
+      "click",
+      function () {
+
+        mensagem.textContent = "";
+
+
+        if (!pronto) {
+
+          mensagem.textContent =
+            "carregando música... ♫";
+
+          return;
+
+        }
+
+
+        if (tocando) {
+
+          widget.pause();
+
+        } else {
+
+          widget.play();
+
+        }
+
+      }
+    );
+
+
+    /*
+      ================================
+      NORMALIZAR TEXTO
+      ================================
+    */
 
     function normalizar(texto) {
 
@@ -504,7 +566,33 @@
     }
 
 
-    /* VALIDAR */
+    /*
+      ================================
+      RESPOSTAS
+      ================================
+    */
+
+    const respostasValidas = [
+      "maneskin",
+      "måneskin"
+    ];
+
+
+    /*
+      ================================
+      VALIDAR ENTRADA
+      ================================
+    */
+
+    const resposta =
+      document.getElementById("resposta");
+
+    const entrada =
+      document.getElementById("entrada");
+
+    const conteudo =
+      document.getElementById("conteudo");
+
 
     function validarResposta() {
 
@@ -512,19 +600,23 @@
         normalizar(resposta.value);
 
 
-      const respostasValidas =
-        musica.respostas.map(normalizar);
+      const corretas =
+        respostasValidas.map(normalizar);
 
 
       if (
-        respostasValidas.includes(tentativa)
+        corretas.includes(tentativa)
       ) {
 
-        audio.pause();
+        widget.pause();
 
-        entrada.style.display = "none";
+        widget.seekTo(0);
 
-        conteudo.style.display = "block";
+        entrada.style.display =
+          "none";
+
+        conteudo.style.display =
+          "block";
 
         return;
 
@@ -532,7 +624,8 @@
 
 
       mensagem.textContent =
-        "não foi dessa vez ♫";
+        "tente outra vez ♫";
+
 
       resposta.value = "";
 
@@ -553,7 +646,9 @@
       "keydown",
       function (event) {
 
-        if (event.key === "Enter") {
+        if (
+          event.key === "Enter"
+        ) {
 
           validarResposta();
 
@@ -563,29 +658,132 @@
     );
 
 
-    /* BUSCADOR
-       As fotos entram aqui depois.
+    /*
+      ================================
+      FOTOS
+      ================================
+
+      Depois cadastraremos aqui:
+
+      comando
+      arquivo
+      legenda
     */
+
+
+    const fotos = [];
+
+
+    /*
+      ================================
+      BUSCAR FOTO
+      ================================
+    */
+
+    function buscarFoto() {
+
+      const campo =
+        document.getElementById("busca");
+
+      const resultado =
+        document.getElementById("resultado");
+
+      const comando =
+        normalizar(campo.value);
+
+
+      resultado.innerHTML = "";
+
+
+      if (!comando) {
+
+        return;
+
+      }
+
+
+      const foto =
+        fotos.find(
+          item =>
+            normalizar(item.comando)
+            === comando
+        );
+
+
+      if (!foto) {
+
+        resultado.innerHTML = `
+          <div
+            style="
+              font-size:18px;
+              color:#c69ca3;
+            "
+          >
+            ♡
+          </div>
+        `;
+
+        return;
+
+      }
+
+
+      resultado.innerHTML = `
+
+        <div>
+
+          <img
+            src="${foto.arquivo}"
+            alt=""
+            style="
+              width:100%;
+              border-radius:20px;
+              box-shadow:
+                0 10px 30px
+                rgba(100,70,75,.12);
+            "
+          >
+
+          <div
+            style="
+              margin-top:14px;
+              font-size:13px;
+              color:#96747a;
+            "
+          >
+
+            ${foto.legenda}
+
+          </div>
+
+        </div>
+
+      `;
+
+    }
+
 
     document
       .getElementById("botaoBuscar")
       .addEventListener(
         "click",
-        function () {
+        buscarFoto
+      );
 
-          const busca =
-            document
-              .getElementById("busca")
-              .value
-              .trim();
 
-          if (!busca) {
-            return;
+    document
+      .getElementById("busca")
+      .addEventListener(
+        "keydown",
+        function (event) {
+
+          if (
+            event.key === "Enter"
+          ) {
+
+            buscarFoto();
+
           }
-
-          document
-            .getElementById("resultado")
-            .innerHTML = "";
 
         }
       );
