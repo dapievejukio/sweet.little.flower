@@ -1,2607 +1,2058 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>sweet.little.flower</title>
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-
-      background:
-        radial-gradient(
-          circle at top,
-          #fff9f5 0%,
-          #f7e9e3 50%,
-          #ead6d1 100%
-        );
-
-      color: #72565b;
-    }
-
-    button,
-    input {
-      font-family: inherit;
-    }
-
-    button {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .pagina {
-      width: 88%;
-      max-width: 430px;
-      margin: auto;
-      padding-top: 8vh;
-      padding-bottom: 60px;
-      text-align: center;
-    }
-
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 300;
-      letter-spacing: 3px;
-      color: #bc7e89;
-    }
-
-    .coracao-topo {
-      margin-top: 12px;
-      margin-bottom: 42px;
-      color: #d49ca6;
-      font-size: 1.2rem;
-    }
-
-    .pergunta {
-      margin-bottom: 12px;
-      font-size: .72rem;
-      letter-spacing: 3px;
-      color: #9f767d;
-    }
-
-    .modo-quiz {
-      min-height: 30px;
-      margin-bottom: 18px;
-      color: #bc8b94;
-      font-size: 11px;
-      letter-spacing: 1px;
-    }
-
-    .play {
-      width: 82px;
-      height: 82px;
-      border: none;
-      border-radius: 50%;
-      background: #ce8c98;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-
-      box-shadow:
-        0 10px 30px
-        rgba(143, 87, 98, .22);
-    }
-
-    .play:active {
-      transform: scale(.94);
-    }
-
-    .play:disabled {
-      opacity: .45;
-    }
-
-    .ouvir {
-      display: block;
-      margin-top: 14px;
-      margin-bottom: 30px;
-      font-size: .65rem;
-      letter-spacing: 2px;
-      color: #ae898f;
-    }
-
-    .campo {
-      width: 100%;
-      padding: 17px 20px;
-      margin-bottom: 12px;
-      border: 1px solid #e2c9c6;
-      border-radius: 40px;
-      outline: none;
-      background: #fffaf7;
-      color: #71555a;
-      text-align: center;
-      font-size: 16px;
-    }
-
-    .campo:focus {
-      border-color: #c98b96;
-    }
-
-    .campo::placeholder {
-      color: #bea2a7;
-    }
-
-    .botao {
-      width: 100%;
-      padding: 16px;
-      margin-top: 3px;
-      border: none;
-      border-radius: 40px;
-      background: #c68591;
-      color: white;
-      font-size: .78rem;
-      letter-spacing: 2px;
-      cursor: pointer;
-    }
-
-    .botao:disabled {
-      opacity: .5;
-      cursor: default;
-    }
-
-    .botao-secundario {
-      margin-top: 10px;
-      background: #fffaf7;
-      color: #a97c84;
-      border: 1px solid #e3cac7;
-    }
-
-    .mensagem {
-      min-height: 35px;
-      padding-top: 15px;
-      color: #ae737e;
-      font-size: .75rem;
-      line-height: 1.5;
-    }
-
-    .credito {
-      margin-top: 15px;
-      font-size: 10px;
-      color: #b99b9f;
-    }
-
-    #areaPrincipal,
-    #painelAdmin,
-    #formUpload {
-      display: none;
-    }
-
-    .subtitulo {
-      margin-bottom: 25px;
-      font-size: .72rem;
-      letter-spacing: 2px;
-      color: #a67c83;
-    }
-
-    .buscador {
-      display: flex;
-      padding: 6px;
-      background: #fffaf7;
-      border: 1px solid #e5ceca;
-      border-radius: 40px;
-
-      box-shadow:
-        0 8px 25px
-        rgba(110, 75, 82, .08);
-    }
-
-    #busca {
-      min-width: 0;
-      flex: 1;
-      padding: 12px 15px;
-      border: none;
-      outline: none;
-      background: transparent;
-      color: #75585d;
-      font-size: 16px;
-    }
-
-    .buscar {
-      flex: 0 0 46px;
-      width: 46px;
-      height: 46px;
-      border: none;
-      border-radius: 50%;
-      background: #d3939e;
-      color: white;
-      cursor: pointer;
-    }
-
-    .acoes-principais {
-      display: flex;
-      gap: 8px;
-      margin-top: 17px;
-    }
-
-    .acao-mini {
-      flex: 1;
-      min-height: 44px;
-      padding: 10px;
-      border: 1px solid #e3cac7;
-      border-radius: 30px;
-      background: rgba(255,250,247,.72);
-      color: #aa7e86;
-      font-size: 10px;
-      cursor: pointer;
-    }
-
-    .linha-admin {
-      margin-top: 15px;
-    }
-
-    .admin-link {
-      padding: 10px;
-      border: none;
-      background: transparent;
-      color: #b28b91;
-      font-size: 11px;
-      letter-spacing: 1px;
-      cursor: pointer;
-    }
-
-    .caixa {
-      margin-top: 28px;
-      padding: 25px 18px;
-      border-radius: 25px;
-      background: rgba(255, 250, 247, .72);
-      border: 1px solid #e5cfcb;
-    }
-
-    .caixa h2 {
-      margin-bottom: 22px;
-      color: #9d777e;
-      font-size: .75rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-    }
-
-    .upload-area {
-      display: block;
-      width: 100%;
-      padding: 25px 15px;
-      margin-bottom: 18px;
-      border: 1px dashed #d6afb5;
-      border-radius: 22px;
-      background: #fffaf7;
-      color: #ae8189;
-      cursor: pointer;
-    }
-
-    #arquivoFoto {
-      display: none;
-    }
-
-    #preview {
-      display: none;
-      width: 100%;
-      max-height: 340px;
-      margin-bottom: 18px;
-      object-fit: contain;
-      border-radius: 20px;
-      background: #f6e9e5;
-    }
-
-    #resultado {
-      margin-top: 30px;
-    }
-
-    .foto-card {
-      position: relative;
-      margin-bottom: 32px;
-      text-align: left;
-    }
-
-    .foto-card img {
-      display: block;
-      width: 100%;
-      border-radius: 22px;
-
-      box-shadow:
-        0 12px 35px
-        rgba(95, 65, 72, .13);
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .tag {
-      padding: 6px 11px;
-      background: #f0dadd;
-      border-radius: 20px;
-      color: #916d74;
-      font-size: 11px;
-    }
-
-
-    /* BOTÃO EXCLUIR */
-
-    .area-excluir {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 10px;
-    }
-
-    .botao-excluir {
-      display: none;
-      min-height: 38px;
-      padding: 8px 13px;
-
-      border: 1px solid #e5c7cb;
-      border-radius: 20px;
-
-      background: rgba(255,250,247,.85);
-      color: #b87983;
-
-      font-size: 10px;
-      cursor: pointer;
-    }
-
-    .botao-excluir.visivel {
-      display: inline-block;
-    }
-
-    .botao-excluir:disabled {
-      opacity: .5;
-    }
-
-
-    /* YOUTUBE */
-
-    .youtube-container {
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 200px;
-      height: 200px;
-      opacity: .001;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-
-    /* TOAST */
-
-    #toastContainer {
-      position: fixed;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: calc(100% - 32px);
-      max-width: 390px;
-      z-index: 9999;
-      pointer-events: none;
-    }
-
-    .toast {
-      position: relative;
-      padding: 16px 42px 16px 18px;
-      border: 1px solid #e5c9cc;
-      border-radius: 20px;
-      background: rgba(255,250,247,.98);
-      color: #8d6870;
-      font-size: 13px;
-      text-align: left;
-
-      box-shadow:
-        0 12px 35px
-        rgba(102,68,75,.15);
-    }
-
-
-    /* MODAL */
-
-    #modalFundo {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 8000;
-      padding: 20px;
-      align-items: center;
-      justify-content: center;
-      background: rgba(92,65,70,.36);
-      backdrop-filter: blur(6px);
-    }
-
-    #modalFundo.aberto {
-      display: flex;
-    }
-
-    .modal {
-      position: relative;
-      width: 100%;
-      max-width: 390px;
-      padding: 28px 20px;
-      border: 1px solid #e5c9cc;
-      border-radius: 28px;
-      background: #fffaf7;
-      text-align: center;
-    }
-
-    .modal-fechar {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 40px;
-      height: 40px;
-      border: none;
-      background: transparent;
-      color: #c59aa1;
-      font-size: 22px;
-      cursor: pointer;
-    }
-
-    .modal-icone {
-      margin-bottom: 10px;
-      font-size: 28px;
-    }
-
-    .modal-titulo {
-      margin-bottom: 8px;
-      color: #9d7079;
-      font-size: 15px;
-    }
-
-    .modal-texto {
-      margin-bottom: 20px;
-      color: #a17d84;
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-    .modal-play {
-      width: 70px;
-      height: 70px;
-      margin-bottom: 18px;
-      border: none;
-      border-radius: 50%;
-      background: #ce8c98;
-      color: white;
-      font-size: 21px;
-      cursor: pointer;
-    }
-
-
-    /* CORAÇÃO */
-
-    #coracaoSurpresa {
-      display: none;
-      position: fixed;
-      right: 18px;
-      bottom: 22px;
-      z-index: 7000;
-
-      width: 58px;
-      height: 58px;
-
-      border: none;
-      border-radius: 50%;
-
-      background: rgba(255,250,247,.96);
-      color: #d18e9b;
-
-      font-size: 24px;
-
-      box-shadow:
-        0 10px 30px
-        rgba(110,70,80,.18);
-
-      cursor: pointer;
-    }
-
-    #naoClique {
-      display: none;
-      margin-top: 24px;
-      padding: 8px 12px;
-      border: none;
-      background: transparent;
-      color: #c3a1a6;
-      font-size: 9px;
-      cursor: pointer;
-    }
-
-    .rodape {
-      margin-top: 70px;
-      color: #bea0a5;
-      font-size: .6rem;
-      letter-spacing: 2px;
-    }
-
-  </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>sweet.little.flower</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:radial-gradient(circle at top,#fff9f5 0,#f7e9e3 50%,#ead6d1 100%);
+  color:#72565b
+}
+
+.pagina{
+  width:88%;
+  max-width:430px;
+  margin:auto;
+  padding:7vh 0 60px;
+  text-align:center
+}
+
+.logo{
+  font-size:1.8rem;
+  font-weight:300;
+  letter-spacing:3px;
+  color:#bc7e89
+}
+
+.heart{
+  margin:12px 0 36px;
+  color:#d49ca6
+}
+
+.pergunta,.subtitulo{
+  font-size:.72rem;
+  letter-spacing:2px;
+  color:#9f767d;
+  margin-bottom:16px
+}
+
+.play{
+  width:82px;
+  height:82px;
+  border:0;
+  border-radius:50%;
+  background:#ce8c98;
+  color:white;
+  font-size:1.5rem;
+  box-shadow:0 10px 30px rgba(143,87,98,.22)
+}
+
+.play:disabled{opacity:.45}
+
+.ouvir{
+  display:block;
+  margin:14px 0 26px;
+  font-size:.65rem;
+  letter-spacing:2px;
+  color:#ae898f
+}
+
+.campo{
+  width:100%;
+  padding:16px 20px;
+  margin-bottom:11px;
+  border:1px solid #e2c9c6;
+  border-radius:40px;
+  outline:0;
+  background:#fffaf7;
+  color:#71555a;
+  text-align:center;
+  font-size:16px
+}
+
+.botao{
+  width:100%;
+  padding:15px;
+  border:0;
+  border-radius:40px;
+  background:#c68591;
+  color:#fff;
+  font-size:.78rem;
+  letter-spacing:1px;
+  cursor:pointer
+}
+
+.botao.sec{
+  margin-top:9px;
+  background:#fffaf7;
+  color:#a97c84;
+  border:1px solid #e3cac7
+}
+
+.mensagem{
+  min-height:34px;
+  padding-top:14px;
+  color:#ae737e;
+  font-size:.75rem;
+  line-height:1.5
+}
+
+#areaPrincipal,
+#painelAdmin,
+#formUpload{
+  display:none
+}
+
+.buscador{
+  display:flex;
+  padding:6px;
+  background:#fffaf7;
+  border:1px solid #e5ceca;
+  border-radius:40px;
+  box-shadow:0 8px 25px rgba(110,75,82,.08)
+}
+
+#busca{
+  min-width:0;
+  flex:1;
+  padding:12px 15px;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#75585d;
+  font-size:16px
+}
+
+.buscar{
+  width:46px;
+  height:46px;
+  border:0;
+  border-radius:50%;
+  background:#d3939e;
+  color:#fff
+}
+
+.acoes{
+  display:flex;
+  gap:8px;
+  margin-top:15px
+}
+
+.mini{
+  flex:1;
+  padding:12px 8px;
+  border:1px solid #e3cac7;
+  border-radius:30px;
+  background:rgba(255,250,247,.75);
+  color:#aa7e86
+}
+
+.admin-link{
+  margin-top:16px;
+  padding:10px;
+  border:0;
+  background:transparent;
+  color:#b28b91
+}
+
+.caixa{
+  margin-top:24px;
+  padding:24px 18px;
+  border-radius:25px;
+  background:rgba(255,250,247,.72);
+  border:1px solid #e5cfcb
+}
+
+.upload-area{
+  display:block;
+  padding:24px;
+  margin-bottom:16px;
+  border:1px dashed #d6afb5;
+  border-radius:22px;
+  background:#fffaf7;
+  color:#ae8189
+}
+
+#arquivoFoto{display:none}
+
+#preview{
+  display:none;
+  width:100%;
+  max-height:340px;
+  object-fit:contain;
+  border-radius:20px;
+  margin-bottom:16px
+}
+
+.foto-card{
+  margin:0 0 32px;
+  text-align:left
+}
+
+.foto-card img{
+  display:block;
+  width:100%;
+  border-radius:22px;
+  box-shadow:0 12px 35px rgba(95,65,72,.13)
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px
+}
+
+.tag{
+  padding:6px 11px;
+  background:#f0dadd;
+  border-radius:20px;
+  color:#916d74;
+  font-size:11px
+}
+
+.area-excluir{
+  text-align:right;
+  margin-top:9px
+}
+
+.excluir{
+  padding:8px 13px;
+  border:1px solid #e5c7cb;
+  border-radius:20px;
+  background:#fffaf7;
+  color:#b87983;
+  font-size:10px
+}
+
+.yt{
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:2px;
+  height:2px;
+  opacity:.001;
+  pointer-events:none;
+  overflow:hidden
+}
+
+.toast-wrap{
+  position:fixed;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:calc(100% - 32px);
+  max-width:390px;
+  z-index:9999
+}
+
+.toast{
+  padding:15px 18px;
+  border:1px solid #e5c9cc;
+  border-radius:20px;
+  background:rgba(255,250,247,.98);
+  box-shadow:0 12px 35px rgba(102,68,75,.15);
+  font-size:13px
+}
+
+.modal-bg{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:8000;
+  padding:20px;
+  align-items:center;
+  justify-content:center;
+  background:rgba(92,65,70,.36);
+  backdrop-filter:blur(6px)
+}
+
+.modal-bg.on{
+  display:flex
+}
+
+.modal{
+  position:relative;
+  width:100%;
+  max-width:390px;
+  padding:28px 20px;
+  border:1px solid #e5c9cc;
+  border-radius:28px;
+  background:#fffaf7
+}
+
+.fechar{
+  position:absolute;
+  right:10px;
+  top:8px;
+  border:0;
+  background:transparent;
+  color:#c59aa1;
+  font-size:24px
+}
+
+.modal h3{
+  font-size:15px;
+  color:#9d7079
+}
+
+.modal p{
+  font-size:12px;
+  color:#a17d84;
+  line-height:1.6
+}
+
+.rodape{
+  margin-top:60px;
+  color:#bea0a5;
+  font-size:.6rem;
+  letter-spacing:2px
+}
+</style>
 </head>
-
 
 <body>
 
+<div id="toast" class="toast-wrap"></div>
 
-  <div id="toastContainer"></div>
+<div id="modalBg" class="modal-bg">
+  <div class="modal">
 
+    <button id="fecharModal" class="fechar">×</button>
 
-  <button
-    id="coracaoSurpresa"
-    type="button"
-  >
-    ♡
-  </button>
+    <div style="font-size:28px">🎧</div>
 
+    <h3 id="modalTitulo">
+      desafio musical
+    </h3>
 
-  <div id="modalFundo">
+    <p id="modalTexto">
+      quem está tocando?
+    </p>
 
-    <div class="modal">
-
-      <button
-        id="fecharModal"
-        class="modal-fechar"
-        type="button"
-      >
-        ×
-      </button>
-
-      <div
-        id="modalIcone"
-        class="modal-icone"
-      >
-        ♡
-      </div>
-
-      <div
-        id="modalTitulo"
-        class="modal-titulo"
-      ></div>
-
-      <div
-        id="modalTexto"
-        class="modal-texto"
-      ></div>
-
-      <div id="conteudoModal"></div>
-
-    </div>
+    <div id="modalConteudo"></div>
 
   </div>
+</div>
 
 
+<main class="pagina">
 
-  <main class="pagina">
+<div class="logo">
+sweet.little.flower
+</div>
 
+<div class="heart">
+♡
+</div>
 
-    <div class="logo">
-      sweet.little.flower
-    </div>
 
+<section id="entrada">
 
-    <div class="coracao-topo">
-      ♡
-    </div>
+<div class="pergunta">
+quem está tocando?
+</div>
 
+<button
+  id="play"
+  class="play"
+  disabled>
+▶
+</button>
 
+<span
+  id="status"
+  class="ouvir">
+preparando música...
+</span>
 
-    <!-- ENTRADA -->
+<input
+  id="resposta"
+  class="campo"
+  placeholder="sua resposta..."
+  autocomplete="off">
 
-    <section id="entrada">
+<button
+  id="entrar"
+  class="botao">
+responder
+</button>
 
-      <div class="pergunta">
-        quem está tocando?
-      </div>
+<div
+  id="mensagemQuiz"
+  class="mensagem">
+</div>
 
-      <div
-        id="modoQuiz"
-        class="modo-quiz"
-      >
-        reconhece?
-      </div>
+</section>
 
-      <button
-        id="play"
-        class="play"
-        type="button"
-        disabled
-      >
-        ▶
-      </button>
 
-      <span
-        id="status"
-        class="ouvir"
-      >
-        preparando música...
-      </span>
+<section id="areaPrincipal">
 
-      <input
-        id="resposta"
-        class="campo"
-        type="text"
-        placeholder="sua resposta..."
-        autocomplete="off"
-      >
+<div class="subtitulo">
+♡ encontre sua lembrança
+</div>
 
-      <button
-        id="entrar"
-        class="botao"
-        type="button"
-      >
-        responder
-      </button>
+<div class="buscador">
 
-      <div
-        id="mensagemQuiz"
-        class="mensagem"
-      ></div>
+<input
+  id="busca"
+  placeholder="buscar por tag..."
+  autocomplete="off">
 
-      <div class="credito">
-        música via YouTube
-      </div>
+<button
+  id="botaoBuscar"
+  class="buscar">
+♡
+</button>
 
-    </section>
+</div>
 
 
+<div class="acoes">
 
-    <!-- ÁREA PRINCIPAL -->
+<button
+  id="jogar"
+  class="mini">
+🎵 desafio
+</button>
 
-    <section id="areaPrincipal">
+<button
+  id="surpresa"
+  class="mini">
+♡ surpresa
+</button>
 
-      <div class="subtitulo">
-        ♡ encontre sua lembrança
-      </div>
+</div>
 
 
-      <div class="buscador">
+<div id="resultado"></div>
 
-        <input
-          id="busca"
-          type="text"
-          placeholder="buscar por tag..."
-          autocomplete="off"
-        >
 
-        <button
-          id="botaoBuscar"
-          class="buscar"
-          type="button"
-        >
-          ♡
-        </button>
+<button
+  id="abrirAdmin"
+  class="admin-link">
++ adicionar foto
+</button>
 
-      </div>
 
+<section
+  id="painelAdmin"
+  class="caixa">
 
-      <div class="acoes-principais">
 
-        <button
-          id="jogarAgora"
-          class="acao-mini"
-          type="button"
-        >
-          🎵 desafio
-        </button>
+<div id="loginAdmin">
 
-        <button
-          id="surpresaAgora"
-          class="acao-mini"
-          type="button"
-        >
-          ♡ surpresa
-        </button>
+<input
+  id="adminEmail"
+  class="campo"
+  type="email"
+  placeholder="e-mail">
 
-      </div>
+<input
+  id="adminSenha"
+  class="campo"
+  type="password"
+  placeholder="senha">
 
+<button
+  id="botaoLogin"
+  class="botao">
+entrar
+</button>
 
-      <div id="resultado"></div>
+</div>
 
 
-      <button
-        id="naoClique"
-        type="button"
-      >
-        não clique aqui
-      </button>
+<div id="formUpload">
 
-
-      <div class="linha-admin">
-
-        <button
-          id="abrirAdmin"
-          class="admin-link"
-          type="button"
-        >
-          + adicionar foto
-        </button>
-
-      </div>
-
-
+<label
+  class="upload-area"
+  for="arquivoFoto">
+＋ escolher foto
+</label>
 
-      <!-- ADMIN -->
-
-      <section
-        id="painelAdmin"
-        class="caixa"
-      >
+<input
+  id="arquivoFoto"
+  type="file"
+  accept="image/*">
 
-        <h2>
-          área privada
-        </h2>
+<img
+  id="preview"
+  alt="prévia">
 
+<input
+  id="tag1"
+  class="campo"
+  placeholder="tag 1">
 
-        <div id="loginAdmin">
+<input
+  id="tag2"
+  class="campo"
+  placeholder="tag 2">
 
-          <input
-            id="adminEmail"
-            class="campo"
-            type="email"
-            placeholder="e-mail"
-          >
+<input
+  id="tag3"
+  class="campo"
+  placeholder="tag 3">
 
-          <input
-            id="adminSenha"
-            class="campo"
-            type="password"
-            placeholder="senha"
-          >
+<button
+  id="salvarFoto"
+  class="botao">
+salvar foto ♡
+</button>
 
-          <button
-            id="botaoLogin"
-            class="botao"
-            type="button"
-          >
-            entrar
-          </button>
+<button
+  id="logout"
+  class="botao sec">
+sair do admin
+</button>
 
-        </div>
+</div>
 
+<div
+  id="mensagemAdmin"
+  class="mensagem">
+</div>
 
-        <div id="formUpload">
+</section>
 
-          <label
-            for="arquivoFoto"
-            class="upload-area"
-          >
-            ＋ escolher foto
-          </label>
+</section>
 
-          <input
-            id="arquivoFoto"
-            type="file"
-            accept="image/*"
-          >
 
-          <img
-            id="preview"
-            alt="Prévia da foto"
-          >
+<div class="rodape">
+sweet.little.flower
+</div>
 
-          <input
-            id="tag1"
-            class="campo"
-            type="text"
-            placeholder="tag 1"
-          >
+</main>
 
-          <input
-            id="tag2"
-            class="campo"
-            type="text"
-            placeholder="tag 2"
-          >
 
-          <input
-            id="tag3"
-            class="campo"
-            type="text"
-            placeholder="tag 3"
-          >
+<div class="yt">
+<div id="player"></div>
+</div>
 
-          <button
-            id="salvarFoto"
-            class="botao"
-            type="button"
-          >
-            salvar foto ♡
-          </button>
 
-          <button
-            id="logout"
-            class="botao botao-secundario"
-            type="button"
-          >
-            sair do admin
-          </button>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
 
-        </div>
 
+<script>
 
-        <div
-          id="mensagemAdmin"
-          class="mensagem"
-        ></div>
+const SUPABASE_URL =
+'https://frhnpapvadekxesrrghz.supabase.co';
 
-      </section>
+const SUPABASE_KEY =
+'sb_publishable_SrmmFNDZr8heA8s7_1Dwow_evdBY-Ol';
 
+const BUCKET =
+'sweet-little-flower';
 
-    </section>
 
+const db =
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
-    <div class="rodape">
-      sweet.little.flower
-    </div>
 
+let adminLogado = false;
 
-  </main>
+let player = null;
 
+let playerPronto = false;
 
+let musicaAtual = null;
 
-  <div class="youtube-container">
-    <div id="player"></div>
-  </div>
+let tocando = false;
+
 
-
-  <script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-  ></script>
-
-  <script
-    src="https://www.youtube.com/iframe_api"
-  ></script>
-
-
-
-  <script>
-
-    /* ============================================
-       SUPABASE
-    ============================================ */
-
-    const SUPABASE_URL =
-      "https://frhnpapvadekxesrrghz.supabase.co";
-
-    const SUPABASE_KEY =
-      "sb_publishable_SrmmFNDZr8heA8s7_1Dwow_evdBY-Ol";
-
-    const BUCKET =
-      "sweet-little-flower";
-
-    const db =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-      );
-
-
-    let adminLogado =
-      false;
-
-
-    function normalizar(texto) {
-
-      return String(texto || "")
-        .trim()
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(
-          /[\u0300-\u036f]/g,
-          ""
-        );
-
+const norm = s =>
+String(s || '')
+.trim()
+.toLowerCase()
+.normalize('NFD')
+.replace(/[\u0300-\u036f]/g,'');
+
+
+const rnd = a =>
+a[
+  Math.floor(
+    Math.random() * a.length
+  )
+];
+
+
+/* =====================================
+   BIBLIOTECA MUSICAL
+===================================== */
+
+const biblioteca = [
+
+{
+  artista:'Måneskin',
+  video:'HZnNt9nnEhw',
+  inicio:25,
+  respostas:[
+    'maneskin',
+    'måneskin'
+  ]
+},
+
+{
+  artista:'Måneskin',
+  video:'yOb9Xaug35M',
+  inicio:24,
+  respostas:[
+    'maneskin',
+    'måneskin'
+  ]
+},
+
+{
+  artista:'Måneskin',
+  video:'odWKEfp2QMY',
+  inicio:35,
+  respostas:[
+    'maneskin',
+    'måneskin'
+  ]
+},
+
+{
+  artista:'Måneskin',
+  video:'QN1odfjtMoo',
+  inicio:22,
+  respostas:[
+    'maneskin',
+    'måneskin'
+  ]
+},
+
+{
+  artista:'Damiano David',
+  video:'BD8jIlBA1nA',
+  inicio:25,
+  respostas:[
+    'damiano',
+    'damiano david'
+  ]
+},
+
+{
+  artista:'Nirvana',
+  video:'hTWKbfoikeg',
+  inicio:28,
+  respostas:[
+    'nirvana'
+  ]
+},
+
+{
+  artista:'Nirvana',
+  video:'vabnZ9-ex7o',
+  inicio:20,
+  respostas:[
+    'nirvana'
+  ]
+},
+
+{
+  artista:'Nirvana',
+  video:'n6P0SitRwy8',
+  inicio:28,
+  respostas:[
+    'nirvana'
+  ]
+},
+
+{
+  artista:'The Doors',
+  video:'AgHaGrZkkv4',
+  inicio:12,
+  respostas:[
+    'the doors',
+    'doors'
+  ]
+},
+
+{
+  artista:'Nickelback',
+  video:'Aiay8I5IPB8',
+  inicio:25,
+  respostas:[
+    'nickelback',
+    'nickleback'
+  ]
+},
+
+{
+  artista:'Nickelback',
+  video:'T3rXdeOvhNE',
+  inicio:25,
+  respostas:[
+    'nickelback',
+    'nickleback'
+  ]
+},
+
+{
+  artista:'ILLIT',
+  video:'Vk5-c_v4gMU',
+  inicio:28,
+  respostas:[
+    'illit'
+  ]
+},
+
+{
+  artista:'BLACKPINK',
+  video:'gQlMMD8auMs',
+  inicio:30,
+  respostas:[
+    'blackpink',
+    'black pink'
+  ]
+},
+
+{
+  artista:'Mamonas Assassinas',
+  video:'Nz7101ulkK0',
+  inicio:30,
+  respostas:[
+    'mamonas',
+    'mamonas assassinas'
+  ]
+},
+
+{
+  artista:'Rkomi',
+  video:'R04HTckmhyA',
+  inicio:24,
+  respostas:[
+    'rkomi',
+    'mirko'
+  ]
+},
+
+{
+  artista:'Sarah Toscano',
+  video:'LKda2tqAebc',
+  inicio:25,
+  respostas:[
+    'sarah',
+    'sarah toscano',
+    'sara',
+    'sara toscano'
+  ]
+},
+
+{
+  artista:'Bambole di Pezza',
+  video:'7tGvkpBtdO4',
+  inicio:25,
+  respostas:[
+    'bambole di pezza',
+    'bambole'
+  ]
+},
+
+{
+  artista:'JENNIE',
+  video:'bB3-CUMERIU',
+  inicio:25,
+  respostas:[
+    'jennie',
+    'jennie kim'
+  ]
+},
+
+{
+  artista:'Red Velvet',
+  video:'uR8Mrt1IpXg',
+  inicio:25,
+  respostas:[
+    'red velvet',
+    'redvelvet'
+  ]
+},
+
+{
+  artista:'aespa',
+  video:'phuiiNCxRMg',
+  inicio:25,
+  respostas:[
+    'aespa',
+    'æspa'
+  ]
+},
+
+{
+  artista:'NewJeans',
+  video:'ArmDp-zijuc',
+  inicio:20,
+  respostas:[
+    'newjeans',
+    'new jeans'
+  ]
+},
+
+{
+  artista:'LE SSERAFIM',
+  video:'oA8QPRqdVYA',
+  inicio:25,
+  respostas:[
+    'le sserafim',
+    'lesserafim'
+  ]
+},
+
+{
+  artista:"Guns N' Roses",
+  video:'1w7OgIMMRc4',
+  inicio:40,
+  respostas:[
+    "guns n roses",
+    "guns n' roses",
+    'guns and roses',
+    'gnr'
+  ]
+},
+
+{
+  artista:"Guns N' Roses",
+  video:'Rbm6GXllBiw',
+  inicio:38,
+  respostas:[
+    "guns n roses",
+    "guns n' roses",
+    'guns and roses',
+    'gnr'
+  ]
+}
+
+];
+
+
+/*
+Thomas Raggi:
+deixamos preparado para incluir assim que
+confirmarmos o vídeo oficial que será usado.
+*/
+
+
+/* =====================================
+   MÚSICAS DA PORTA DE ENTRADA
+===================================== */
+
+const entradaMusical =
+biblioteca.filter(
+  m =>
+  [
+    'Måneskin',
+    'Damiano David',
+    'Nirvana',
+    'ILLIT',
+    'BLACKPINK',
+    'JENNIE',
+    'Red Velvet',
+    'aespa',
+    'NewJeans',
+    'LE SSERAFIM',
+    "Guns N' Roses"
+  ]
+  .includes(m.artista)
+);
+
+
+let usados =
+new Set();
+
+
+musicaAtual =
+rnd(entradaMusical);
+
+
+/* =====================================
+   TOAST
+===================================== */
+
+function toast(t){
+
+const c =
+document.getElementById('toast');
+
+c.innerHTML = '';
+
+const d =
+document.createElement('div');
+
+d.className =
+'toast';
+
+d.textContent =
+'♡  ' + t;
+
+c.appendChild(d);
+
+setTimeout(
+  () => {
+    if(d.isConnected){
+      d.remove();
     }
+  },
+  4500
+);
 
+}
 
-    function sorteio(lista) {
-
-      return lista[
-        Math.floor(
-          Math.random() *
-          lista.length
-        )
-      ];
-
-    }
-
-
-
-    /* ============================================
-       MÚSICAS
-    ============================================ */
-
-    const musicas = [
-
-      {
-        artista: "Måneskin",
-        titulo: "Honey",
-        video: "HZnNt9nnEhw",
-        inicio: 25,
-        respostas: [
-          "maneskin",
-          "måneskin"
-        ]
-      },
-
-      {
-        artista: "Måneskin",
-        titulo: "I Wanna Be Your Slave",
-        video: "yOb9Xaug35M",
-        inicio: 24,
-        respostas: [
-          "maneskin",
-          "måneskin"
-        ]
-      },
-
-      {
-        artista: "Måneskin",
-        titulo: "The Loneliest",
-        video: "odWKEfp2QMY",
-        inicio: 35,
-        respostas: [
-          "maneskin",
-          "måneskin"
-        ]
-      },
-
-      {
-        artista: "Måneskin",
-        titulo: "Zitti e Buoni",
-        video: "QN1odfjtMoo",
-        inicio: 22,
-        respostas: [
-          "maneskin",
-          "måneskin"
-        ]
-      },
-
-      {
-        artista: "Nirvana",
-        titulo: "Smells Like Teen Spirit",
-        video: "hTWKbfoikeg",
-        inicio: 28,
-        respostas: [
-          "nirvana"
-        ]
-      },
-
-      {
-        artista: "Nirvana",
-        titulo: "Come As You Are",
-        video: "vabnZ9-ex7o",
-        inicio: 20,
-        respostas: [
-          "nirvana"
-        ]
-      },
-
-      {
-        artista: "Nirvana",
-        titulo: "Heart-Shaped Box",
-        video: "n6P0SitRwy8",
-        inicio: 28,
-        respostas: [
-          "nirvana"
-        ]
-      },
-
-      {
-        artista: "Damiano David",
-        titulo: "Born With a Broken Heart",
-        video: "BD8jIlBA1nA",
-        inicio: 25,
-        respostas: [
-          "damiano",
-          "damiano david"
-        ]
-      },
-
-      {
-        artista: "The Doors",
-        titulo: "People Are Strange",
-        video: "AgHaGrZkkv4",
-        inicio: 12,
-        respostas: [
-          "the doors",
-          "doors"
-        ]
-      },
-
-      {
-        artista: "Nickelback",
-        titulo: "How You Remind Me",
-        video: "Aiay8I5IPB8",
-        inicio: 25,
-        respostas: [
-          "nickelback",
-          "nickleback"
-        ]
-      },
-
-      {
-        artista: "Nickelback",
-        titulo: "Photograph",
-        video: "T3rXdeOvhNE",
-        inicio: 25,
-        respostas: [
-          "nickelback",
-          "nickleback"
-        ]
-      },
-
-      {
-        artista: "ILLIT",
-        titulo: "Magnetic",
-        video: "Vk5-c_v4gMU",
-        inicio: 28,
-        respostas: [
-          "illit"
-        ]
-      },
-
-      {
-        artista: "BLACKPINK",
-        titulo: "Pink Venom",
-        video: "gQlMMD8auMs",
-        inicio: 30,
-        respostas: [
-          "blackpink",
-          "black pink"
-        ]
-      },
-
-      {
-        artista: "Mamonas Assassinas",
-        titulo: "Pelados em Santos",
-        video: "Nz7101ulkK0",
-        inicio: 30,
-        respostas: [
-          "mamonas",
-          "mamonas assassinas"
-        ]
-      }
-
-    ];
-
-
-    const musicaInicial =
-      sorteio(musicas);
-
-
-    let player =
-      null;
-
-    let playerPronto =
-      false;
-
-    let tocando =
-      false;
-
-    let musicaNoPlayer =
-      musicaInicial;
 
+/* =====================================
+   YOUTUBE
+===================================== */
 
+window.onYouTubeIframeAPIReady =
+() => {
 
-    /* ============================================
-       YOUTUBE
-    ============================================ */
+player =
+new YT.Player(
+'player',
+{
 
-    window.onYouTubeIframeAPIReady =
-      function() {
+videoId:
+musicaAtual.video,
 
-        player =
-          new YT.Player(
-            "player",
-            {
+playerVars:{
+  playsinline:1,
+  controls:0,
+  rel:0
+},
 
-              videoId:
-                musicaInicial.video,
+events:{
 
-              playerVars: {
-                playsinline: 1,
-                controls: 0,
-                rel: 0
-              },
+onReady:()=>{
 
-              events: {
+  playerPronto=true;
 
-                onReady:
-                  function() {
+  document
+  .getElementById('play')
+  .disabled=false;
 
-                    playerPronto =
-                      true;
+  document
+  .getElementById('status')
+  .textContent=
+  'toque para ouvir';
 
-                    document
-                      .getElementById("play")
-                      .disabled =
-                      false;
+},
 
-                    document
-                      .getElementById("status")
-                      .textContent =
-                      "toque para ouvir";
+onStateChange:e=>{
 
-                  },
+  tocando =
+  e.data ===
+  YT.PlayerState.PLAYING;
 
-                onStateChange:
-                  function(event) {
+  document
+  .getElementById('play')
+  .textContent =
+  tocando
+  ? '❚❚'
+  : '▶';
 
-                    tocando =
-                      event.data ===
-                      YT.PlayerState.PLAYING;
+}
 
-                    document
-                      .getElementById("play")
-                      .textContent =
-                      tocando
-                        ? "❚❚"
-                        : "▶";
+}
 
-                  }
+});
 
-              }
+};
 
-            }
-          );
 
-      };
+document
+.getElementById('play')
+.onclick =
+()=>{
 
+if(!playerPronto){
+  return;
+}
 
-    document
-      .getElementById("play")
-      .addEventListener(
-        "click",
-        function() {
+if(tocando){
 
-          if (!playerPronto) {
-            return;
-          }
+  player.pauseVideo();
 
-          if (tocando) {
+}else{
 
-            player.pauseVideo();
+  player.seekTo(
+    musicaAtual.inicio,
+    true
+  );
 
-          }
+  player.playVideo();
 
-          else {
+}
 
-            player.seekTo(
-              musicaNoPlayer.inicio,
-              true
-            );
+};
 
-            player.playVideo();
 
-          }
+/* =====================================
+   RESPOSTA
+===================================== */
 
-        }
-      );
+function correta(m,v){
 
+return m
+.respostas
+.map(norm)
+.includes(
+  norm(v)
+);
 
+}
 
-    /* ============================================
-       TOAST
-    ============================================ */
 
-    function mostrarToast(texto) {
+function validar(){
 
-      const container =
-        document.getElementById(
-          "toastContainer"
-        );
+const respostaUsuario =
+document
+.getElementById('resposta')
+.value;
 
-      container.innerHTML =
-        "";
 
-      const toast =
-        document.createElement(
-          "div"
-        );
+if(
+  correta(
+    musicaAtual,
+    respostaUsuario
+  )
+){
 
-      toast.className =
-        "toast";
+  player.pauseVideo();
 
-      toast.textContent =
-        "♡  " + texto;
+  document
+  .getElementById('entrada')
+  .style.display =
+  'none';
 
-      container.appendChild(
-        toast
-      );
+  document
+  .getElementById('areaPrincipal')
+  .style.display =
+  'block';
 
-      setTimeout(
-        function() {
+  verificarSessao();
 
-          if (
-            toast.isConnected
-          ) {
+  setTimeout(
+    ()=>toast(
+      'bem-vinda ♡'
+    ),
+    900
+  );
 
-            toast.remove();
+}else{
 
-          }
+  document
+  .getElementById('mensagemQuiz')
+  .textContent =
+  'tente outra vez ♫';
 
-        },
-        5000
-      );
+}
 
-    }
+}
 
 
+document
+.getElementById('entrar')
+.onclick =
+validar;
 
-    /* ============================================
-       QUIZ
-    ============================================ */
 
-    function validarQuiz() {
+document
+.getElementById('resposta')
+.onkeydown =
+e=>{
 
-      const valor =
-        normalizar(
-          document
-            .getElementById("resposta")
-            .value
-        );
+if(e.key==='Enter'){
+  validar();
+}
 
-      const corretas =
-        musicaInicial
-          .respostas
-          .map(normalizar);
+};
 
 
-      if (
-        corretas.includes(
-          valor
-        )
-      ) {
+/* =====================================
+   NÃO REPETIR MÚSICA NOS JOGOS
+===================================== */
 
-        if (player) {
+function proximaMusica(){
 
-          player.pauseVideo();
+let disponiveis =
+biblioteca.filter(
+  m =>
+  !usados.has(m.video)
+);
 
-        }
 
-        document
-          .getElementById("entrada")
-          .style.display =
-          "none";
+if(!disponiveis.length){
 
-        document
-          .getElementById("areaPrincipal")
-          .style.display =
-          "block";
+  usados.clear();
 
-        iniciarEventos();
+  disponiveis =
+  [...biblioteca];
 
-        verificarSessao();
+}
 
-      }
 
-      else {
+const m =
+rnd(disponiveis);
 
-        document
-          .getElementById("mensagemQuiz")
-          .textContent =
-          "tente outra vez ♫";
 
-      }
+usados.add(
+  m.video
+);
 
-    }
 
+return m;
 
-    document
-      .getElementById("entrar")
-      .addEventListener(
-        "click",
-        validarQuiz
-      );
+}
 
 
-    document
-      .getElementById("resposta")
-      .addEventListener(
-        "keydown",
-        function(event) {
+/* =====================================
+   DESAFIO MUSICAL
+===================================== */
 
-          if (
-            event.key ===
-            "Enter"
-          ) {
+function abrirDesafio(){
 
-            validarQuiz();
+const m =
+proximaMusica();
 
-          }
 
-        }
-      );
+musicaAtual =
+m;
 
 
+player.cueVideoById({
+  videoId:m.video,
+  startSeconds:m.inicio
+});
 
-    /* ============================================
-       EVENTOS
-    ============================================ */
 
-    let eventosIniciados =
-      false;
+document
+.getElementById('modalBg')
+.classList
+.add('on');
 
-    let contadorBuscas =
-      0;
 
+const conteudo =
+document
+.getElementById('modalConteudo');
 
-    function iniciarEventos() {
 
-      if (eventosIniciados) {
-        return;
-      }
+conteudo.innerHTML =
+'';
 
-      eventosIniciados =
-        true;
 
+const p =
+document.createElement(
+  'button'
+);
 
-      setTimeout(
-        () =>
-          mostrarToast(
-            "bem-vinda de volta ♡"
-          ),
-        1200
-      );
+p.className =
+'play';
 
+p.textContent =
+'▶';
 
-      setTimeout(
-        () =>
-          mostrarToast(
-            "vai estudar 🌸"
-          ),
-        60000
-      );
+p.style.width =
+'68px';
 
+p.style.height =
+'68px';
 
-      setTimeout(
-        () =>
-          mostrarToast(
-            "chega de foto..."
-          ),
-        120000
-      );
 
+const i =
+document.createElement(
+  'input'
+);
 
-      setTimeout(
-        function() {
+i.className =
+'campo';
 
-          document
-            .getElementById(
-              "coracaoSurpresa"
-            )
-            .style.display =
-            "block";
+i.placeholder =
+'quem está tocando?';
 
-        },
-        150000
-      );
+i.style.marginTop =
+'18px';
 
 
-      setTimeout(
-        () =>
-          mostrarToast(
-            "já deu de ficar olhando isso 👀"
-          ),
-        240000
-      );
+const b =
+document.createElement(
+  'button'
+);
 
+b.className =
+'botao';
 
-      setTimeout(
-        function() {
+b.textContent =
+'responder';
 
-          document
-            .getElementById(
-              "naoClique"
-            )
-            .style.display =
-            "inline-block";
 
-        },
-        300000
-      );
+let timerMusica =
+null;
 
-    }
 
+p.onclick =
+()=>{
 
+if(timerMusica){
+  clearTimeout(timerMusica);
+}
 
-    /* ============================================
-       MODAL
-    ============================================ */
+player.seekTo(
+  m.inicio,
+  true
+);
 
-    function abrirModal(
-      icone,
-      titulo,
-      texto
-    ) {
+player.playVideo();
 
-      document
-        .getElementById(
-          "modalIcone"
-        )
-        .textContent =
-        icone;
 
-      document
-        .getElementById(
-          "modalTitulo"
-        )
-        .textContent =
-        titulo;
+timerMusica =
+setTimeout(
+  ()=>{
 
-      document
-        .getElementById(
-          "modalTexto"
-        )
-        .textContent =
-        texto;
-
-      document
-        .getElementById(
-          "conteudoModal"
-        )
-        .innerHTML =
-        "";
-
-      document
-        .getElementById(
-          "modalFundo"
-        )
-        .classList
-        .add(
-          "aberto"
-        );
-
-    }
-
-
-    function fecharModal() {
-
-      document
-        .getElementById(
-          "modalFundo"
-        )
-        .classList
-        .remove(
-          "aberto"
-        );
-
-    }
-
-
-    document
-      .getElementById(
-        "fecharModal"
-      )
-      .addEventListener(
-        "click",
-        fecharModal
-      );
-
-
-
-    /* ============================================
-       JOGO SIMPLES
-    ============================================ */
-
-    function iniciarDesafio() {
-
-      const musica =
-        sorteio(musicas);
-
-      musicaNoPlayer =
-        musica;
-
-
-      player.loadVideoById({
-        videoId:
-          musica.video,
-
-        startSeconds:
-          musica.inicio
-      });
-
+    try{
       player.pauseVideo();
+    }catch(e){}
 
+  },
+  10000
+);
 
-      abrirModal(
-        "🎧",
-        "emergência musical",
-        "quem está tocando?"
-      );
+};
 
 
-      const conteudo =
-        document.getElementById(
-          "conteudoModal"
-        );
+b.onclick =
+()=>{
 
+if(timerMusica){
+  clearTimeout(timerMusica);
+}
 
-      const play =
-        document.createElement(
-          "button"
-        );
+player.pauseVideo();
 
-      play.className =
-        "modal-play";
 
-      play.type =
-        "button";
+if(
+  correta(
+    m,
+    i.value
+  )
+){
 
-      play.textContent =
-        "▶";
+  toast(
+    'acertou ♡'
+  );
 
+}else{
 
-      const input =
-        document.createElement(
-          "input"
-        );
+  toast(
+    'era ' +
+    m.artista +
+    ' 👀'
+  );
 
-      input.className =
-        "campo";
+}
 
-      input.placeholder =
-        "sua resposta...";
 
+document
+.getElementById('modalBg')
+.classList
+.remove('on');
 
-      const responder =
-        document.createElement(
-          "button"
-        );
+};
 
-      responder.className =
-        "botao";
 
-      responder.type =
-        "button";
+conteudo.append(
+  p,
+  i,
+  b
+);
 
-      responder.textContent =
-        "responder";
+}
 
 
-      conteudo.appendChild(
-        play
-      );
+document
+.getElementById('jogar')
+.onclick =
+abrirDesafio;
 
-      conteudo.appendChild(
-        input
-      );
 
-      conteudo.appendChild(
-        responder
-      );
+/* =====================================
+   SURPRESA
+===================================== */
 
+document
+.getElementById('surpresa')
+.onclick =
+()=>{
 
-      play.addEventListener(
-        "click",
-        function() {
+toast(
+  rnd([
+    'algumas fotos deveriam continuar esquecidas 😂',
+    'memórias desbloqueadas.',
+    'isso está ficando suspeito 👀',
+    'mais fotos. claro.',
+    'sweet little stalker ♡'
+  ])
+);
 
-          player.seekTo(
-            musica.inicio,
-            true
-          );
+};
 
-          player.playVideo();
 
-        }
-      );
+document
+.getElementById('fecharModal')
+.onclick =
+()=>{
 
+try{
+  player.pauseVideo();
+}catch(e){}
 
-      responder.addEventListener(
-        "click",
-        function() {
+document
+.getElementById('modalBg')
+.classList
+.remove('on');
 
-          const valor =
-            normalizar(
-              input.value
-            );
+};
 
-          const corretas =
-            musica
-              .respostas
-              .map(normalizar);
 
+/* =====================================
+   ADMIN
+===================================== */
 
-          if (
-            corretas.includes(
-              valor
-            )
-          ) {
+document
+.getElementById('abrirAdmin')
+.onclick =
+()=>{
 
-            mostrarToast(
-              "óbvio que você sabia ♡"
-            );
+const painel =
+document
+.getElementById('painelAdmin');
 
-          }
+painel.style.display =
+painel.style.display === 'block'
+? 'none'
+: 'block';
 
-          else {
-
-            mostrarToast(
-              "era " +
-              musica.artista +
-              " 👀"
-            );
-
-          }
-
-          player.pauseVideo();
-
-          fecharModal();
-
-        }
-      );
-
-    }
-
+};
 
-    document
-      .getElementById(
-        "jogarAgora"
-      )
-      .addEventListener(
-        "click",
-        iniciarDesafio
-      );
-
-
-    document
-      .getElementById(
-        "surpresaAgora"
-      )
-      .addEventListener(
-        "click",
-        function() {
-
-          mostrarToast(
-            sorteio([
-              "algumas fotos deveriam continuar esquecidas 😂",
-              "memórias desbloqueadas.",
-              "isso está ficando suspeito 👀",
-              "mais fotos. claro.",
-              "sweet little stalker ♡"
-            ])
-          );
-
-        }
-      );
-
-
-    document
-      .getElementById(
-        "coracaoSurpresa"
-      )
-      .addEventListener(
-        "click",
-        function() {
-
-          this.style.display =
-            "none";
 
-          abrirModal(
-            "♡",
-            "você encontrou",
-            "esse coração estava esperando você."
-          );
+async function verificarSessao(){
 
-        }
-      );
+const {data} =
+await db.auth
+.getSession();
 
 
-    document
-      .getElementById(
-        "naoClique"
-      )
-      .addEventListener(
-        "click",
-        function() {
+adminLogado =
+!!data.session;
 
-          abrirModal(
-            "😈",
-            "eu literalmente avisei.",
-            "mas é claro que você clicou."
-          );
 
-        }
-      );
+if(adminLogado){
 
+  document
+  .getElementById('loginAdmin')
+  .style.display =
+  'none';
 
+  document
+  .getElementById('formUpload')
+  .style.display =
+  'block';
 
-    /* ============================================
-       ADMIN
-    ============================================ */
+}
 
-    document
-      .getElementById(
-        "abrirAdmin"
-      )
-      .addEventListener(
-        "click",
-        function() {
+}
 
-          const painel =
-            document.getElementById(
-              "painelAdmin"
-            );
 
-          painel.style.display =
-            painel.style.display ===
-            "block"
-              ? "none"
-              : "block";
+document
+.getElementById('botaoLogin')
+.onclick =
+async()=>{
 
-        }
-      );
+const email =
+document
+.getElementById('adminEmail')
+.value
+.trim();
 
+const senha =
+document
+.getElementById('adminSenha')
+.value;
 
-    async function login() {
 
-      const email =
-        document
-          .getElementById(
-            "adminEmail"
-          )
-          .value
-          .trim();
+const {error} =
+await db.auth
+.signInWithPassword({
+  email:email,
+  password:senha
+});
 
-      const senha =
-        document
-          .getElementById(
-            "adminSenha"
-          )
-          .value;
 
+if(error){
 
-      const {
-        error
-      } =
-        await db.auth
-          .signInWithPassword({
-            email: email,
-            password: senha
-          });
+  document
+  .getElementById('mensagemAdmin')
+  .textContent =
+  'não foi possível entrar';
 
+  return;
 
-      if (error) {
+}
 
-        document
-          .getElementById(
-            "mensagemAdmin"
-          )
-          .textContent =
-          "não foi possível entrar";
 
-        return;
+adminLogado =
+true;
 
-      }
 
+document
+.getElementById('loginAdmin')
+.style.display =
+'none';
 
-      adminLogado =
-        true;
 
-      mostrarUpload();
+document
+.getElementById('formUpload')
+.style.display =
+'block';
 
-      mostrarToast(
-        "modo admin ativado"
-      );
 
-    }
+document
+.getElementById('mensagemAdmin')
+.textContent =
+'admin conectado ♡';
 
 
-    document
-      .getElementById(
-        "botaoLogin"
-      )
-      .addEventListener(
-        "click",
-        login
-      );
+toast(
+  'modo admin ativado'
+);
 
+};
 
-    function mostrarUpload() {
 
-      adminLogado =
-        true;
+document
+.getElementById('logout')
+.onclick =
+async()=>{
 
-      document
-        .getElementById(
-          "loginAdmin"
-        )
-        .style.display =
-        "none";
+await db.auth.signOut();
 
-      document
-        .getElementById(
-          "formUpload"
-        )
-        .style.display =
-        "block";
+adminLogado =
+false;
 
-      document
-        .getElementById(
-          "mensagemAdmin"
-        )
-        .textContent =
-        "admin conectado ♡";
 
-    }
+document
+.getElementById('formUpload')
+.style.display =
+'none';
 
 
-    async function verificarSessao() {
+document
+.getElementById('loginAdmin')
+.style.display =
+'block';
 
-      const {
-        data
-      } =
-        await db.auth
-          .getSession();
 
+document
+.getElementById('resultado')
+.innerHTML =
+'';
 
-      adminLogado =
-        Boolean(
-          data &&
-          data.session
-        );
 
+toast(
+  'admin desconectado'
+);
 
-      if (adminLogado) {
+};
 
-        mostrarUpload();
 
-      }
+/* =====================================
+   PREVIEW
+===================================== */
 
-    }
+document
+.getElementById('arquivoFoto')
+.onchange =
+()=>{
 
+const arquivo =
+document
+.getElementById('arquivoFoto')
+.files?.[0];
 
-    document
-      .getElementById(
-        "logout"
-      )
-      .addEventListener(
-        "click",
-        async function() {
 
-          await db.auth.signOut();
+if(!arquivo){
+  return;
+}
 
-          adminLogado =
-            false;
 
-          document
-            .getElementById(
-              "formUpload"
-            )
-            .style.display =
-            "none";
+const url =
+URL.createObjectURL(
+  arquivo
+);
 
-          document
-            .getElementById(
-              "loginAdmin"
-            )
-            .style.display =
-            "block";
 
-          document
-            .getElementById(
-              "resultado"
-            )
-            .innerHTML =
-            "";
+const preview =
+document
+.getElementById('preview');
 
-        }
-      );
 
+preview.src =
+url;
 
+preview.style.display =
+'block';
 
-    /* ============================================
-       PREVIEW
-    ============================================ */
 
-    const inputArquivo =
-      document.getElementById(
-        "arquivoFoto"
-      );
+preview.onload =
+()=>URL.revokeObjectURL(url);
 
+};
 
-    inputArquivo.addEventListener(
-      "change",
-      function() {
 
-        const arquivo =
-          this.files &&
-          this.files[0];
+/* =====================================
+   UPLOAD
+===================================== */
 
+document
+.getElementById('salvarFoto')
+.onclick =
+async()=>{
 
-        if (!arquivo) {
-          return;
-        }
+const arquivo =
+document
+.getElementById('arquivoFoto')
+.files?.[0];
 
 
-        const url =
-          URL.createObjectURL(
-            arquivo
-          );
+const a =
+norm(
+  document
+  .getElementById('tag1')
+  .value
+);
 
+const b =
+norm(
+  document
+  .getElementById('tag2')
+  .value
+);
 
-        const preview =
-          document.getElementById(
-            "preview"
-          );
+const c =
+norm(
+  document
+  .getElementById('tag3')
+  .value
+);
 
 
-        preview.src =
-          url;
+if(!adminLogado){
 
-        preview.style.display =
-          "block";
+  document
+  .getElementById('mensagemAdmin')
+  .textContent =
+  'entre como admin';
 
+  return;
 
-        preview.onload =
-          function() {
+}
 
-            URL.revokeObjectURL(
-              url
-            );
 
-          };
+if(
+  !arquivo ||
+  !a ||
+  !b ||
+  !c
+){
 
-      }
+  document
+  .getElementById('mensagemAdmin')
+  .textContent =
+  'escolha a foto e preencha as 3 tags';
+
+  return;
+
+}
+
+
+const botaoSalvar =
+document
+.getElementById('salvarFoto');
+
+
+botaoSalvar.disabled =
+true;
+
+
+const ext =
+arquivo.name
+.split('.')
+.pop()
+.toLowerCase();
+
+
+const nome =
+Date.now() +
+'-' +
+Math.random()
+.toString(36)
+.slice(2,10) +
+'.' +
+ext;
+
+
+const upload =
+await db.storage
+.from(BUCKET)
+.upload(
+  nome,
+  arquivo
+);
+
+
+if(upload.error){
+
+  document
+  .getElementById('mensagemAdmin')
+  .textContent =
+  'erro ao enviar a foto';
+
+  botaoSalvar.disabled =
+  false;
+
+  return;
+
+}
+
+
+const insert =
+await db
+.from('fotos')
+.insert({
+  arquivo:nome,
+  tag1:a,
+  tag2:b,
+  tag3:c
+});
+
+
+if(insert.error){
+
+  await db.storage
+  .from(BUCKET)
+  .remove([nome]);
+
+  document
+  .getElementById('mensagemAdmin')
+  .textContent =
+  'erro ao salvar as tags';
+
+  botaoSalvar.disabled =
+  false;
+
+  return;
+
+}
+
+
+document
+.getElementById('arquivoFoto')
+.value =
+'';
+
+
+document
+.getElementById('tag1')
+.value =
+'';
+
+document
+.getElementById('tag2')
+.value =
+'';
+
+document
+.getElementById('tag3')
+.value =
+'';
+
+
+document
+.getElementById('preview')
+.style.display =
+'none';
+
+
+document
+.getElementById('mensagemAdmin')
+.textContent =
+'foto salva ♡';
+
+
+botaoSalvar.disabled =
+false;
+
+
+toast(
+  'nova lembrança guardada ♡'
+);
+
+};
+
+
+/* =====================================
+   EXCLUIR
+===================================== */
+
+async function excluirFoto(
+  foto,
+  card,
+  btn
+){
+
+if(!adminLogado){
+  return;
+}
+
+
+if(
+  !confirm(
+    'Apagar esta foto definitivamente?'
+  )
+){
+  return;
+}
+
+
+btn.disabled =
+true;
+
+btn.textContent =
+'excluindo...';
+
+
+const storage =
+await db.storage
+.from(BUCKET)
+.remove([
+  foto.arquivo
+]);
+
+
+if(storage.error){
+
+  toast(
+    'erro ao apagar a imagem'
+  );
+
+  btn.disabled =
+  false;
+
+  btn.textContent =
+  '🗑 excluir';
+
+  return;
+
+}
+
+
+const tabela =
+await db
+.from('fotos')
+.delete()
+.eq(
+  'id',
+  foto.id
+);
+
+
+if(tabela.error){
+
+  toast(
+    'imagem apagada, mas houve erro no registro'
+  );
+
+  return;
+
+}
+
+
+card.remove();
+
+
+toast(
+  'foto apagada definitivamente'
+);
+
+}
+
+
+/* =====================================
+   BUSCAR FOTOS
+   VISITANTE NÃO PRECISA DE LOGIN
+===================================== */
+
+async function buscar(){
+
+const termo =
+norm(
+  document
+  .getElementById('busca')
+  .value
+);
+
+
+if(!termo){
+  return;
+}
+
+
+const resultado =
+document
+.getElementById('resultado');
+
+
+resultado.innerHTML =
+'<div class="mensagem">procurando...</div>';
+
+
+/*
+Verifica se há sessão apenas para saber
+se devemos mostrar o botão excluir.
+
+A BUSCA NÃO DEPENDE DO LOGIN.
+*/
+
+await verificarSessao();
+
+
+const consulta =
+await db
+.from('fotos')
+.select('*')
+.or(
+  `tag1.eq.${termo},tag2.eq.${termo},tag3.eq.${termo}`
+)
+.order(
+  'created_at',
+  {
+    ascending:false
+  }
+);
+
+
+if(consulta.error){
+
+  console.error(
+    consulta.error
+  );
+
+  resultado.innerHTML =
+  '<div class="mensagem">erro na busca</div>';
+
+  return;
+
+}
+
+
+if(
+  !consulta.data ||
+  !consulta.data.length
+){
+
+  resultado.innerHTML =
+  '<div class="mensagem">nenhuma lembrança encontrada ♡</div>';
+
+  return;
+
+}
+
+
+resultado.innerHTML =
+'';
+
+
+for(
+  const foto of consulta.data
+){
+
+/*
+O bucket continua privado.
+
+A policy SELECT anon permite que
+o visitante solicite uma URL temporária.
+*/
+
+const assinatura =
+await db.storage
+.from(BUCKET)
+.createSignedUrl(
+  foto.arquivo,
+  600
+);
+
+
+if(
+  assinatura.error ||
+  !assinatura.data?.signedUrl
+){
+  continue;
+}
+
+
+const card =
+document.createElement(
+  'article'
+);
+
+card.className =
+'foto-card';
+
+
+const img =
+document.createElement(
+  'img'
+);
+
+img.src =
+assinatura.data.signedUrl;
+
+img.loading =
+'lazy';
+
+img.alt =
+'lembrança';
+
+
+const tags =
+document.createElement(
+  'div'
+);
+
+tags.className =
+'tags';
+
+
+[
+  foto.tag1,
+  foto.tag2,
+  foto.tag3
+]
+.filter(Boolean)
+.forEach(
+  texto=>{
+
+    const span =
+    document.createElement(
+      'span'
     );
 
+    span.className =
+    'tag';
 
+    span.textContent =
+    texto;
 
-    /* ============================================
-       UPLOAD
-    ============================================ */
+    tags.appendChild(
+      span
+    );
 
-    async function salvarFoto() {
+  }
+);
 
-      const arquivo =
-        inputArquivo.files &&
-        inputArquivo.files[0];
 
-      const tag1 =
-        normalizar(
-          document
-            .getElementById("tag1")
-            .value
-        );
+card.append(
+  img,
+  tags
+);
 
-      const tag2 =
-        normalizar(
-          document
-            .getElementById("tag2")
-            .value
-        );
 
-      const tag3 =
-        normalizar(
-          document
-            .getElementById("tag3")
-            .value
-        );
+/*
+EXCLUIR SÓ APARECE
+QUANDO ADMIN ESTÁ LOGADO
+*/
 
+if(adminLogado){
 
-      if (
-        !arquivo ||
-        !tag1 ||
-        !tag2 ||
-        !tag3
-      ) {
+  const area =
+  document.createElement(
+    'div'
+  );
 
-        document
-          .getElementById(
-            "mensagemAdmin"
-          )
-          .textContent =
-          "escolha a foto e preencha as 3 tags";
+  area.className =
+  'area-excluir';
 
-        return;
 
-      }
+  const botao =
+  document.createElement(
+    'button'
+  );
 
+  botao.className =
+  'excluir';
 
-      const extensao =
-        arquivo.name
-          .split(".")
-          .pop()
-          .toLowerCase();
+  botao.textContent =
+  '🗑 excluir';
 
 
-      const nomeArquivo =
-        Date.now() +
-        "-" +
-        Math.random()
-          .toString(36)
-          .slice(2,10) +
-        "." +
-        extensao;
+  botao.onclick =
+  ()=>excluirFoto(
+    foto,
+    card,
+    botao
+  );
 
 
-      const {
-        error:
-          erroUpload
-      } =
-        await db.storage
-          .from(BUCKET)
-          .upload(
-            nomeArquivo,
-            arquivo
-          );
+  area.appendChild(
+    botao
+  );
 
+  card.appendChild(
+    area
+  );
 
-      if (erroUpload) {
+}
 
-        document
-          .getElementById(
-            "mensagemAdmin"
-          )
-          .textContent =
-          "erro ao enviar a foto";
 
-        return;
+resultado.appendChild(
+  card
+);
 
-      }
+}
 
+}
 
-      const {
-        error:
-          erroBanco
-      } =
-        await db
-          .from("fotos")
-          .insert({
-            arquivo:
-              nomeArquivo,
-            tag1:
-              tag1,
-            tag2:
-              tag2,
-            tag3:
-              tag3
-          });
 
+document
+.getElementById('botaoBuscar')
+.onclick =
+buscar;
 
-      if (erroBanco) {
 
-        document
-          .getElementById(
-            "mensagemAdmin"
-          )
-          .textContent =
-          "erro ao salvar as tags";
+document
+.getElementById('busca')
+.onkeydown =
+e=>{
 
-        return;
+if(e.key==='Enter'){
+  buscar();
+}
 
-      }
+};
 
-
-      document
-        .getElementById(
-          "mensagemAdmin"
-        )
-        .textContent =
-        "foto salva ♡";
-
-
-      mostrarToast(
-        "nova lembrança guardada ♡"
-      );
-
-
-      inputArquivo.value =
-        "";
-
-      document
-        .getElementById("tag1")
-        .value =
-        "";
-
-      document
-        .getElementById("tag2")
-        .value =
-        "";
-
-      document
-        .getElementById("tag3")
-        .value =
-        "";
-
-      document
-        .getElementById("preview")
-        .style.display =
-        "none";
-
-    }
-
-
-    document
-      .getElementById(
-        "salvarFoto"
-      )
-      .addEventListener(
-        "click",
-        salvarFoto
-      );
-
-
-
-    /* ============================================
-       EXCLUIR FOTO
-    ============================================ */
-
-    async function excluirFoto(
-      foto,
-      card,
-      botao
-    ) {
-
-      if (!adminLogado) {
-
-        mostrarToast(
-          "somente o admin pode excluir"
-        );
-
-        return;
-
-      }
-
-
-      const confirmar =
-        window.confirm(
-          "Apagar esta foto definitivamente?"
-        );
-
-
-      if (!confirmar) {
-        return;
-      }
-
-
-      botao.disabled =
-        true;
-
-      botao.textContent =
-        "excluindo...";
-
-
-      /*
-        PRIMEIRO APAGA O ARQUIVO
-        DO STORAGE
-      */
-
-      const {
-        error:
-          erroStorage
-      } =
-        await db.storage
-          .from(BUCKET)
-          .remove([
-            foto.arquivo
-          ]);
-
-
-      if (erroStorage) {
-
-        console.error(
-          erroStorage
-        );
-
-        botao.disabled =
-          false;
-
-        botao.textContent =
-          "🗑 excluir";
-
-        mostrarToast(
-          "não foi possível apagar a imagem"
-        );
-
-        return;
-
-      }
-
-
-      /*
-        DEPOIS APAGA O REGISTRO
-        DA TABELA
-      */
-
-      const {
-        error:
-          erroTabela
-      } =
-        await db
-          .from("fotos")
-          .delete()
-          .eq(
-            "id",
-            foto.id
-          );
-
-
-      if (erroTabela) {
-
-        console.error(
-          erroTabela
-        );
-
-        botao.disabled =
-          false;
-
-        botao.textContent =
-          "🗑 excluir";
-
-        mostrarToast(
-          "imagem apagada, mas houve erro no registro"
-        );
-
-        return;
-
-      }
-
-
-      /*
-        REMOVE DA TELA
-      */
-
-      card.remove();
-
-
-      mostrarToast(
-        "foto apagada definitivamente"
-      );
-
-
-      const resultado =
-        document.getElementById(
-          "resultado"
-        );
-
-
-      if (
-        resultado.children.length ===
-        0
-      ) {
-
-        resultado.innerHTML =
-          "<div class='mensagem'>nenhuma lembrança encontrada ♡</div>";
-
-      }
-
-    }
-
-
-
-    /* ============================================
-       BUSCA
-    ============================================ */
-
-    async function buscar() {
-
-      const termo =
-        normalizar(
-          document
-            .getElementById(
-              "busca"
-            )
-            .value
-        );
-
-
-      if (!termo) {
-        return;
-      }
-
-
-      contadorBuscas++;
-
-
-      if (
-        contadorBuscas === 3
-      ) {
-
-        mostrarToast(
-          "já é a terceira busca 👀"
-        );
-
-      }
-
-
-      const {
-        data:
-          sessao
-      } =
-        await db.auth
-          .getSession();
-
-
-      adminLogado =
-        Boolean(
-          sessao &&
-          sessao.session
-        );
-
-
-      const resultado =
-        document.getElementById(
-          "resultado"
-        );
-
-
-      if (!adminLogado) {
-
-        resultado.innerHTML =
-          "<div class='mensagem'>as fotos ainda estão em modo privado ♡</div>";
-
-        return;
-
-      }
-
-
-      resultado.innerHTML =
-        "<div class='mensagem'>procurando...</div>";
-
-
-      const {
-        data:
-          fotos,
-        error
-      } =
-        await db
-          .from("fotos")
-          .select("*")
-          .or(
-            "tag1.eq." +
-            termo +
-            ",tag2.eq." +
-            termo +
-            ",tag3.eq." +
-            termo
-          )
-          .order(
-            "created_at",
-            {
-              ascending:
-                false
-            }
-          );
-
-
-      if (error) {
-
-        console.error(
-          error
-        );
-
-        resultado.innerHTML =
-          "<div class='mensagem'>erro na busca</div>";
-
-        return;
-
-      }
-
-
-      if (
-        !fotos ||
-        fotos.length === 0
-      ) {
-
-        resultado.innerHTML =
-          "<div class='mensagem'>nenhuma lembrança encontrada ♡</div>";
-
-        return;
-
-      }
-
-
-      resultado.innerHTML =
-        "";
-
-
-      for (
-        const foto of fotos
-      ) {
-
-        const {
-          data:
-            assinatura,
-          error:
-            erroUrl
-        } =
-          await db.storage
-            .from(BUCKET)
-            .createSignedUrl(
-              foto.arquivo,
-              600
-            );
-
-
-        if (
-          erroUrl ||
-          !assinatura ||
-          !assinatura.signedUrl
-        ) {
-
-          continue;
-
-        }
-
-
-        const card =
-          document.createElement(
-            "article"
-          );
-
-        card.className =
-          "foto-card";
-
-
-        const imagem =
-          document.createElement(
-            "img"
-          );
-
-        imagem.src =
-          assinatura.signedUrl;
-
-        imagem.alt =
-          "lembrança";
-
-        imagem.loading =
-          "lazy";
-
-
-        const tags =
-          document.createElement(
-            "div"
-          );
-
-        tags.className =
-          "tags";
-
-
-        [
-          foto.tag1,
-          foto.tag2,
-          foto.tag3
-        ].forEach(
-          function(texto) {
-
-            const tag =
-              document.createElement(
-                "span"
-              );
-
-            tag.className =
-              "tag";
-
-            tag.textContent =
-              texto;
-
-            tags.appendChild(
-              tag
-            );
-
-          }
-        );
-
-
-        card.appendChild(
-          imagem
-        );
-
-        card.appendChild(
-          tags
-        );
-
-
-        /*
-          BOTÃO EXCLUIR
-          SOMENTE ADMIN
-        */
-
-        if (adminLogado) {
-
-          const areaExcluir =
-            document.createElement(
-              "div"
-            );
-
-          areaExcluir.className =
-            "area-excluir";
-
-
-          const botaoExcluir =
-            document.createElement(
-              "button"
-            );
-
-          botaoExcluir.type =
-            "button";
-
-          botaoExcluir.className =
-            "botao-excluir visivel";
-
-          botaoExcluir.textContent =
-            "🗑 excluir";
-
-
-          botaoExcluir.addEventListener(
-            "click",
-            function() {
-
-              excluirFoto(
-                foto,
-                card,
-                botaoExcluir
-              );
-
-            }
-          );
-
-
-          areaExcluir.appendChild(
-            botaoExcluir
-          );
-
-
-          card.appendChild(
-            areaExcluir
-          );
-
-        }
-
-
-        resultado.appendChild(
-          card
-        );
-
-      }
-
-    }
-
-
-    document
-      .getElementById(
-        "botaoBuscar"
-      )
-      .addEventListener(
-        "click",
-        buscar
-      );
-
-
-    document
-      .getElementById(
-        "busca"
-      )
-      .addEventListener(
-        "keydown",
-        function(event) {
-
-          if (
-            event.key ===
-            "Enter"
-          ) {
-
-            buscar();
-
-          }
-
-        }
-      );
-
-
-  </script>
-
+</script>
 
 </body>
 </html>
