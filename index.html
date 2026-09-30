@@ -68,9 +68,9 @@
       color: #bc7e89;
     }
 
-    .coracao {
+    .coracao-topo {
       margin-top: 12px;
-      margin-bottom: 45px;
+      margin-bottom: 42px;
 
       color: #d49ca6;
 
@@ -78,12 +78,23 @@
     }
 
     .pergunta {
-      margin-bottom: 28px;
+      margin-bottom: 12px;
 
       font-size: .72rem;
       letter-spacing: 3px;
 
       color: #9f767d;
+    }
+
+    .modo-quiz {
+      min-height: 30px;
+
+      margin-bottom: 18px;
+
+      color: #bc8b94;
+
+      font-size: 11px;
+      letter-spacing: 1px;
     }
 
     .play {
@@ -103,10 +114,13 @@
       box-shadow:
         0 10px 30px
         rgba(143, 87, 98, .22);
+
+      transition:
+        transform .15s ease;
     }
 
     .play:active {
-      transform: scale(.95);
+      transform: scale(.94);
     }
 
     .play:disabled {
@@ -117,7 +131,7 @@
       display: block;
 
       margin-top: 14px;
-      margin-bottom: 32px;
+      margin-bottom: 30px;
 
       font-size: .65rem;
       letter-spacing: 2px;
@@ -174,7 +188,7 @@
     }
 
     .botao:disabled {
-      opacity: .55;
+      opacity: .5;
       cursor: default;
     }
 
@@ -268,8 +282,38 @@
       cursor: pointer;
     }
 
+    .acoes-principais {
+      display: flex;
+      gap: 8px;
+
+      margin-top: 17px;
+    }
+
+    .acao-mini {
+      flex: 1;
+
+      min-height: 44px;
+
+      padding: 10px;
+
+      border:
+        1px solid #e3cac7;
+
+      border-radius: 30px;
+
+      background:
+        rgba(255,250,247,.72);
+
+      color: #aa7e86;
+
+      font-size: 10px;
+      letter-spacing: .5px;
+
+      cursor: pointer;
+    }
+
     .linha-admin {
-      margin-top: 20px;
+      margin-top: 15px;
     }
 
     .admin-link {
@@ -443,9 +487,9 @@
     }
 
 
-    /* =============================================
+    /* ==========================================
        TOAST
-    ============================================= */
+    ========================================== */
 
     #toastContainer {
       position: fixed;
@@ -476,7 +520,7 @@
       border-radius: 20px;
 
       background:
-        rgba(255, 250, 247, .98);
+        rgba(255,250,247,.98);
 
       color: #8d6870;
 
@@ -487,7 +531,7 @@
 
       box-shadow:
         0 12px 35px
-        rgba(102, 68, 75, .15);
+        rgba(102,68,75,.15);
 
       opacity: 0;
 
@@ -501,16 +545,12 @@
 
     .toast.visivel {
       opacity: 1;
-
-      transform:
-        translateY(0);
+      transform: translateY(0);
     }
 
     .toast.saindo {
       opacity: 0;
-
-      transform:
-        translateY(-18px);
+      transform: translateY(-18px);
     }
 
     .toast-coracao {
@@ -545,6 +585,223 @@
     }
 
 
+    /* ==========================================
+       MODAL / JOGOS
+    ========================================== */
+
+    #modalFundo {
+      display: none;
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 8000;
+
+      padding: 20px;
+
+      align-items: center;
+      justify-content: center;
+
+      background:
+        rgba(92,65,70,.36);
+
+      backdrop-filter:
+        blur(6px);
+    }
+
+    #modalFundo.aberto {
+      display: flex;
+    }
+
+    .modal {
+      position: relative;
+
+      width: 100%;
+      max-width: 390px;
+
+      padding: 28px 20px;
+
+      border:
+        1px solid #e5c9cc;
+
+      border-radius: 28px;
+
+      background:
+        #fffaf7;
+
+      box-shadow:
+        0 20px 60px
+        rgba(85,56,63,.22);
+
+      text-align: center;
+    }
+
+    .modal-icone {
+      margin-bottom: 10px;
+
+      font-size: 28px;
+    }
+
+    .modal-titulo {
+      margin-bottom: 8px;
+
+      color: #9d7079;
+
+      font-size: 15px;
+      font-weight: 500;
+
+      letter-spacing: 1px;
+    }
+
+    .modal-texto {
+      margin-bottom: 20px;
+
+      color: #a17d84;
+
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .modal-fechar {
+      position: absolute;
+
+      top: 12px;
+      right: 12px;
+
+      width: 38px;
+      height: 38px;
+
+      border: none;
+
+      background: transparent;
+
+      color: #c59aa1;
+
+      font-size: 22px;
+
+      cursor: pointer;
+    }
+
+    .modal-play {
+      width: 70px;
+      height: 70px;
+
+      margin-bottom: 18px;
+
+      border: none;
+      border-radius: 50%;
+
+      background: #ce8c98;
+      color: white;
+
+      font-size: 21px;
+
+      cursor: pointer;
+    }
+
+    #respostaDesafio {
+      margin-top: 3px;
+    }
+
+    #placarDesafio {
+      margin: 12px 0 18px;
+
+      color: #b18189;
+
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .modal-botoes {
+      display: flex;
+      gap: 8px;
+    }
+
+    .modal-botoes .botao {
+      flex: 1;
+    }
+
+
+    /* ==========================================
+       CORAÇÃO SURPRESA
+    ========================================== */
+
+    #coracaoSurpresa {
+      display: none;
+
+      position: fixed;
+
+      right: 18px;
+      bottom: 22px;
+
+      z-index: 7000;
+
+      width: 58px;
+      height: 58px;
+
+      border: none;
+      border-radius: 50%;
+
+      background:
+        rgba(255,250,247,.96);
+
+      color: #d18e9b;
+
+      font-size: 24px;
+
+      box-shadow:
+        0 10px 30px
+        rgba(110,70,80,.18);
+
+      cursor: pointer;
+
+      animation:
+        pulsar 1.3s infinite;
+    }
+
+    @keyframes pulsar {
+
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.12);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+
+    }
+
+
+    /* ==========================================
+       NÃO CLIQUE
+    ========================================== */
+
+    #naoClique {
+      display: none;
+
+      margin-top: 24px;
+
+      padding: 8px 12px;
+
+      border: none;
+
+      background: transparent;
+
+      color: #c3a1a6;
+
+      font-size: 9px;
+
+      letter-spacing: 1px;
+
+      cursor: pointer;
+    }
+
+
     @media (max-width: 480px) {
 
       .pagina {
@@ -568,15 +825,62 @@
 <body>
 
 
-  <!-- =============================================
-       TOAST
-  ============================================== -->
-
   <div
     id="toastContainer"
     aria-live="polite"
-    aria-atomic="true"
   ></div>
+
+
+  <button
+    id="coracaoSurpresa"
+    type="button"
+    aria-label="Surpresa"
+  >
+    ♡
+  </button>
+
+
+
+  <!-- ==========================================
+       MODAL DOS JOGOS
+  =========================================== -->
+
+  <div id="modalFundo">
+
+    <div class="modal">
+
+      <button
+        id="fecharModal"
+        class="modal-fechar"
+        type="button"
+      >
+        ×
+      </button>
+
+      <div
+        id="modalIcone"
+        class="modal-icone"
+      >
+        🎵
+      </div>
+
+      <div
+        id="modalTitulo"
+        class="modal-titulo"
+      >
+      </div>
+
+      <div
+        id="modalTexto"
+        class="modal-texto"
+      >
+      </div>
+
+      <div id="conteudoModal"></div>
+
+    </div>
+
+  </div>
 
 
 
@@ -588,21 +892,32 @@
     </div>
 
 
-    <div class="coracao">
+    <div class="coracao-topo">
       ♡
     </div>
 
 
 
-    <!-- =============================================
-         QUIZ
-    ============================================== -->
+    <!-- ==========================================
+         ENTRADA
+    =========================================== -->
 
     <section id="entrada">
 
 
-      <div class="pergunta">
+      <div
+        id="perguntaQuiz"
+        class="pergunta"
+      >
         quem está tocando?
+      </div>
+
+
+      <div
+        id="modoQuiz"
+        class="modo-quiz"
+      >
+        reconhece?
       </div>
 
 
@@ -640,7 +955,7 @@
         class="botao"
         type="button"
       >
-        entrar
+        responder
       </button>
 
 
@@ -659,9 +974,9 @@
 
 
 
-    <!-- =============================================
+    <!-- ==========================================
          ÁREA PRINCIPAL
-    ============================================== -->
+    =========================================== -->
 
     <section id="areaPrincipal">
 
@@ -673,7 +988,6 @@
 
       <div class="buscador">
 
-
         <input
           id="busca"
           type="text"
@@ -681,23 +995,47 @@
           autocomplete="off"
         >
 
-
         <button
           id="botaoBuscar"
           class="buscar"
           type="button"
-          aria-label="Buscar"
         >
           ♡
         </button>
 
+      </div>
+
+
+      <div class="acoes-principais">
+
+        <button
+          id="jogarAgora"
+          class="acao-mini"
+          type="button"
+        >
+          🎵 desafio
+        </button>
+
+        <button
+          id="surpresaAgora"
+          class="acao-mini"
+          type="button"
+        >
+          ♡ surpresa
+        </button>
 
       </div>
 
 
-
       <div id="resultado"></div>
 
+
+      <button
+        id="naoClique"
+        type="button"
+      >
+        não clique aqui
+      </button>
 
 
       <div class="linha-admin">
@@ -714,44 +1052,35 @@
 
 
 
-      <!-- =============================================
+      <!-- ==========================================
            ADMIN
-      ============================================== -->
+      =========================================== -->
 
       <section
         id="painelAdmin"
         class="caixa"
       >
 
-
         <h2>
           área privada
         </h2>
 
 
-
-        <!-- LOGIN -->
-
         <div id="loginAdmin">
-
 
           <input
             id="adminEmail"
             class="campo"
             type="email"
             placeholder="e-mail"
-            autocomplete="email"
           >
-
 
           <input
             id="adminSenha"
             class="campo"
             type="password"
             placeholder="senha"
-            autocomplete="current-password"
           >
-
 
           <button
             id="botaoLogin"
@@ -761,15 +1090,10 @@
             entrar
           </button>
 
-
         </div>
 
 
-
-        <!-- UPLOAD -->
-
         <div id="formUpload">
-
 
           <label
             for="arquivoFoto"
@@ -778,46 +1102,37 @@
             ＋ escolher foto
           </label>
 
-
           <input
             id="arquivoFoto"
             type="file"
             accept="image/*"
           >
 
-
           <img
             id="preview"
-            alt="Prévia da foto"
+            alt="Prévia"
           >
-
 
           <input
             id="tag1"
             class="campo"
             type="text"
             placeholder="tag 1"
-            maxlength="50"
           >
-
 
           <input
             id="tag2"
             class="campo"
             type="text"
             placeholder="tag 2"
-            maxlength="50"
           >
-
 
           <input
             id="tag3"
             class="campo"
             type="text"
             placeholder="tag 3"
-            maxlength="50"
           >
-
 
           <button
             id="salvarFoto"
@@ -827,7 +1142,6 @@
             salvar foto ♡
           </button>
 
-
           <button
             id="logout"
             class="botao botao-secundario"
@@ -836,9 +1150,7 @@
             sair do admin
           </button>
 
-
         </div>
-
 
 
         <div
@@ -846,12 +1158,10 @@
           class="mensagem"
         ></div>
 
-
       </section>
 
 
     </section>
-
 
 
     <div class="rodape">
@@ -863,22 +1173,15 @@
 
 
 
-  <!-- PLAYER YOUTUBE -->
-
   <div class="youtube-container">
     <div id="player"></div>
   </div>
 
 
 
-  <!-- SUPABASE -->
-
   <script
     src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
   ></script>
-
-
-  <!-- YOUTUBE -->
 
   <script
     src="https://www.youtube.com/iframe_api"
@@ -889,20 +1192,17 @@
   <script>
 
     /* =================================================
-       CONFIGURAÇÃO SUPABASE
+       SUPABASE
     ================================================= */
 
     const SUPABASE_URL =
       "https://frhnpapvadekxesrrghz.supabase.co";
 
-
     const SUPABASE_KEY =
       "sb_publishable_SrmmFNDZr8heA8s7_1Dwow_evdBY-Ol";
 
-
     const BUCKET =
       "sweet-little-flower";
-
 
     const db =
       window.supabase.createClient(
@@ -913,90 +1213,7 @@
 
 
     /* =================================================
-       ELEMENTOS
-    ================================================= */
-
-    const entrada =
-      document.getElementById(
-        "entrada"
-      );
-
-
-    const areaPrincipal =
-      document.getElementById(
-        "areaPrincipal"
-      );
-
-
-    const resposta =
-      document.getElementById(
-        "resposta"
-      );
-
-
-    const mensagemQuiz =
-      document.getElementById(
-        "mensagemQuiz"
-      );
-
-
-    const botaoPlay =
-      document.getElementById(
-        "play"
-      );
-
-
-    const statusMusica =
-      document.getElementById(
-        "status"
-      );
-
-
-    const painelAdmin =
-      document.getElementById(
-        "painelAdmin"
-      );
-
-
-    const loginAdmin =
-      document.getElementById(
-        "loginAdmin"
-      );
-
-
-    const formUpload =
-      document.getElementById(
-        "formUpload"
-      );
-
-
-    const mensagemAdmin =
-      document.getElementById(
-        "mensagemAdmin"
-      );
-
-
-    const resultado =
-      document.getElementById(
-        "resultado"
-      );
-
-
-    const inputArquivo =
-      document.getElementById(
-        "arquivoFoto"
-      );
-
-
-    const preview =
-      document.getElementById(
-        "preview"
-      );
-
-
-
-    /* =================================================
-       NORMALIZAÇÃO
+       UTILIDADES
     ================================================= */
 
     function normalizar(texto) {
@@ -1013,23 +1230,110 @@
     }
 
 
+    function sorteio(lista) {
+
+      return lista[
+        Math.floor(
+          Math.random() *
+          lista.length
+        )
+      ];
+
+    }
+
+
+    function embaralhar(lista) {
+
+      const copia =
+        [...lista];
+
+      for (
+        let i =
+          copia.length - 1;
+        i > 0;
+        i--
+      ) {
+
+        const j =
+          Math.floor(
+            Math.random() *
+            (i + 1)
+          );
+
+        [
+          copia[i],
+          copia[j]
+        ] =
+        [
+          copia[j],
+          copia[i]
+        ];
+
+      }
+
+      return copia;
+
+    }
+
+
 
     /* =================================================
-       MÚSICAS
+       BIBLIOTECA MUSICAL
     ================================================= */
 
-    const artistas = [
+    const musicas = [
+
+      /* MÅNESKIN */
 
       {
-        artista:
-          "Måneskin",
+        artista: "Måneskin",
+        titulo: "HONEY (ARE U COMING?)",
+        video: "HZnNt9nnEhw",
+        inicio: 25,
+        respostas: [
+          "maneskin",
+          "måneskin"
+        ]
+      },
 
-        video:
-          "HZnNt9nnEhw",
+      {
+        artista: "Måneskin",
+        titulo: "I WANNA BE YOUR SLAVE",
+        video: "yOb9Xaug35M",
+        inicio: 24,
+        respostas: [
+          "maneskin",
+          "måneskin"
+        ]
+      },
 
-        inicio:
-          25,
+      {
+        artista: "Måneskin",
+        titulo: "THE LONELIEST",
+        video: "odWKEfp2QMY",
+        inicio: 35,
+        respostas: [
+          "maneskin",
+          "måneskin"
+        ]
+      },
 
+      {
+        artista: "Måneskin",
+        titulo: "ZITTI E BUONI",
+        video: "QN1odfjtMoo",
+        inicio: 22,
+        respostas: [
+          "maneskin",
+          "måneskin"
+        ]
+      },
+
+      {
+        artista: "Måneskin",
+        titulo: "GOSSIP",
+        video: "XrsbfrFPATs",
+        inicio: 27,
         respostas: [
           "maneskin",
           "måneskin"
@@ -1037,16 +1341,13 @@
       },
 
 
+      /* DAMIANO DAVID */
+
       {
-        artista:
-          "Damiano David",
-
-        video:
-          "BD8jIlBA1nA",
-
-        inicio:
-          25,
-
+        artista: "Damiano David",
+        titulo: "Born With a Broken Heart",
+        video: "BD8jIlBA1nA",
+        inicio: 25,
         respostas: [
           "damiano",
           "damiano david"
@@ -1054,32 +1355,98 @@
       },
 
 
+      /* NIRVANA */
+
       {
-        artista:
-          "ILLIT",
+        artista: "Nirvana",
+        titulo: "Smells Like Teen Spirit",
+        video: "hTWKbfoikeg",
+        inicio: 28,
+        respostas: [
+          "nirvana"
+        ]
+      },
 
-        video:
-          "Vk5-c_v4gMU",
+      {
+        artista: "Nirvana",
+        titulo: "Come As You Are",
+        video: "vabnZ9-ex7o",
+        inicio: 20,
+        respostas: [
+          "nirvana"
+        ]
+      },
 
-        inicio:
-          28,
+      {
+        artista: "Nirvana",
+        titulo: "Heart-Shaped Box",
+        video: "n6P0SitRwy8",
+        inicio: 28,
+        respostas: [
+          "nirvana"
+        ]
+      },
 
+
+      /* THE DOORS */
+
+      {
+        artista: "The Doors",
+        titulo: "People Are Strange",
+        video: "AgHaGrZkkv4",
+        inicio: 12,
+        respostas: [
+          "the doors",
+          "doors"
+        ]
+      },
+
+
+      /* NICKELBACK */
+
+      {
+        artista: "Nickelback",
+        titulo: "How You Remind Me",
+        video: "Aiay8I5IPB8",
+        inicio: 25,
+        respostas: [
+          "nickelback",
+          "nickleback"
+        ]
+      },
+
+      {
+        artista: "Nickelback",
+        titulo: "Photograph",
+        video: "T3rXdeOvhNE",
+        inicio: 25,
+        respostas: [
+          "nickelback",
+          "nickleback"
+        ]
+      },
+
+
+      /* ILLIT */
+
+      {
+        artista: "ILLIT",
+        titulo: "Magnetic",
+        video: "Vk5-c_v4gMU",
+        inicio: 28,
         respostas: [
           "illit"
         ]
       },
 
 
+      /* BLACKPINK */
+
       {
-        artista:
-          "BLACKPINK",
-
-        video:
-          "gQlMMD8auMs",
-
-        inicio:
-          30,
-
+        artista: "BLACKPINK",
+        titulo: "Pink Venom",
+        video: "gQlMMD8auMs",
+        inicio: 30,
         respostas: [
           "blackpink",
           "black pink"
@@ -1087,16 +1454,13 @@
       },
 
 
+      /* MAMONAS */
+
       {
-        artista:
-          "Mamonas Assassinas",
-
-        video:
-          "Nz7101ulkK0",
-
-        inicio:
-          30,
-
+        artista: "Mamonas Assassinas",
+        titulo: "Pelados em Santos",
+        video: "Nz7101ulkK0",
+        inicio: 30,
         respostas: [
           "mamonas",
           "mamonas assassinas"
@@ -1107,33 +1471,69 @@
 
 
 
-    const indiceAtual =
-      Math.floor(
-        Math.random() *
-        artistas.length
-      );
+    /* =================================================
+       QUIZ INICIAL
+    ================================================= */
+
+    const musicaInicial =
+      sorteio(musicas);
 
 
-    const musicaAtual =
-      artistas[indiceAtual];
+    const modosQuiz = [
+
+      {
+        texto:
+          "reconhece?"
+      },
+
+      {
+        texto:
+          "essa deveria ser fácil 👀"
+      },
+
+      {
+        texto:
+          "sem olhar o celular de ninguém."
+      },
+
+      {
+        texto:
+          "vamos ver se você realmente sabe."
+      },
+
+      {
+        texto:
+          "não me decepcione."
+      }
+
+    ];
 
 
-    let player =
-      null;
-
-
-    let playerPronto =
-      false;
-
-
-    let tocando =
-      false;
+    document
+      .getElementById(
+        "modoQuiz"
+      )
+      .textContent =
+      sorteio(modosQuiz).texto;
 
 
 
     /* =================================================
-       YOUTUBE
+       PLAYER
     ================================================= */
+
+    let player =
+      null;
+
+    let playerPronto =
+      false;
+
+    let tocando =
+      false;
+
+    let musicaNoPlayer =
+      musicaInicial;
+
 
     window.onYouTubeIframeAPIReady =
       function() {
@@ -1150,7 +1550,7 @@
                 "200",
 
               videoId:
-                musicaAtual.video,
+                musicaInicial.video,
 
               playerVars: {
 
@@ -1161,10 +1561,7 @@
                   0,
 
                 rel:
-                  0,
-
-                start:
-                  musicaAtual.inicio
+                  0
 
               },
 
@@ -1176,16 +1573,21 @@
                     playerPronto =
                       true;
 
-
-                    botaoPlay.disabled =
+                    document
+                      .getElementById(
+                        "play"
+                      )
+                      .disabled =
                       false;
 
-
-                    statusMusica.textContent =
+                    document
+                      .getElementById(
+                        "status"
+                      )
+                      .textContent =
                       "toque para ouvir";
 
                   },
-
 
                 onStateChange:
                   function(event) {
@@ -1198,37 +1600,28 @@
                       tocando =
                         true;
 
-
-                      botaoPlay.textContent =
+                      document
+                        .getElementById(
+                          "play"
+                        )
+                        .textContent =
                         "❚❚";
 
                     }
 
-
-                    else if (
-                      event.data ===
-                      YT.PlayerState.PAUSED ||
-                      event.data ===
-                      YT.PlayerState.ENDED
-                    ) {
+                    else {
 
                       tocando =
                         false;
 
-
-                      botaoPlay.textContent =
+                      document
+                        .getElementById(
+                          "play"
+                        )
+                        .textContent =
                         "▶";
 
                     }
-
-                  },
-
-
-                onError:
-                  function() {
-
-                    statusMusica.textContent =
-                      "música indisponível";
 
                   }
 
@@ -1240,41 +1633,76 @@
       };
 
 
+    function carregarMusica(
+      musica,
+      tocar = false
+    ) {
 
-    botaoPlay.addEventListener(
-      "click",
-      function() {
+      if (
+        !playerPronto ||
+        !player
+      ) {
 
-        if (
-          !playerPronto ||
-          !player
-        ) {
-
-          return;
-
-        }
-
-
-        if (tocando) {
-
-          player.pauseVideo();
-
-        }
-
-        else {
-
-          player.seekTo(
-            musicaAtual.inicio,
-            true
-          );
-
-
-          player.playVideo();
-
-        }
+        return;
 
       }
-    );
+
+      musicaNoPlayer =
+        musica;
+
+      player.loadVideoById({
+        videoId:
+          musica.video,
+
+        startSeconds:
+          musica.inicio
+      });
+
+      if (!tocar) {
+
+        player.pauseVideo();
+
+      }
+
+    }
+
+
+
+    document
+      .getElementById(
+        "play"
+      )
+      .addEventListener(
+        "click",
+        function() {
+
+          if (
+            !playerPronto
+          ) {
+
+            return;
+
+          }
+
+          if (tocando) {
+
+            player.pauseVideo();
+
+          }
+
+          else {
+
+            player.seekTo(
+              musicaNoPlayer.inicio,
+              true
+            );
+
+            player.playVideo();
+
+          }
+
+        }
+      );
 
 
 
@@ -1282,52 +1710,9 @@
        TOAST
     ================================================= */
 
-    let mensagensIniciadas =
-      false;
-
-
-    let contadorBuscas =
-      0;
-
-
-    const mensagensUsadas =
-      new Set();
-
-
-
-    const mensagensExtras = [
-
-      "essa busca foi muito específica 👀",
-
-      "algumas fotos deveriam continuar esquecidas 😂",
-
-      "mais uma?",
-
-      "eu vi essa busca...",
-
-      "você realmente não desiste ♡",
-
-      "não vou perguntar o motivo dessa busca.",
-
-      "tem coisa demais aqui dentro 🌸",
-
-      "memórias desbloqueadas.",
-
-      "isso está ficando suspeito 👀",
-
-      "ok... essa eu deixo passar.",
-
-      "você sabe que pode fechar o site, né?",
-
-      "mais fotos. claro.",
-
-      "sweet little stalker ♡"
-
-    ];
-
-
-
-    function fecharToast(toast) {
+    function fecharToast(
+      toast
+    ) {
 
       if (
         !toast ||
@@ -1338,18 +1723,15 @@
 
       }
 
-
       toast.classList.remove(
         "visivel"
       );
-
 
       toast.classList.add(
         "saindo"
       );
 
-
-      window.setTimeout(
+      setTimeout(
         function() {
 
           if (
@@ -1367,40 +1749,22 @@
     }
 
 
-
-    function mostrarToast(texto) {
+    function mostrarToast(
+      texto
+    ) {
 
       const container =
         document.getElementById(
           "toastContainer"
         );
 
-
-      if (!container) {
-
-        return;
-
-      }
-
-
-      const anterior =
-        container.querySelector(
-          ".toast"
-        );
-
-
-      if (anterior) {
-
-        anterior.remove();
-
-      }
-
+      container.innerHTML =
+        "";
 
       const toast =
         document.createElement(
           "div"
         );
-
 
       toast.className =
         "toast";
@@ -1411,22 +1775,19 @@
           "span"
         );
 
-
       coracao.className =
         "toast-coracao";
-
 
       coracao.textContent =
         "♡";
 
 
-      const textoToast =
+      const mensagem =
         document.createElement(
           "span"
         );
 
-
-      textoToast.textContent =
+      mensagem.textContent =
         texto;
 
 
@@ -1435,20 +1796,11 @@
           "button"
         );
 
-
-      fechar.type =
-        "button";
-
-
       fechar.className =
         "toast-fechar";
 
-
-      fechar.setAttribute(
-        "aria-label",
-        "Fechar mensagem"
-      );
-
+      fechar.type =
+        "button";
 
       fechar.textContent =
         "×";
@@ -1458,16 +1810,13 @@
         coracao
       );
 
-
       toast.appendChild(
-        textoToast
+        mensagem
       );
-
 
       toast.appendChild(
         fechar
       );
-
 
       container.appendChild(
         toast
@@ -1503,7 +1852,7 @@
       );
 
 
-      window.setTimeout(
+      setTimeout(
         function() {
 
           fecharToast(
@@ -1518,25 +1867,600 @@
 
 
 
-    function iniciarMensagens() {
+    /* =================================================
+       MODAL
+    ================================================= */
 
-      if (mensagensIniciadas) {
+    const modalFundo =
+      document.getElementById(
+        "modalFundo"
+      );
+
+
+    function abrirModal(
+      icone,
+      titulo,
+      texto
+    ) {
+
+      document
+        .getElementById(
+          "modalIcone"
+        )
+        .textContent =
+        icone;
+
+      document
+        .getElementById(
+          "modalTitulo"
+        )
+        .textContent =
+        titulo;
+
+      document
+        .getElementById(
+          "modalTexto"
+        )
+        .textContent =
+        texto;
+
+      document
+        .getElementById(
+          "conteudoModal"
+        )
+        .innerHTML =
+        "";
+
+      modalFundo
+        .classList
+        .add(
+          "aberto"
+        );
+
+    }
+
+
+    function fecharModal() {
+
+      modalFundo
+        .classList
+        .remove(
+          "aberto"
+        );
+
+      if (
+        player &&
+        player.pauseVideo
+      ) {
+
+        player.pauseVideo();
+
+      }
+
+    }
+
+
+    document
+      .getElementById(
+        "fecharModal"
+      )
+      .addEventListener(
+        "click",
+        fecharModal
+      );
+
+
+
+    /* =================================================
+       JOGO MUSICAL
+    ================================================= */
+
+    let rodadaAtual =
+      0;
+
+    let pontos =
+      0;
+
+    let listaDesafio =
+      [];
+
+
+    function iniciarDesafio() {
+
+      rodadaAtual =
+        0;
+
+      pontos =
+        0;
+
+      listaDesafio =
+        embaralhar(
+          musicas
+        ).slice(
+          0,
+          3
+        );
+
+      proximaRodada();
+
+    }
+
+
+    function proximaRodada() {
+
+      if (
+        rodadaAtual >=
+        listaDesafio.length
+      ) {
+
+        finalizarDesafio();
 
         return;
 
       }
 
 
+      const musica =
+        listaDesafio[
+          rodadaAtual
+        ];
+
+
+      abrirModal(
+        "🎧",
+        "emergência musical",
+        "3 músicas. quantas você acerta?"
+      );
+
+
+      const conteudo =
+        document.getElementById(
+          "conteudoModal"
+        );
+
+
+      const placar =
+        document.createElement(
+          "div"
+        );
+
+      placar.id =
+        "placarDesafio";
+
+      placar.textContent =
+        "música " +
+        (rodadaAtual + 1) +
+        " de 3";
+
+
+      const play =
+        document.createElement(
+          "button"
+        );
+
+      play.type =
+        "button";
+
+      play.className =
+        "modal-play";
+
+      play.textContent =
+        "▶";
+
+
+      const input =
+        document.createElement(
+          "input"
+        );
+
+      input.id =
+        "respostaDesafio";
+
+      input.className =
+        "campo";
+
+      input.placeholder =
+        "quem está tocando?";
+
+
+      const responder =
+        document.createElement(
+          "button"
+        );
+
+      responder.type =
+        "button";
+
+      responder.className =
+        "botao";
+
+      responder.textContent =
+        "responder";
+
+
+      conteudo.appendChild(
+        placar
+      );
+
+      conteudo.appendChild(
+        play
+      );
+
+      conteudo.appendChild(
+        input
+      );
+
+      conteudo.appendChild(
+        responder
+      );
+
+
+      carregarMusica(
+        musica,
+        false
+      );
+
+
+      play.addEventListener(
+        "click",
+        function() {
+
+          player.seekTo(
+            musica.inicio,
+            true
+          );
+
+          player.playVideo();
+
+          play.textContent =
+            "♫";
+
+          setTimeout(
+            function() {
+
+              if (
+                player &&
+                player.pauseVideo
+              ) {
+
+                player.pauseVideo();
+
+              }
+
+              play.textContent =
+                "▶";
+
+            },
+            10000
+          );
+
+        }
+      );
+
+
+      function responderRodada() {
+
+        const resposta =
+          normalizar(
+            input.value
+          );
+
+        const corretas =
+          musica.respostas.map(
+            normalizar
+          );
+
+        if (
+          corretas.includes(
+            resposta
+          )
+        ) {
+
+          pontos++;
+
+          mostrarToast(
+            "óbvio que você sabia ♡"
+          );
+
+        }
+
+        else {
+
+          mostrarToast(
+            "era " +
+            musica.artista +
+            " 👀"
+          );
+
+        }
+
+        if (
+          player &&
+          player.pauseVideo
+        ) {
+
+          player.pauseVideo();
+
+        }
+
+        rodadaAtual++;
+
+        setTimeout(
+          proximaRodada,
+          700
+        );
+
+      }
+
+
+      responder.addEventListener(
+        "click",
+        responderRodada
+      );
+
+
+      input.addEventListener(
+        "keydown",
+        function(event) {
+
+          if (
+            event.key ===
+            "Enter"
+          ) {
+
+            responderRodada();
+
+          }
+
+        }
+      );
+
+    }
+
+
+
+    function finalizarDesafio() {
+
+      let texto =
+        "";
+
+      if (
+        pontos === 3
+      ) {
+
+        texto =
+          "3/3 — ok. você realmente sabe. ♡";
+
+      }
+
+      else if (
+        pontos === 2
+      ) {
+
+        texto =
+          "2/3 — aceitável 👀";
+
+      }
+
+      else if (
+        pontos === 1
+      ) {
+
+        texto =
+          "1/3 — precisamos conversar.";
+
+      }
+
+      else {
+
+        texto =
+          "0/3 — vou fingir que isso não aconteceu.";
+
+      }
+
+
+      abrirModal(
+        "♡",
+        "resultado",
+        texto
+      );
+
+
+      const botao =
+        document.createElement(
+          "button"
+        );
+
+      botao.className =
+        "botao";
+
+      botao.type =
+        "button";
+
+      botao.textContent =
+        "continuar";
+
+      botao.addEventListener(
+        "click",
+        fecharModal
+      );
+
+      document
+        .getElementById(
+          "conteudoModal"
+        )
+        .appendChild(
+          botao
+        );
+
+    }
+
+
+
+    /* =================================================
+       CORAÇÃO ESCONDIDO
+    ================================================= */
+
+    const frasesCoracao = [
+
+      "você encontrou um coração perdido ♡",
+
+      "algumas coisas pequenas merecem ser guardadas.",
+
+      "essa não era uma foto. era só um oi ♡",
+
+      "parabéns. você clicou num coração.",
+
+      "nada para ver aqui. só carinho.",
+
+      "você ainda é minha sweet little flower.",
+
+      "esse coração estava esperando você.",
+
+      "memória também mora nas coisas pequenas."
+
+    ];
+
+
+    function mostrarCoracao() {
+
+      const botao =
+        document.getElementById(
+          "coracaoSurpresa"
+        );
+
+      botao.style.display =
+        "block";
+
+
+      setTimeout(
+        function() {
+
+          botao.style.display =
+            "none";
+
+        },
+        12000
+      );
+
+    }
+
+
+    document
+      .getElementById(
+        "coracaoSurpresa"
+      )
+      .addEventListener(
+        "click",
+        function() {
+
+          this.style.display =
+            "none";
+
+          abrirModal(
+            "♡",
+            "você achou",
+            sorteio(
+              frasesCoracao
+            )
+          );
+
+        }
+      );
+
+
+
+    /* =================================================
+       NÃO CLIQUE
+    ================================================= */
+
+    document
+      .getElementById(
+        "naoClique"
+      )
+      .addEventListener(
+        "click",
+        function() {
+
+          abrirModal(
+            "😈",
+            "eu literalmente avisei.",
+            "mas é claro que você clicou."
+          );
+
+
+          const botao =
+            document.createElement(
+              "button"
+            );
+
+          botao.className =
+            "botao";
+
+          botao.type =
+            "button";
+
+          botao.textContent =
+            "eu faria de novo";
+
+
+          botao.addEventListener(
+            "click",
+            function() {
+
+              document
+                .getElementById(
+                  "modalTexto"
+                )
+                .textContent =
+                "eu sei. 👀";
+
+              botao.style.display =
+                "none";
+
+            }
+          );
+
+
+          document
+            .getElementById(
+              "conteudoModal"
+            )
+            .appendChild(
+              botao
+            );
+
+        }
+      );
+
+
+
+    /* =================================================
+       EVENTOS SURPRESA
+    ================================================= */
+
+    let mensagensIniciadas =
+      false;
+
+    let contadorBuscas =
+      0;
+
+
+    function iniciarEventos() {
+
+      if (
+        mensagensIniciadas
+      ) {
+
+        return;
+
+      }
+
       mensagensIniciadas =
         true;
 
 
-      /*
-        Primeira mensagem:
-        1,2 segundo depois de entrar
-      */
-
-      window.setTimeout(
+      setTimeout(
         function() {
 
           mostrarToast(
@@ -1548,11 +2472,7 @@
       );
 
 
-      /*
-        1 minuto
-      */
-
-      window.setTimeout(
+      setTimeout(
         function() {
 
           mostrarToast(
@@ -1564,11 +2484,7 @@
       );
 
 
-      /*
-        2 minutos
-      */
-
-      window.setTimeout(
+      setTimeout(
         function() {
 
           mostrarToast(
@@ -1580,11 +2496,17 @@
       );
 
 
-      /*
-        4 minutos
-      */
+      setTimeout(
+        function() {
 
-      window.setTimeout(
+          mostrarCoracao();
+
+        },
+        150000
+      );
+
+
+      setTimeout(
         function() {
 
           mostrarToast(
@@ -1596,11 +2518,22 @@
       );
 
 
-      /*
-        6 minutos
-      */
+      setTimeout(
+        function() {
 
-      window.setTimeout(
+          document
+            .getElementById(
+              "naoClique"
+            )
+            .style.display =
+            "inline-block";
+
+        },
+        300000
+      );
+
+
+      setTimeout(
         function() {
 
           mostrarToast(
@@ -1612,11 +2545,51 @@
       );
 
 
-      /*
-        10 minutos
-      */
+      setTimeout(
+        function() {
 
-      window.setTimeout(
+          abrirModal(
+            "🎵",
+            "interrompemos sua investigação",
+            "tem um desafio musical esperando por você."
+          );
+
+
+          const botao =
+            document.createElement(
+              "button"
+            );
+
+          botao.className =
+            "botao";
+
+          botao.type =
+            "button";
+
+          botao.textContent =
+            "jogar ♪";
+
+
+          botao.addEventListener(
+            "click",
+            iniciarDesafio
+          );
+
+
+          document
+            .getElementById(
+              "conteudoModal"
+            )
+            .appendChild(
+              botao
+            );
+
+        },
+        480000
+      );
+
+
+      setTimeout(
         function() {
 
           mostrarToast(
@@ -1631,136 +2604,39 @@
 
 
 
-    function mensagemAleatoria() {
-
-      let disponiveis =
-        mensagensExtras.filter(
-          function(frase) {
-
-            return !mensagensUsadas.has(
-              frase
-            );
-
-          }
-        );
-
-
-      if (
-        disponiveis.length === 0
-      ) {
-
-        mensagensUsadas.clear();
-
-
-        disponiveis =
-          [...mensagensExtras];
-
-      }
-
-
-      const indice =
-        Math.floor(
-          Math.random() *
-          disponiveis.length
-        );
-
-
-      const frase =
-        disponiveis[indice];
-
-
-      mensagensUsadas.add(
-        frase
-      );
-
-
-      return frase;
-
-    }
-
-
-
-    function registrarBusca() {
-
-      contadorBuscas++;
-
-
-      if (
-        contadorBuscas === 3
-      ) {
-
-        mostrarToast(
-          "já é a terceira busca 👀"
-        );
-
-      }
-
-
-      else if (
-        contadorBuscas === 5
-      ) {
-
-        mostrarToast(
-          "curiosa demais hoje, não?"
-        );
-
-      }
-
-
-      else if (
-        contadorBuscas === 8
-      ) {
-
-        mostrarToast(
-          "o mundo lá fora ainda existe 🌸"
-        );
-
-      }
-
-
-      else if (
-        contadorBuscas >= 10 &&
-        contadorBuscas % 4 === 0
-      ) {
-
-        mostrarToast(
-          mensagemAleatoria()
-        );
-
-      }
-
-    }
-
-
-
     /* =================================================
-       QUIZ
+       QUIZ DE ENTRADA
     ================================================= */
 
     function validarQuiz() {
 
-      const valor =
+      const resposta =
         normalizar(
-          resposta.value
+          document
+            .getElementById(
+              "resposta"
+            )
+            .value
         );
 
 
-      const respostasCorretas =
-        musicaAtual.respostas.map(
-          normalizar
-        );
+      const corretas =
+        musicaInicial
+          .respostas
+          .map(
+            normalizar
+          );
 
 
       if (
-        respostasCorretas.includes(
-          valor
+        corretas.includes(
+          resposta
         )
       ) {
 
         if (
           player &&
-          typeof player.pauseVideo ===
-            "function"
+          player.pauseVideo
         ) {
 
           player.pauseVideo();
@@ -1768,20 +2644,23 @@
         }
 
 
-        entrada.style.display =
+        document
+          .getElementById(
+            "entrada"
+          )
+          .style.display =
           "none";
 
 
-        areaPrincipal.style.display =
+        document
+          .getElementById(
+            "areaPrincipal"
+          )
+          .style.display =
           "block";
 
 
-        mensagemQuiz.textContent =
-          "";
-
-
-        iniciarMensagens();
-
+        iniciarEventos();
 
         verificarSessao();
 
@@ -1789,13 +2668,16 @@
 
       else {
 
-        mensagemQuiz.textContent =
+        document
+          .getElementById(
+            "mensagemQuiz"
+          )
+          .textContent =
           "tente outra vez ♫";
 
       }
 
     }
-
 
 
     document
@@ -1808,22 +2690,94 @@
       );
 
 
+    document
+      .getElementById(
+        "resposta"
+      )
+      .addEventListener(
+        "keydown",
+        function(event) {
 
-    resposta.addEventListener(
-      "keydown",
-      function(event) {
+          if (
+            event.key ===
+            "Enter"
+          ) {
 
-        if (
-          event.key ===
-          "Enter"
-        ) {
+            validarQuiz();
 
-          validarQuiz();
+          }
 
         }
+      );
 
-      }
-    );
+
+
+    /* =================================================
+       BOTÕES DOS JOGOS
+    ================================================= */
+
+    document
+      .getElementById(
+        "jogarAgora"
+      )
+      .addEventListener(
+        "click",
+        iniciarDesafio
+      );
+
+
+    document
+      .getElementById(
+        "surpresaAgora"
+      )
+      .addEventListener(
+        "click",
+        function() {
+
+          const eventos = [
+
+            function() {
+
+              mostrarCoracao();
+
+              mostrarToast(
+                "olha embaixo 👀"
+              );
+
+            },
+
+            function() {
+
+              mostrarToast(
+                "não aconteceu nada. talvez."
+              );
+
+            },
+
+            function() {
+
+              iniciarDesafio();
+
+            },
+
+            function() {
+
+              abrirModal(
+                "🌸",
+                "surpresa",
+                "às vezes não precisa acontecer nada."
+              );
+
+            }
+
+          ];
+
+          sorteio(
+            eventos
+          )();
+
+        }
+      );
 
 
 
@@ -1839,24 +2793,20 @@
         "click",
         function() {
 
-          const aberto =
-            painelAdmin.style.display ===
-            "block";
+          const painel =
+            document.getElementById(
+              "painelAdmin"
+            );
 
-
-          painelAdmin.style.display =
-            aberto
+          painel.style.display =
+            painel.style.display ===
+            "block"
               ? "none"
               : "block";
 
         }
       );
 
-
-
-    /* =================================================
-       LOGIN
-    ================================================= */
 
     async function login() {
 
@@ -1867,7 +2817,6 @@
           )
           .value
           .trim();
-
 
       const senha =
         document
@@ -1882,7 +2831,11 @@
         !senha
       ) {
 
-        mensagemAdmin.textContent =
+        document
+          .getElementById(
+            "mensagemAdmin"
+          )
+          .textContent =
           "preencha e-mail e senha";
 
         return;
@@ -1890,25 +2843,17 @@
       }
 
 
-      mensagemAdmin.textContent =
-        "entrando...";
-
-
       const {
         error
       } =
         await db.auth
-          .signInWithPassword(
-            {
+          .signInWithPassword({
+            email:
+              email,
 
-              email:
-                email,
-
-              password:
-                senha
-
-            }
-          );
+            password:
+              senha
+          });
 
 
       if (error) {
@@ -1917,8 +2862,11 @@
           error
         );
 
-
-        mensagemAdmin.textContent =
+        document
+          .getElementById(
+            "mensagemAdmin"
+          )
+          .textContent =
           "não foi possível entrar";
 
         return;
@@ -1926,14 +2874,9 @@
       }
 
 
-      mensagemAdmin.textContent =
-        "admin conectado ♡";
-
-
       mostrarUpload();
 
     }
-
 
 
     document
@@ -1946,52 +2889,41 @@
       );
 
 
+    function mostrarUpload() {
 
-    document
-      .getElementById(
-        "adminSenha"
-      )
-      .addEventListener(
-        "keydown",
-        function(event) {
-
-          if (
-            event.key ===
-            "Enter"
-          ) {
-
-            login();
-
-          }
-
-        }
-      );
+      document
+        .getElementById(
+          "loginAdmin"
+        )
+        .style.display =
+        "none";
 
 
+      document
+        .getElementById(
+          "formUpload"
+        )
+        .style.display =
+        "block";
 
-    /* =================================================
-       SESSÃO
-    ================================================= */
+
+      document
+        .getElementById(
+          "mensagemAdmin"
+        )
+        .textContent =
+        "admin conectado ♡";
+
+    }
+
 
     async function verificarSessao() {
 
       const {
-        data,
-        error
+        data
       } =
         await db.auth
           .getSession();
-
-
-      if (error) {
-
-        console.error(
-          error
-        );
-
-        return;
-
-      }
 
 
       if (
@@ -2006,24 +2938,6 @@
     }
 
 
-
-    function mostrarUpload() {
-
-      loginAdmin.style.display =
-        "none";
-
-
-      formUpload.style.display =
-        "block";
-
-    }
-
-
-
-    /* =================================================
-       LOGOUT
-    ================================================= */
-
     document
       .getElementById(
         "logout"
@@ -2036,20 +2950,28 @@
             .signOut();
 
 
-          formUpload.style.display =
+          document
+            .getElementById(
+              "formUpload"
+            )
+            .style.display =
             "none";
 
 
-          loginAdmin.style.display =
+          document
+            .getElementById(
+              "loginAdmin"
+            )
+            .style.display =
             "block";
 
 
-          mensagemAdmin.textContent =
+          document
+            .getElementById(
+              "mensagemAdmin"
+            )
+            .textContent =
             "admin desconectado";
-
-
-          resultado.innerHTML =
-            "";
 
         }
       );
@@ -2060,41 +2982,22 @@
        PREVIEW
     ================================================= */
 
+    const inputArquivo =
+      document.getElementById(
+        "arquivoFoto"
+      );
+
+
     inputArquivo.addEventListener(
       "change",
-      function(event) {
+      function() {
 
         const arquivo =
-          event.target.files &&
-          event.target.files[0];
+          this.files &&
+          this.files[0];
 
 
         if (!arquivo) {
-
-          preview.style.display =
-            "none";
-
-          return;
-
-        }
-
-
-        if (
-          !arquivo.type.startsWith(
-            "image/"
-          )
-        ) {
-
-          mensagemAdmin.textContent =
-            "escolha um arquivo de imagem";
-
-
-          inputArquivo.value =
-            "";
-
-
-          preview.style.display =
-            "none";
 
           return;
 
@@ -2107,9 +3010,14 @@
           );
 
 
+        const preview =
+          document.getElementById(
+            "preview"
+          );
+
+
         preview.src =
           url;
-
 
         preview.style.display =
           "block";
@@ -2123,10 +3031,6 @@
             );
 
           };
-
-
-        mensagemAdmin.textContent =
-          "";
 
       }
     );
@@ -2153,7 +3057,6 @@
             .value
         );
 
-
       const tag2 =
         normalizar(
           document
@@ -2162,7 +3065,6 @@
             )
             .value
         );
-
 
       const tag3 =
         normalizar(
@@ -2176,7 +3078,11 @@
 
       if (!arquivo) {
 
-        mensagemAdmin.textContent =
+        document
+          .getElementById(
+            "mensagemAdmin"
+          )
+          .textContent =
           "escolha uma foto";
 
         return;
@@ -2190,7 +3096,11 @@
         !tag3
       ) {
 
-        mensagemAdmin.textContent =
+        document
+          .getElementById(
+            "mensagemAdmin"
+          )
+          .textContent =
           "preencha as 3 tags";
 
         return;
@@ -2198,25 +3108,25 @@
       }
 
 
-      const {
-        data:
-          sessao
-      } =
-        await db.auth
-          .getSession();
+      const extensao =
+        arquivo.name
+          .split(".")
+          .pop()
+          .toLowerCase()
+          .replace(
+            /[^a-z0-9]/g,
+            ""
+          ) || "jpg";
 
 
-      if (
-        !sessao ||
-        !sessao.session
-      ) {
-
-        mensagemAdmin.textContent =
-          "faça login novamente";
-
-        return;
-
-      }
+      const nomeArquivo =
+        Date.now() +
+        "-" +
+        Math.random()
+          .toString(36)
+          .slice(2,10) +
+        "." +
+        extensao;
 
 
       const botao =
@@ -2228,145 +3138,101 @@
       botao.disabled =
         true;
 
-
       botao.textContent =
         "enviando...";
 
 
-      mensagemAdmin.textContent =
-        "enviando foto...";
+      const {
+        error:
+          erroUpload
+      } =
+        await db.storage
+          .from(BUCKET)
+          .upload(
+            nomeArquivo,
+            arquivo,
+            {
+              upsert:
+                false,
 
-
-      try {
-
-
-        let extensao =
-          arquivo.name
-            .split(".")
-            .pop()
-            .toLowerCase();
-
-
-        extensao =
-          extensao.replace(
-            /[^a-z0-9]/g,
-            ""
+              contentType:
+                arquivo.type
+            }
           );
 
 
-        if (!extensao) {
+      if (erroUpload) {
 
-          extensao =
-            "jpg";
+        console.error(
+          erroUpload
+        );
 
-        }
+        document
+          .getElementById(
+            "mensagemAdmin"
+          )
+          .textContent =
+          "erro ao enviar a foto";
+
+        botao.disabled =
+          false;
+
+        botao.textContent =
+          "salvar foto ♡";
+
+        return;
+
+      }
 
 
-        const aleatorio =
-          Math.random()
-            .toString(36)
-            .slice(2, 10);
+      const {
+        error:
+          erroBanco
+      } =
+        await db
+          .from(
+            "fotos"
+          )
+          .insert({
 
-
-        const nomeArquivo =
-          Date.now() +
-          "-" +
-          aleatorio +
-          "." +
-          extensao;
-
-
-
-        /*
-          ENVIA FOTO PARA STORAGE
-        */
-
-        const {
-          error:
-            erroUpload
-        } =
-          await db.storage
-            .from(BUCKET)
-            .upload(
+            arquivo:
               nomeArquivo,
-              arquivo,
-              {
 
-                cacheControl:
-                  "3600",
+            tag1:
+              tag1,
 
-                upsert:
-                  false,
+            tag2:
+              tag2,
 
-                contentType:
-                  arquivo.type
+            tag3:
+              tag3
 
-              }
-            );
+          });
 
 
-        if (erroUpload) {
+      if (erroBanco) {
 
-          console.error(
-            erroUpload
-          );
+        console.error(
+          erroBanco
+        );
 
+        document
+          .getElementById(
+            "mensagemAdmin"
+          )
+          .textContent =
+          "foto enviada, mas houve erro nas tags";
 
-          throw new Error(
-            "UPLOAD"
-          );
+      }
 
-        }
+      else {
 
-
-
-        /*
-          GRAVA NA TABELA
-        */
-
-        const {
-          error:
-            erroBanco
-        } =
-          await db
-            .from("fotos")
-            .insert(
-              {
-
-                arquivo:
-                  nomeArquivo,
-
-                tag1:
-                  tag1,
-
-                tag2:
-                  tag2,
-
-                tag3:
-                  tag3
-
-              }
-            );
-
-
-        if (erroBanco) {
-
-          console.error(
-            erroBanco
-          );
-
-
-          throw new Error(
-            "BANCO"
-          );
-
-        }
-
-
-
-        mensagemAdmin.textContent =
+        document
+          .getElementById(
+            "mensagemAdmin"
+          )
+          .textContent =
           "foto salva ♡";
-
 
         mostrarToast(
           "nova lembrança guardada ♡"
@@ -2376,14 +3242,12 @@
         inputArquivo.value =
           "";
 
-
         document
           .getElementById(
             "tag1"
           )
           .value =
           "";
-
 
         document
           .getElementById(
@@ -2392,7 +3256,6 @@
           .value =
           "";
 
-
         document
           .getElementById(
             "tag3"
@@ -2400,56 +3263,23 @@
           .value =
           "";
 
-
-        preview.removeAttribute(
-          "src"
-        );
-
-
-        preview.style.display =
+        document
+          .getElementById(
+            "preview"
+          )
+          .style.display =
           "none";
 
       }
 
-      catch (erro) {
 
-        console.error(
-          erro
-        );
+      botao.disabled =
+        false;
 
-
-        if (
-          erro.message ===
-          "BANCO"
-        ) {
-
-          mensagemAdmin.textContent =
-            "foto enviada, mas houve erro ao salvar as tags";
-
-        }
-
-        else {
-
-          mensagemAdmin.textContent =
-            "erro ao enviar a foto";
-
-        }
-
-      }
-
-      finally {
-
-        botao.disabled =
-          false;
-
-
-        botao.textContent =
-          "salvar foto ♡";
-
-      }
+      botao.textContent =
+        "salvar foto ♡";
 
     }
-
 
 
     document
@@ -2479,10 +3309,6 @@
         );
 
 
-      resultado.innerHTML =
-        "";
-
-
       if (!termo) {
 
         return;
@@ -2490,7 +3316,52 @@
       }
 
 
-      registrarBusca();
+      contadorBuscas++;
+
+
+      if (
+        contadorBuscas === 3
+      ) {
+
+        mostrarToast(
+          "já é a terceira busca 👀"
+        );
+
+      }
+
+      else if (
+        contadorBuscas === 5
+      ) {
+
+        mostrarToast(
+          "curiosa demais hoje, não?"
+        );
+
+      }
+
+      else if (
+        contadorBuscas === 8
+      ) {
+
+        mostrarToast(
+          "o mundo lá fora ainda existe 🌸"
+        );
+
+      }
+
+      else if (
+        contadorBuscas === 10
+      ) {
+
+        mostrarCoracao();
+
+      }
+
+
+      const resultado =
+        document.getElementById(
+          "resultado"
+        );
 
 
       const {
@@ -2509,7 +3380,6 @@
         resultado.innerHTML =
           "<div class='mensagem'>entre no admin para testar a busca privada ♡</div>";
 
-
         return;
 
       }
@@ -2519,14 +3389,15 @@
         "<div class='mensagem'>procurando...</div>";
 
 
-
       const {
         data:
           fotos,
         error
       } =
         await db
-          .from("fotos")
+          .from(
+            "fotos"
+          )
           .select("*")
           .or(
             "tag1.eq." +
@@ -2551,10 +3422,8 @@
           error
         );
 
-
         resultado.innerHTML =
           "<div class='mensagem'>erro na busca</div>";
-
 
         return;
 
@@ -2569,7 +3438,6 @@
         resultado.innerHTML =
           "<div class='mensagem'>nenhuma lembrança encontrada ♡</div>";
 
-
         return;
 
       }
@@ -2582,7 +3450,6 @@
       for (
         const foto of fotos
       ) {
-
 
         const {
           data:
@@ -2600,14 +3467,8 @@
 
         if (
           erroUrl ||
-          !assinatura ||
-          !assinatura.signedUrl
+          !assinatura
         ) {
-
-          console.error(
-            erroUrl
-          );
-
 
           continue;
 
@@ -2619,7 +3480,6 @@
             "div"
           );
 
-
         card.className =
           "foto-card";
 
@@ -2629,14 +3489,11 @@
             "img"
           );
 
-
         imagem.src =
           assinatura.signedUrl;
 
-
         imagem.alt =
           "lembrança";
-
 
         imagem.loading =
           "lazy";
@@ -2647,7 +3504,6 @@
             "div"
           );
 
-
         tags.className =
           "tags";
 
@@ -2657,21 +3513,18 @@
           foto.tag2,
           foto.tag3
         ].forEach(
-          function(tagTexto) {
+          function(texto) {
 
             const tag =
               document.createElement(
                 "span"
               );
 
-
             tag.className =
               "tag";
 
-
             tag.textContent =
-              tagTexto;
-
+              texto;
 
             tags.appendChild(
               tag
@@ -2685,11 +3538,9 @@
           imagem
         );
 
-
         card.appendChild(
           tags
         );
-
 
         resultado.appendChild(
           card
@@ -2697,18 +3548,7 @@
 
       }
 
-
-      if (
-        resultado.children.length === 0
-      ) {
-
-        resultado.innerHTML =
-          "<div class='mensagem'>não foi possível abrir a foto ♡</div>";
-
-      }
-
     }
-
 
 
     document
@@ -2719,7 +3559,6 @@
         "click",
         buscar
       );
-
 
 
     document
@@ -2747,4 +3586,5 @@
 
 
 </body>
+
 </html>
